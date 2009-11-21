@@ -3,15 +3,7 @@
 	//instantiate: true to create a single instance immediately
 	var classes =
 	[
-		{ name: 'Creator' },
-		{ name: 'Item' },
-		{ name: 'List' },
-		{ name: 'Region', superclass: 'Item' },
-		{ name: 'User', superclass: 'Item' },
-		{ name: 'Schedule', instantiate: true },
-		{ name: 'Site', superclass: 'Item' },
-		{ name: 'SiteCreator', superclass: 'Creator', instantiate: true },
-		{ name: 'TestConnection', instantiate: true }
+		{ name: 'ConstructionTemplate', instantiate: true }
 	];
 	
 	var instances =
@@ -68,10 +60,21 @@
 
 			if (class_spec.instantiate)
 			{
+				var options = class_spec.options || {}; //instance_builder does not build if !options
+
+				try
+				{
+					options.data = eval(class_spec.name + 'Data');
+				}
+				catch(exception)
+				{
+					//data not here, moving on...
+				}
+
 				return instance_builder(
 				{
 					class_name: class_spec.name,
-					options: class_spec.options || {} //instance_builder does not build if !options
+					options: options
 				});
 			}
 		}

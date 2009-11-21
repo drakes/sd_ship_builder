@@ -5,25 +5,26 @@
 		<link rel="stylesheet" type="text/css" src="stylesheets/skin.css" />
 		<script type="text/javascript" language="javascript" src="javascript/prototype.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/application.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/controllers/construction_template_controller.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/models/construction_template_model.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/views/construction_template_view.js"></script>
 	</head>
 	<body>
 		<h1>Silent Death Ship Builder</h1>
 		<form action="" id="builder">
-			<fieldset>
-				<legend>Ship Class</legend>
-				<select id="ship_class">
-					<option value="" class="hint"> - Select a ship class - </option>
-					<option value="light1pfighter">Light Single-Person Fighter</option>
-					<option value="medium1pfighter">Medium Single-Person Fighter</option>
-					<option value="heavy1pfighter">Heavy Single-Person Fighter</option>
-					<option value="light2pfighter">Light Two-Person Fighter</option>
-					<option value="light3pfighter">Light Three-Person Fighter</option>
-					<option value="medium2pfighter">Medium Two-Person Fighter</option>
-					<option value="medium3pfighter">Medium Three-Person Fighter</option>
-					<option value="heavy2pfighter">Heavy Two-Person Fighter</option>
-					<option value="heavy3pfighter">Heavy Three-Person Fighter</option>
-				</select>
-			</fieldset>
+			<select id="ship_class">
+				<option value="" class="hint"> - Select a ship class - </option>
+				<option value="light1pfighter">Light Single-Person Fighter</option>
+				<option value="medium1pfighter">Medium Single-Person Fighter</option>
+				<option value="heavy1pfighter">Heavy Single-Person Fighter</option>
+				<option value="light2pfighter">Light Two-Person Fighter</option>
+				<option value="light3pfighter">Light Three-Person Fighter</option>
+				<option value="medium2pfighter">Medium Two-Person Fighter</option>
+				<option value="medium3pfighter">Medium Three-Person Fighter</option>
+				<option value="heavy2pfighter">Heavy Two-Person Fighter</option>
+				<option value="heavy3pfighter">Heavy Three-Person Fighter</option>
+			</select>
+			<select id="tonnage"></select>
 		</form>
 	</body>
 </html>
