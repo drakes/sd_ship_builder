@@ -5,6 +5,7 @@
 		<link rel="stylesheet" type="text/css" src="stylesheets/skin.css" />
 		<script type="text/javascript" language="javascript" src="javascript/prototype.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/application.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/construction_template_data.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/controllers/construction_template_controller.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/models/construction_template_model.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/views/construction_template_view.js"></script>
@@ -12,6 +13,7 @@
 	<body>
 		<h1>Silent Death Ship Builder</h1>
 		<form action="" id="builder">
+			<label for="ship_class">Ship class:</label>
 			<select id="ship_class">
 				<option value="" class="hint"> - Select a ship class - </option>
 				<option value="light1pfighter">Light Single-Person Fighter</option>
@@ -24,6 +26,7 @@
 				<option value="heavy2pfighter">Heavy Two-Person Fighter</option>
 				<option value="heavy3pfighter">Heavy Three-Person Fighter</option>
 			</select>
+			<label for="tonnage">tonnage:</label>
 			<select id="tonnage"></select>
 		</form>
 	</body>
