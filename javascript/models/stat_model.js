@@ -7,7 +7,7 @@ var StatModel =
 			//selectors and CSS
 			stat_id: 'stat',
 			current_class: 'current',
-			max_class: 'max',
+			template_class: 'template',
 
 			//events
 			template_changed_event: 'template:changed',
@@ -34,7 +34,7 @@ var StatModel =
 		this.control_stats.set(pair.key, pair.value);
 	},
 
-	get_max: function()
+	get_template: function()
 	{
 		return this.template;
 	},

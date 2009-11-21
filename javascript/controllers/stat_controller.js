@@ -20,6 +20,6 @@ var StatController =
 
 	refresh: function()
 	{
-		this.refresh_display(this.calculate_current(), this.get_max());
+		this.refresh_display(this.calculate_current(), this.get_template());
 	}
 };

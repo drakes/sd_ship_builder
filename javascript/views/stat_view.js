@@ -1,13 +1,13 @@
 var StatView =
 {
-	refresh_display: function(current, max)
+	refresh_display: function(current, template)
 	{
 		var stat_control = $(this.options.stat_id);
 		stat_control.down('.' + this.options.current_class).update(current);
-		var max_control = stat_control.down('.' + this.options.max_class);
-		if (max_control)
+		var template_control = stat_control.down('.' + this.options.template_class);
+		if (template_control)
 		{
-			max_control.update(max);
+			template_control.update(template);
 		}
 		stat_control.show();
 	}
