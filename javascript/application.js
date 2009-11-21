@@ -6,6 +6,8 @@
 		{ name: 'ConstructionTemplate', instantiate: true },
 		{ name: 'ConstructionStat' },
 		{ name: 'Attribute' },
+		{ name: 'Armaments', instantiate: true },
+		{ name: 'Weapon' }
 	];
 	
 	var instances =
