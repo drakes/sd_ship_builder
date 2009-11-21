@@ -7,6 +7,7 @@ var ConstructionTemplateModel =
 			//selectors and CSS
 			ship_class_id: 'ship_class',
 			tonnage_id: 'tonnage',
+			hint_class: 'hint',
 
 			//events
 			send_update_event: 'template:changed',

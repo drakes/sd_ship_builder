@@ -8,8 +8,12 @@ var ConstructionTemplateController =
 	ship_class_change_handler: function(event)
 	{
 		var ship_class = this.get_ship_class();
-		var tonnage = this.refresh_tonnage(this.get_tonnage_options(ship_class));
-		this.send_update(ship_class, tonnage);
+		if (ship_class)
+		{
+			this.strip_hint(event.element());
+			var tonnage = this.refresh_tonnage(this.get_tonnage_options(ship_class));
+			this.send_update(ship_class, tonnage);
+		}
 	},
 
 	send_update: function(ship_class, tonnage)

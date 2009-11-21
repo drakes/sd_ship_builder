@@ -8,5 +8,14 @@ var ConstructionTemplateView =
 		});
 		$(this.options.tonnage_id).update(options);
 		return tonnage_options.first();
+	},
+
+	strip_hint: function(element)
+	{
+		var hint = element.down('.' + this.options.hint_class);
+		if (hint)
+		{
+			hint.remove();
+		}
 	}
 };
