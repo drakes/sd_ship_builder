@@ -5,7 +5,7 @@ var AttributeView =
 		var attribute_values = $H(template).keys();
 		var attribute = $(this.options.id);
 		var attribute_control = attribute.up();
-		var last_value = $F(attribute);	   	|| attribute_values.first();
+		var last_value = $F(attribute);
 		last_value = attribute_values.include(last_value) ? last_value : attribute_values.first();
 		
 		var options = attribute_values.inject('', function(html, value)
