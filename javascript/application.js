@@ -15,8 +15,7 @@
 			class_name: 'ConstructionStat',
 			options:
 			{
-				stat_id: 'cost_control',
-				stat_changed_event: 'cost:changed',
+				id: 'cost_control',
 				stat_property: 'cost'
 			}
 	   	},
@@ -25,9 +24,17 @@
 			class_name: 'ConstructionStat',
 			options:
 			{
-				stat_id: 'slots_control',
-				stat_changed_event: 'slots:changed',
+				id: 'slots_control',
 				stat_property: 'slots'
+			}
+		},
+		{
+			name: 'drive_control',
+			class_name: 'Attribute',
+			options:
+			{
+				id: 'drive',
+				attribute_property: 'drive'
 			}
 		}
 	];

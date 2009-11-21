@@ -5,7 +5,7 @@ var ConstructionStatModel =
 		this.options =
 		{
 			//selectors and CSS
-			stat_id: 'stat',
+			id: 'stat',
 			current_class: 'current',
 			template_class: 'template',
 
@@ -29,9 +29,9 @@ var ConstructionStatModel =
 		this.template = template;
 	},
 
-	store_control_attribute: function(pair)
+	store_control_attribute: function(attribute_package)
 	{
-		this.control_attributes.set(pair.key, pair.value);
+		this.control_attributes.set(attribute_package.id, attribute_package[this.options.stat_property]);
 	},
 
 	get_template: function()
