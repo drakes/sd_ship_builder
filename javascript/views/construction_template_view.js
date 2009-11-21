@@ -6,7 +6,9 @@ var ConstructionTemplateView =
 		{
 			return html + '<option value="' + value + '"' + (!html ? 'selected="selected"' : '') + '>' + value + '</option>';
 		});
-		$(this.options.tonnage_id).update(options);
+		var tonnage = $(this.options.tonnage_id);
+		tonnage.update(options);
+		tonnage.up().show();
 		return tonnage_options.first();
 	},
 

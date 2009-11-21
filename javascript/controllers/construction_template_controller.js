@@ -3,6 +3,7 @@ var ConstructionTemplateController =
 	connect_event_handlers: function()
 	{
 		$(this.options.ship_class_id).observe('change', this.ship_class_change_handler.bindAsEventListener(this));
+		$(this.options.tonnage_id).observe('change', this.tonnage_change_handler.bindAsEventListener(this));
 	},
 
 	ship_class_change_handler: function(event)
@@ -14,6 +15,13 @@ var ConstructionTemplateController =
 			var tonnage = this.refresh_tonnage(this.get_tonnage_options(ship_class));
 			this.send_update(ship_class, tonnage);
 		}
+	},
+
+	tonnage_change_handler: function(event)
+	{
+		var ship_class = this.get_ship_class();
+		var tonnage = this.get_tonnage();
+		this.send_update(ship_class, tonnage);
 	},
 
 	send_update: function(ship_class, tonnage)
