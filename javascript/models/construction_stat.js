@@ -11,7 +11,7 @@ var ConstructionStatModel =
 
 			//events
 			template_changed_event: 'template:changed',
-			stat_changed_event: 'stat:changed',
+			attribute_changed_event: 'attribute:changed',
 
 			//data
 			stat_property: 'stat'
@@ -19,7 +19,7 @@ var ConstructionStatModel =
 		Object.extend(this.options, options);
 
 		this.template = null;
-		this.control_stats = $H();
+		this.control_attributes = $H();
 
 		this.connect_event_handlers();
 	},
@@ -29,9 +29,9 @@ var ConstructionStatModel =
 		this.template = template;
 	},
 
-	store_control_stat: function(pair)
+	store_control_attribute: function(pair)
 	{
-		this.control_stats.set(pair.key, pair.value);
+		this.control_attributes.set(pair.key, pair.value);
 	},
 
 	get_template: function()
@@ -41,7 +41,7 @@ var ConstructionStatModel =
 
 	calculate_current: function()
 	{
-		return this.control_stats.values().collect(0, function(current, value)
+		return this.control_attributes.values().collect(0, function(current, value)
 		{
 			return current + value;
 		});

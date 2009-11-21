@@ -3,7 +3,7 @@ var ConstructionStatController =
 	connect_event_handlers: function()
 	{
 		document.observe(this.options.template_changed_event, this.template_changed_handler.bindAsEventListener(this));
-		document.observe(this.options.stat_changed_event, this.stat_changed_handler.bindAsEventListener(this));
+		document.observe(this.options.attribute_changed_event, this.attribute_changed_handler.bindAsEventListener(this));
 	},
 
 	template_changed_handler: function(event)
@@ -12,9 +12,9 @@ var ConstructionStatController =
 		this.refresh();
 	},
 
-	stat_changed_handler: function(event)
+	attribute_changed_handler: function(event)
 	{
-		this.store_control_stat(event.memo);
+		this.store_control_attribute(event.memo);
 		this.refresh();
 	},
 
