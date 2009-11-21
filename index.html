@@ -6,12 +6,12 @@
 		<script type="text/javascript" language="javascript" src="javascript/prototype.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/application.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/construction_template_data.js"></script>
-		<script type="text/javascript" language="javascript" src="javascript/controllers/construction_template_controller.js"></script>
-		<script type="text/javascript" language="javascript" src="javascript/models/construction_template_model.js"></script>
-		<script type="text/javascript" language="javascript" src="javascript/views/construction_template_view.js"></script>
-		<script type="text/javascript" language="javascript" src="javascript/controllers/stat_controller.js"></script>
-		<script type="text/javascript" language="javascript" src="javascript/models/stat_model.js"></script>
-		<script type="text/javascript" language="javascript" src="javascript/views/stat_view.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/controllers/construction_template.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/models/construction_template.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/views/construction_template.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/controllers/construction_stat.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/models/construction_stat.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/views/construction_stat.js"></script>
 	</head>
 	<body>
 		<h1>Silent Death Ship Builder</h1>
@@ -43,7 +43,16 @@
 					<span class="descriptor">slots:</span>
 					<span class="current"></span>
 					<span class="separator">/</span>
-					<span class="max"></span>
+					<span class="template"></span>
+				</span>
+			</fieldset>
+			<fieldset>
+				<legend>Basic stats</legend>
+				<span id="drive_control" style="display: none;">
+					<label for="drive" class="descriptor">Drive:</label>
+					<select id="drive"></select>
+					<span class="cost"></span>
+					<span class="slots"></span>
 				</span>
 			</fieldset>
 		</form>

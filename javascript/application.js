@@ -4,14 +4,15 @@
 	var classes =
 	[
 		{ name: 'ConstructionTemplate', instantiate: true },
-		{ name: 'Stat' }
+		{ name: 'ConstructionStat' },
+		{ name: 'Attribute' },
 	];
 	
 	var instances =
 	[
 		{
 			name: 'cost_control',
-			class_name: 'Stat',
+			class_name: 'ConstructionStat',
 			options:
 			{
 				stat_id: 'cost_control',
@@ -21,7 +22,7 @@
 	   	},
 		{
 			name: 'slots_control',
-			class_name: 'Stat',
+			class_name: 'ConstructionStat',
 			options:
 			{
 				stat_id: 'slots_control',
