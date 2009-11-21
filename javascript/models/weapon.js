@@ -16,9 +16,7 @@ var WeaponModel =
 			changed_event: 'weapon:changed',
 
 			//weapon templates
-			data: null,
-			cost_property: 'cost',
-			slots_property: 'slots'
+			data: null
 		};
 		Object.extend(this.options, options);
 

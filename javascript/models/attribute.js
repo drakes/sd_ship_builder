@@ -14,9 +14,7 @@ var AttributeModel =
 			attribute_changed_event: 'attribute:changed',
 
 			//data
-			attribute_property: 'attribute',
-			cost_property: 'cost',
-			slots_property: 'slots'
+			attribute_property: 'attribute'
 		};
 		Object.extend(this.options, options);
 
