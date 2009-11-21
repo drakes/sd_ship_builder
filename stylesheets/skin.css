@@ -2,3 +2,8 @@ legend
 {
 	color: gray;
 }
+
+.invalid .current
+{
+	color: red;
+}

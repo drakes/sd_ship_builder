@@ -8,6 +8,7 @@ var ConstructionStatModel =
 			id: 'stat',
 			current_class: 'current',
 			template_class: 'template',
+			invalid_class: 'invalid',
 
 			//events
 			template_changed_event: 'template:changed',

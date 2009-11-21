@@ -8,6 +8,14 @@ var ConstructionStatView =
 		if (template_control)
 		{
 			template_control.update(template);
+			if (current > template)
+			{
+				stat_control.addClassName(this.options.invalid_class);
+			}
+			else
+			{
+				stat_control.removeClassName(this.options.invalid_class);
+			}
 		}
 		stat_control.show();
 	}
