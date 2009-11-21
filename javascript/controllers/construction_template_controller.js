@@ -27,6 +27,6 @@ var ConstructionTemplateController =
 	send_update: function(ship_class, tons)
 	{
 		var memo = this.get_ship_template(ship_class, tons);
-		$(this.options.ship_class_id).fire(this.options.send_update_event, memo);
+		$(this.options.ship_class_id).fire(this.options.template_changed_event, memo);
 	}
 };

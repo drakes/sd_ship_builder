@@ -3,16 +3,32 @@
 	//instantiate: true to create a single instance immediately
 	var classes =
 	[
-		{ name: 'ConstructionTemplate', instantiate: true }
+		{ name: 'ConstructionTemplate', instantiate: true },
+		{ name: 'Stat' }
 	];
 	
 	var instances =
 	[
-		{ name: 'region_creator', class_name: 'Creator' },
-		{ name: 'region_list', class_name: 'List' },
-		{ name: 'site_list', class_name: 'List' },
-		{ name: 'user_creator', class_name: 'Creator' },
-		{ name: 'user_list', class_name: 'List' }
+		{
+			name: 'cost_control',
+			class_name: 'Stat',
+			options:
+			{
+				stat_id: 'cost_control',
+				stat_changed_event: 'cost:changed',
+				stat_property: 'cost'
+			}
+	   	},
+		{
+			name: 'slots_control',
+			class_name: 'Stat',
+			options:
+			{
+				stat_id: 'slots_control',
+				stat_changed_event: 'slots:changed',
+				stat_property: 'slots'
+			}
+		}
 	];
 	
 	//event handlers

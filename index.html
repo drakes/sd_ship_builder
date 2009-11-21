@@ -9,6 +9,9 @@
 		<script type="text/javascript" language="javascript" src="javascript/controllers/construction_template_controller.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/models/construction_template_model.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/views/construction_template_view.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/controllers/stat_controller.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/models/stat_model.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/views/stat_view.js"></script>
 	</head>
 	<body>
 		<h1>Silent Death Ship Builder</h1>
@@ -31,6 +34,16 @@
 				<span id="tons_control" style="display: none;">
 					<label for="tons">tons:</label>
 					<select id="tons"></select>
+				</span>
+				<span id="cost_control" style="display: none;">
+					<span class="descriptor">cost:</span>
+					<span class="current"></span>
+				</span>
+				<span id="slots_control" style="display: none;">
+					<span class="descriptor">slots:</span>
+					<span class="current"></span>
+					<span class="separator">/</span>
+					<span class="max"></span>
 				</span>
 			</fieldset>
 		</form>

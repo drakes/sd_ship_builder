@@ -10,7 +10,7 @@ var ConstructionTemplateModel =
 			hint_class: 'hint',
 
 			//events
-			send_update_event: 'template:changed',
+			template_changed_event: 'template:changed',
 
 			//templates
 			data: null
