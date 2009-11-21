@@ -11,9 +11,16 @@ var AttributeController =
 		var template = event.memo[this.options.attribute_property];
 		this.store_template(template);
 		this.refresh_display(template);
+		this.send_update();
 	},
 
 	attribute_changed_handler: function(event)
+	{
+		this.refresh_construction_stats(this.get_template());
+		this.send_update();
+	},
+
+	send_update: function()
 	{
 		var attribute = $(this.options.id);
 		var value = $F(attribute);

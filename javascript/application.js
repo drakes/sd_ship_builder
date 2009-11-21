@@ -36,7 +36,25 @@
 				id: 'drive',
 				attribute_property: 'drive'
 			}
-		}
+		},
+		{
+			name: 'defense_control',
+			class_name: 'Attribute',
+			options:
+			{
+				id: 'defense',
+				attribute_property: 'defense'
+			}
+		},
+		{
+			name: 'damage_reduction_control',
+			class_name: 'Attribute',
+			options:
+			{
+				id: 'damage_reduction',
+				attribute_property: 'damage_reduction'
+			}
+		},
 	];
 	
 	//event handlers

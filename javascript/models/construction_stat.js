@@ -41,7 +41,7 @@ var ConstructionStatModel =
 
 	calculate_current: function()
 	{
-		return this.control_attributes.values().collect(0, function(current, value)
+		return this.control_attributes.values().inject(0, function(current, value)
 		{
 			return current + value;
 		});
