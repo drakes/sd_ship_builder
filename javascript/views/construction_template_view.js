@@ -4,8 +4,9 @@ var ConstructionTemplateView =
 	{
 		var options = tonnage_options.inject('', function(html, value)
 		{
-			return html + '<option value="' + value + '">' + value + '</option>';
+			return html + '<option value="' + value + '"' + (!html ? 'selected="selected"' : '') + '>' + value + '</option>';
 		});
 		$(this.options.tonnage_id).update(options);
+		return tonnage_options.first();
 	}
 };
