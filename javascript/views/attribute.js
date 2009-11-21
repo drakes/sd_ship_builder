@@ -2,12 +2,15 @@ var AttributeView =
 {
 	refresh_display: function(template)
 	{
+		var attribute_values = $H(template).keys();
 		var attribute = $(this.options.id);
 		var attribute_control = attribute.up();
+		var last_value = $F(attribute);	   	|| attribute_values.first();
+		last_value = attribute_values.include(last_value) ? last_value : attribute_values.first();
 		
-		var options = $H(template).keys().inject('', function(html, value)
+		var options = attribute_values.inject('', function(html, value)
 		{
-			return html + '<option value="' + value + '"' + (!html ? 'selected="selected"' : '') + '>' + value + '</option>';
+			return html + '<option value="' + value + '"' + (value == last_value ? 'selected="selected"' : '') + '>' + value + '</option>';
 		});
 		attribute.update(options);
 
