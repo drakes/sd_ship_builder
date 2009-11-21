@@ -1,15 +1,15 @@
 var ConstructionTemplateView =
 {
-	refresh_tonnage: function(tonnage_options)
+	refresh_tons: function(tons_options)
 	{
-		var options = tonnage_options.inject('', function(html, value)
+		var options = tons_options.inject('', function(html, value)
 		{
 			return html + '<option value="' + value + '"' + (!html ? 'selected="selected"' : '') + '>' + value + '</option>';
 		});
-		var tonnage = $(this.options.tonnage_id);
-		tonnage.update(options);
-		tonnage.up().show();
-		return tonnage_options.first();
+		var tons = $(this.options.tons_id);
+		tons.update(options);
+		tons.up().show();
+		return tons_options.first();
 	},
 
 	strip_hint: function(element)

@@ -3,7 +3,7 @@ var ConstructionTemplateController =
 	connect_event_handlers: function()
 	{
 		$(this.options.ship_class_id).observe('change', this.ship_class_change_handler.bindAsEventListener(this));
-		$(this.options.tonnage_id).observe('change', this.tonnage_change_handler.bindAsEventListener(this));
+		$(this.options.tons_id).observe('change', this.tons_change_handler.bindAsEventListener(this));
 	},
 
 	ship_class_change_handler: function(event)
@@ -12,21 +12,21 @@ var ConstructionTemplateController =
 		if (ship_class)
 		{
 			this.strip_hint(event.element());
-			var tonnage = this.refresh_tonnage(this.get_tonnage_options(ship_class));
-			this.send_update(ship_class, tonnage);
+			var tons = this.refresh_tons(this.get_tons_options(ship_class));
+			this.send_update(ship_class, tons);
 		}
 	},
 
-	tonnage_change_handler: function(event)
+	tons_change_handler: function(event)
 	{
 		var ship_class = this.get_ship_class();
-		var tonnage = this.get_tonnage();
-		this.send_update(ship_class, tonnage);
+		var tons = this.get_tons();
+		this.send_update(ship_class, tons);
 	},
 
-	send_update: function(ship_class, tonnage)
+	send_update: function(ship_class, tons)
 	{
-		var memo = this.get_ship_template(ship_class, tonnage);
+		var memo = this.get_ship_template(ship_class, tons);
 		$(this.options.ship_class_id).fire(this.options.send_update_event, memo);
 	}
 };

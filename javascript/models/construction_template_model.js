@@ -6,7 +6,7 @@ var ConstructionTemplateModel =
 		{
 			//selectors and CSS
 			ship_class_id: 'ship_class',
-			tonnage_id: 'tonnage',
+			tons_id: 'tons',
 			hint_class: 'hint',
 
 			//events
@@ -20,21 +20,21 @@ var ConstructionTemplateModel =
 		this.connect_event_handlers();
 	},
 
-	get_ship_template: function(ship_class, tonnage)
+	get_ship_template: function(ship_class, tons)
 	{
 		if (!ship_class)
 		{
 			ship_class = this.get_ship_class();
 		}
-		if (!tonnage)
+		if (!tons)
 		{
-			tonnage = this.get_tonnage();
+			tons = this.get_tons();
 		}
 
-		return this.options.data[ship_class][tonnage];
+		return this.options.data[ship_class][tons];
 	},
 
-	get_tonnage_options: function(ship_class)
+	get_tons_options: function(ship_class)
 	{
 		return $H(this.options.data[ship_class]).keys();
 	},
@@ -44,8 +44,8 @@ var ConstructionTemplateModel =
 		return $F(this.options.ship_class_id);
 	},
 	
-	get_tonnage: function()
+	get_tons: function()
 	{
-		return $F(this.options.tonnage_id);
+		return $F(this.options.tons_id);
 	}
 };
