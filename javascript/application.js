@@ -64,6 +64,9 @@
 	{
 		classes.each(class_builder);
 		instances.each(instance_builder);
+
+		//prevent accidental form submissions from reloading page (pressing enter while a control has focus, for example)
+		$('builder').observe('submit', function(event) { event.stop(); });
 	}
 	
 	function class_builder(class_spec)
