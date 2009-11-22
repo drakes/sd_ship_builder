@@ -12,6 +12,7 @@ var WeaponModel =
 			damage_class: 'damage',
 			ammo_class: 'ammo',
 			multiple_class: 'multiples',
+			speed_restriction_class: 'speed_restriction',
 			range_class: 'range',
 			short_class: 'short',
 			medium_class: 'medium',

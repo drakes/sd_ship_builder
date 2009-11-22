@@ -15,6 +15,7 @@ var WeaponView =
 		weapon_control.insert('<span class="descriptor"> base attack dice: </span><span class="' + this.options.attack_dice_class + '"></span>');
 		weapon_control.insert('<span class="descriptor"> damage: </span><span class="' + this.options.damage_class + '"></span>');
 		weapon_control.insert('<span class="descriptor"> ammo: </span><span class="' + this.options.ammo_class + '"></span>');
+		weapon_control.insert('<span class="descriptor"> target speed restriction: </span><span class="' + this.options.speed_restriction_class + '"></span>');
 		weapon_control.insert('<span class="' + this.options.range_class + '"><span class="descriptor"> range: </span><span class="descriptor"> short (+1): </span><span class="' + this.options.short_class + '"></span><span class="descriptor"> medium (0): </span><span class="' + this.options.medium_class + '"></span><span class="descriptor"> long (-1): </span><span class="' + this.options.long_class + '"></span></span>');
 		weapon_control.insert('<span> (cost: <span class="' + this.options.cost_class + '"></span> slots: <span class="' + this.options.slots_class + '"></span>) </span>');
 		weapon_control.insert('<input type="button" class="' + this.options.delete_class + '" value="Delete" />');
@@ -39,11 +40,12 @@ var WeaponView =
 		this.refresh_stat(this.options.attack_dice_class, weapon_stats.attack_dice, weapon_control);
 		this.refresh_stat(this.options.damage_class, weapon_stats.damage, weapon_control);
 		this.refresh_stat(this.options.ammo_class, weapon_stats.ammo || '-', weapon_control);
-		this.refresh_stat(this.options.cost_class, weapon_stats.cost, weapon_control);
-		this.refresh_stat(this.options.slots_class, weapon_stats.slots, weapon_control);
+		this.refresh_stat(this.options.speed_restriction_class, (weapon_stats.speed_restriction ? ('Drive =< ' + weapon_stats.speed_restriction) : '-'), weapon_control);
 		this.refresh_stat(this.options.short_class, weapon_stats.short_range, weapon_control);
 		this.refresh_stat(this.options.medium_class, weapon_stats.medium_range, weapon_control);
 		this.refresh_stat(this.options.long_class, weapon_stats.long_range, weapon_control);
+		this.refresh_stat(this.options.cost_class, weapon_stats.cost, weapon_control);
+		this.refresh_stat(this.options.slots_class, weapon_stats.slots, weapon_control);
 	},
 
 	refresh_stat: function(stat_class, stat_value, weapon_control)

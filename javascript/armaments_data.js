@@ -41,6 +41,7 @@ var ArmamentsData =
 		medium_range: 10,
 		long_range: 24,
 		ammo: 4,
+		speed_restriction: 10,
 		multiples:
 		{
 			2:
@@ -65,7 +66,8 @@ var ArmamentsData =
 		short_range: 4,
 		medium_range: 15,
 		long_range: 36,
-		ammo: 4
+		ammo: 4,
+		speed_restriction: 6
 	},
 	pulselaser:
 	{
@@ -116,6 +118,7 @@ var ArmamentsData =
 		short_range: 6,
 		medium_range: 18,
 		long_range: 20,
+		speed_restriction: 12,
 		multiples:
 		{
 			2:
@@ -134,7 +137,8 @@ var ArmamentsData =
 		damage_index: 2,
 		short_range: 9,
 		medium_range: 25,
-		long_range: 30
+		long_range: 30,
+		speed_restriction: 8
 	},
 	splattergun:
 	{
@@ -176,6 +180,7 @@ var ArmamentsData =
 		short_range: 4,
 		medium_range: 10,
 		long_range: 15,
+		speed_restriction: 13,
 		multiples:
 		{
 			2:
@@ -224,7 +229,8 @@ var ArmamentsData =
 		damage_index: 2,
 		short_range: 1,
 		medium_range: 3,
-		long_range: 12
+		long_range: 12,
+		speed_restriction: 11
 	},
 	impulsegun:
 	{
@@ -246,7 +252,8 @@ var ArmamentsData =
 		damage_index: 3,
 		short_range: 5,
 		medium_range: 13,
-		long_range: 15
+		long_range: 15,
+		speed_restriction: 15
 	},
 	plazgun:
 	{
@@ -268,7 +275,8 @@ var ArmamentsData =
 		damage_index: 4,
 		short_range: 4,
 		medium_range: 8,
-		long_range: 15
+		long_range: 15,
+		speed_restriction: 11
 	},
 	protobolt:
 	{
@@ -280,6 +288,7 @@ var ArmamentsData =
 		short_range: 8,
 		medium_range: 12,
 		long_range: 16,
-		ammo: 1
+		ammo: 1,
+		speed_restriction: 14
 	}
 };
