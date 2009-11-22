@@ -25,7 +25,7 @@ var WeaponModel =
 		Object.extend(this.options, options);
 
 		this.create_controls();
-		this.refresh();
+		this.type_change_handler();
 		this.connect_event_handlers();
 	},
 
@@ -46,10 +46,12 @@ var WeaponModel =
 
 	get_cost: function()
 	{
+		return this.get_weapon_template().cost;
 	},
 
 	get_slots: function()
 	{
+		return this.get_weapon_template().slots;
 	},
 
 	create_type_options: function()
