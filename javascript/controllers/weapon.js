@@ -10,11 +10,7 @@ var WeaponController =
 	click_handler: function(event)
 	{
 		var clicked_element = event.findElement();
-		if (clicked_element.hasClass(this.options.type_class))
-		{
-			//type selector, do nothing
-		}
-		if (clicked_element.hasClass(this.options.delete_class))
+		if (clicked_element.hasClassName(this.options.delete_class))
 		{
 			this.delete_handler(event);
 		}
@@ -32,7 +28,17 @@ var WeaponController =
 
 	type_change_handler: function(event)
 	{
-		this.update_construction_stats();
+		this.refresh();
+		this.send_update();
+	},
+
+	refresh: function()
+	{
+		this.refresh_weapon_stats(this.get_weapon_template(), this.get_damage_types());
+	},
+
+	send_update: function()
+	{
 		var memo =
 		{
 			id: this.options.id,
