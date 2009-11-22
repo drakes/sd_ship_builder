@@ -9,6 +9,9 @@ var ArmamentsModel =
 			add_button_id: 'add_weapon',
 			weapon_tag: 'div',
 
+			//events
+			template_changed_event: 'template:changed',
+
 			//weapon templates
 			data: null
 		};
