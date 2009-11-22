@@ -7,7 +7,25 @@ var ArmamentsData =
 		slots: 1,
 		attack_die: 6,
 		damage_index: 0,
-		ammo: 4
+		ammo: 4,
+		multiples:
+		{
+			2:
+			{
+				cost_bonus: 1,
+				slots_bonus: 0
+			},
+			3:
+			{
+				cost_bonus: 2,
+				slots_bonus: 1
+			},
+			4:
+			{
+				cost_bonus: 3,
+				slots_bonus: 2
+			}
+		}
 	},
 	autocannon:
 	{
@@ -16,7 +34,20 @@ var ArmamentsData =
 		slots: 2,
 		attack_die: 6,
 		damage_index: 1,
-		ammo: 4
+		ammo: 4,
+		multiples:
+		{
+			2:
+			{
+				cost_bonus: 2,
+				slots_bonus: 1
+			},
+			4:
+			{
+				cost_bonus: 6,
+				slots_bonus: 4
+			}
+		}
 	},
 	railrepeator:
 	{
@@ -34,7 +65,35 @@ var ArmamentsData =
 		slots: 1,
 		attack_die: 8,
 		damage_index: 0,
-		ammo: '-'
+		ammo: '-',
+		multiples:
+		{
+			2:
+			{
+				cost_bonus: 1,
+				slots_bonus: 0
+			},
+			3:
+			{
+				cost_bonus: 2,
+				slots_bonus: 1
+			},
+			4:
+			{
+				cost_bonus: 3,
+				slots_bonus: 2
+			},
+			5:
+			{
+				cost_bonus: 4,
+				slots_bonus: 3
+			},
+			6:
+			{
+				cost_bonus: 5,
+				slots_bonus: 4
+			},
+		}
 	},
 	meldlaser:
 	{
@@ -43,7 +102,15 @@ var ArmamentsData =
 		slots: 2,
 		attack_die: 8,
 		damage_index: 1,
-		ammo: '-'
+		ammo: '-',
+		multiples:
+		{
+			2:
+			{
+				cost_bonus: 2,
+				slots_bonus: 2
+			}
+		}
 	},
 	turbolaser:
 	{
@@ -61,7 +128,26 @@ var ArmamentsData =
 		slots: 1,
 		attack_die: 6,
 		damage_index: 1,
-		ammo: '-'
+		ammo: '-',
+		multiples:
+		{
+			2:
+			{
+				cost_bonus: 3,
+				slots_bonus: 1
+			},
+			4:
+			{
+				cost_bonus: 9,
+				slots_bonus: 5
+			},
+			6:
+			{
+				cost_bonus: 15,
+				slots_bonus: 9
+			}
+		},
+		damage_bonus_multiplier: 2
 	},
 	blatgun:
 	{
@@ -70,7 +156,26 @@ var ArmamentsData =
 		slots: 3,
 		attack_die: 6,
 		damage_index: 2,
-		ammo: '-'
+		ammo: '-',
+		multiples:
+		{
+			2:
+			{
+				cost_bonus: 5,
+				slots_bonus: 3
+			},
+			4:
+			{
+				cost_bonus: 15,
+				slots_bonus: 12
+			},
+			6:
+			{
+				cost_bonus: 21,
+				slots_bonus: 17
+			}
+		},
+		damage_bonus_multiplier: 2
 	},
 	disruptorgun:
 	{
@@ -79,7 +184,15 @@ var ArmamentsData =
 		slots: 1,
 		attack_die: 8,
 		damage_index: 1,
-		ammo: '-'
+		ammo: '-',
+		multiples:
+		{
+			2:
+			{
+				cost_bonus: 2,
+				slots_bonus: 2
+			}
+		}
 	},
 	disintegrator:
 	{

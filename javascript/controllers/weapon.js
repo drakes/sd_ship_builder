@@ -5,6 +5,7 @@ var WeaponController =
 		var weapon_control = $(this.options.id);
 		weapon_control.observe('click', this.click_handler.bindAsEventListener(this));
 		weapon_control.down('.' + this.options.type_class).observe('change', this.type_change_handler.bindAsEventListener(this));
+		weapon_control.down('.' + this.options.multiple_class).observe('change', this.multiples_change_handler.bindAsEventListener(this));
 	},
 
 	click_handler: function(event)
@@ -28,22 +29,30 @@ var WeaponController =
 
 	type_change_handler: function(event)
 	{
+		this.refresh_multiples(this.get_weapon_template());
+		this.refresh();
+		this.send_update();
+	},
+
+	multiples_change_handler: function(event)
+	{
 		this.refresh();
 		this.send_update();
 	},
 
 	refresh: function()
 	{
-		this.refresh_weapon_stats(this.get_weapon_template(), this.get_damage_types());
+		this.refresh_weapon_stats(this.get_weapon_stats());
 	},
 
 	send_update: function()
 	{
+		var weapon_stats = this.get_weapon_stats();
 		var memo =
 		{
 			id: this.options.id,
-			cost: this.get_cost(),
-			slots: this.get_slots()
+			cost: weapon_stats.cost,
+			slots: weapon_stats.slots
 		};
 		$(this.options.id).fire(this.options.changed_event, memo);
 	}
