@@ -28,7 +28,7 @@ var WeaponView =
 		}
 		else
 		{
-			multiple_selector.hide();
+			multiple_selector.update().hide();
 		}
 	},
 

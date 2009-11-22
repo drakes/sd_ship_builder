@@ -63,12 +63,15 @@ var WeaponModel =
 	add_multiples_bonuses: function(weapon_stats)
 	{
 		var multiple_key = this.get_multiple_key();
-		var multiple = (weapon_stats.multiples || {})[multiple_key] || {};
-		var combat_bonus = multiple_key ? (multiple_key - 1) : '';
-		weapon_stats.attack_dice += combat_bonus ? (' + ' + combat_bonus) : '';
-		weapon_stats.damage += combat_bonus ? (' + ' + (combat_bonus * (weapon_stats.damage_bonus_multiplier || 1))) : '';
-		weapon_stats.cost += multiple.cost_bonus || 0;
-		weapon_stats.slots += multiple.slots_bonus || 0;
+		if (multiple_key)
+		{
+			var multiple = weapon_stats.multiples[multiple_key];
+			var combat_bonus = multiple_key - 1;
+			weapon_stats.attack_dice += ' + ' + combat_bonus;
+			weapon_stats.damage += ' + ' + (combat_bonus * (weapon_stats.damage_bonus_multiplier || 1));
+			weapon_stats.cost += multiple.cost_bonus;
+			weapon_stats.slots += multiple.slots_bonus;
+		}
 		return weapon_stats;
 	},
 
