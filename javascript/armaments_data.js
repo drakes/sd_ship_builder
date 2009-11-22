@@ -65,7 +65,6 @@ var ArmamentsData =
 		slots: 1,
 		attack_die: 8,
 		damage_index: 0,
-		ammo: '-',
 		multiples:
 		{
 			2:
@@ -102,7 +101,6 @@ var ArmamentsData =
 		slots: 2,
 		attack_die: 8,
 		damage_index: 1,
-		ammo: '-',
 		multiples:
 		{
 			2:
@@ -118,8 +116,7 @@ var ArmamentsData =
 		cost: 5,
 		slots: 5,
 		attack_die: 8,
-		damage_index: 2,
-		ammo: '-'
+		damage_index: 2
 	},
 	splattergun:
 	{
@@ -128,7 +125,6 @@ var ArmamentsData =
 		slots: 1,
 		attack_die: 6,
 		damage_index: 1,
-		ammo: '-',
 		multiples:
 		{
 			2:
@@ -156,7 +152,6 @@ var ArmamentsData =
 		slots: 3,
 		attack_die: 6,
 		damage_index: 2,
-		ammo: '-',
 		multiples:
 		{
 			2:
@@ -184,7 +179,6 @@ var ArmamentsData =
 		slots: 1,
 		attack_die: 8,
 		damage_index: 1,
-		ammo: '-',
 		multiples:
 		{
 			2:
@@ -200,8 +194,7 @@ var ArmamentsData =
 		cost: 4,
 		slots: 4,
 		attack_die: 8,
-		damage_index: 2,
-		ammo: '-'
+		damage_index: 2
 	},
 	impulsegun:
 	{

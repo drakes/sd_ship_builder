@@ -37,7 +37,7 @@ var WeaponView =
 		var weapon_control = $(this.options.id);
 		weapon_control.down('.' + this.options.attack_dice_class).update(weapon_stats.attack_dice);
 		weapon_control.down('.' + this.options.damage_class).update(weapon_stats.damage);
-		weapon_control.down('.' + this.options.ammo_class).update(weapon_stats.ammo);
+		weapon_control.down('.' + this.options.ammo_class).update(weapon_stats.ammo || '-');
 		weapon_control.down('.' + this.options.cost_class).update(weapon_stats.cost);
 		weapon_control.down('.' + this.options.slots_class).update(weapon_stats.slots);
 	}
