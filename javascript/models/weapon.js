@@ -12,6 +12,10 @@ var WeaponModel =
 			damage_class: 'damage',
 			ammo_class: 'ammo',
 			multiple_class: 'multiples',
+			range_class: 'range',
+			short_class: 'short',
+			medium_class: 'medium',
+			long_class: 'long',
 			cost_class: 'cost',
 			slots_class: 'slots',
 
