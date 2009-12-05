@@ -17,6 +17,8 @@ var WeaponModel =
 			short_class: 'short',
 			medium_class: 'medium',
 			long_class: 'long',
+			note_class: 'note',
+			note_container_class: 'note_container',
 			cost_class: 'cost',
 			slots_class: 'slots',
 

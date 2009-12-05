@@ -28,7 +28,8 @@ var ArmamentsData =
 				cost_bonus: 3,
 				slots_bonus: 2
 			}
-		}
+		},
+		note: 'Whenever two of the attack dice roll doubles, multiply the base damage by 2.'
 	},
 	autocannon:
 	{
@@ -54,7 +55,8 @@ var ArmamentsData =
 				cost_bonus: 6,
 				slots_bonus: 4
 			}
-		}
+		},
+		note: 'Whenever two of the attack dice roll doubles, multiply the base damage by 2.'
 	},
 	railrepeator:
 	{
@@ -67,7 +69,8 @@ var ArmamentsData =
 		medium_range: 15,
 		long_range: 36,
 		ammo: 4,
-		speed_restriction: 6
+		speed_restriction: 6,
+		note: 'Whenever two of the attack dice roll doubles, multiply the base damage by 2.'
 	},
 	pulselaser:
 	{
@@ -218,7 +221,8 @@ var ArmamentsData =
 				cost_bonus: 2,
 				slots_bonus: 2
 			}
-		}
+		},
+		note: 'If the target\'s Defensive Value has not been reduced by a critical hit, add 1 to its Defensive Value. Also, completely ignore the target\'s Damage Reduction when resolving a hit.'
 	},
 	disintegrator:
 	{
@@ -230,7 +234,8 @@ var ArmamentsData =
 		short_range: 1,
 		medium_range: 3,
 		long_range: 12,
-		speed_restriction: 11
+		speed_restriction: 11,
+		note: 'If the target\'s Defensive Value has not been reduced by a critical hit, add 1 to its Defensive Value. Also, completely ignore the target\'s Damage Reduction when resolving a hit.'
 	},
 	impulsegun:
 	{
@@ -264,7 +269,8 @@ var ArmamentsData =
 		damage_index: 3,
 		short_range: 2,
 		medium_range: 4,
-		long_range: 10
+		long_range: 10,
+		note: 'If the attack dice roll triples, the weapon mount overloads and is destroyed. The target is not affected.'
 	},
 	heavyplazgun:
 	{
@@ -276,7 +282,8 @@ var ArmamentsData =
 		short_range: 4,
 		medium_range: 8,
 		long_range: 15,
-		speed_restriction: 11
+		speed_restriction: 11,
+		note: 'If the attack dice roll triples, the weapon mount overloads and is destroyed. The target is not affected.'
 	},
 	protobolt:
 	{
