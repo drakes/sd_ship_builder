@@ -22,13 +22,16 @@
 		<script type="text/javascript" language="javascript" src="javascript/controllers/weapon.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/models/weapon.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/views/weapon.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/controllers/firing_arc.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/models/firing_arc.js"></script>
+		<script type="text/javascript" language="javascript" src="javascript/views/firing_arc.js"></script>
 	</head>
 	<body>
 		<h1>Silent Death Ship Builder</h1>
 		<form action="" id="builder">
 			<fieldset>
-				<legend>Ship template</legend>
-				<label for="ship_class">Ship class:</label>
+				<legend>Ship Template</legend>
+				<label for="ship_class">Ship Class:</label>
 				<select id="ship_class">
 					<option value="" class="hint"> - Select a ship class - </option>
 					<option value="light1pfighter">Light Single-Person Fighter</option>
@@ -42,22 +45,22 @@
 					<option value="heavy3pfighter">Heavy Three-Person Fighter</option>
 				</select>
 				<span id="tons_control" style="display: none;">
-					<label for="tons">tons:</label>
+					<label for="tons">Tons:</label>
 					<select id="tons"></select>
 				</span>
 				<span id="cost_control" style="display: none;">
-					<span class="descriptor">cost:</span>
+					<span class="descriptor">Cost:</span>
 					<span class="current"></span>
 				</span>
 				<span id="slots_control" style="display: none;">
-					<span class="descriptor">slots:</span>
+					<span class="descriptor">Slots:</span>
 					<span class="current"></span>
 					<span class="separator">/</span>
 					<span class="template"></span>
 				</span>
 			</fieldset>
 			<fieldset>
-				<legend>Basic stats</legend>
+				<legend>Basic Stats</legend>
 				<span id="drive_control" style="display: none;">
 					<label for="drive" class="descriptor">Drive:</label>
 					<select id="drive"></select>
@@ -67,7 +70,7 @@
 					<span class="slots"></span>)
 				</span>
 				<span id="defense_control" style="display: none;">
-					<label for="defense" class="descriptor">defensive value:</label>
+					<label for="defense" class="descriptor">Defensive Value:</label>
 					<select id="defense"></select>
 					(cost:
 					<span class="cost"></span>
@@ -75,7 +78,7 @@
 					<span class="slots"></span>)
 				</span>
 				<span id="damage_reduction_control" style="display: none;">
-					<label for="damage_reduction" class="descriptor">damage reduction:</label>
+					<label for="damage_reduction" class="descriptor">Damage Reduction:</label>
 					<select id="damage_reduction"></select>
 					(cost:
 					<span class="cost"></span>

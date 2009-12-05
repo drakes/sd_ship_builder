@@ -7,7 +7,8 @@
 		{ name: 'ConstructionStat' },
 		{ name: 'Attribute' },
 		{ name: 'Armaments', instantiate: true },
-		{ name: 'Weapon' }
+		{ name: 'Weapon' },
+		{ name: 'FiringArc' }
 	];
 	
 	var instances =

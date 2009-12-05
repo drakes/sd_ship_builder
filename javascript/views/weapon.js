@@ -1,5 +1,10 @@
 var WeaponView =
 {
+	find_firing_arc: function()
+	{
+		return $(this.options.id).down('.' + this.options.firing_arc_class);
+	},
+
 	create_controls: function()
 	{
 		var weapon_control = $(this.options.id);
@@ -12,14 +17,20 @@ var WeaponView =
 
 		weapon_control.insert(type_selector);
 
-		weapon_control.insert('<span class="descriptor"> base attack dice: </span><span class="' + this.options.attack_dice_class + '"></span>');
-		weapon_control.insert('<span class="descriptor"> damage: </span><span class="' + this.options.damage_class + '"></span>');
-		weapon_control.insert('<span class="descriptor"> ammo: </span><span class="' + this.options.ammo_class + '"></span>');
-		weapon_control.insert('<span class="descriptor"> target speed restriction: </span><span class="' + this.options.speed_restriction_class + '"></span>');
-		weapon_control.insert('<span class="' + this.options.range_class + '"><span class="descriptor"> range: </span><span class="descriptor"> short (+1): </span><span class="' + this.options.short_class + '"></span><span class="descriptor"> medium (0): </span><span class="' + this.options.medium_class + '"></span><span class="descriptor"> long (-1): </span><span class="' + this.options.long_class + '"></span></span>');
-		weapon_control.insert('<span class="' + this.options.note_container_class + '" style="display: none;"><span class="descriptor"> note: </span><span class="' + this.options.note_class + '"></span></span>');
 		weapon_control.insert('<span> (cost: <span class="' + this.options.cost_class + '"></span> slots: <span class="' + this.options.slots_class + '"></span>) </span>');
+		weapon_control.insert('<span class="descriptor"> Base Attack Dice: </span><span class="' + this.options.attack_dice_class + '"></span>');
+		weapon_control.insert('<span class="descriptor"> Damage: </span><span class="' + this.options.damage_class + '"></span>');
+		weapon_control.insert('<span class="descriptor"> Ammo: </span><span class="' + this.options.ammo_class + '"></span>');
+		weapon_control.insert('<span class="descriptor"> Target Speed Restriction: </span><span class="' + this.options.speed_restriction_class + '"></span>');
+		weapon_control.insert('<span class="' + this.options.range_class + '"><span class="descriptor"> Range: </span><span class="descriptor"> Short (+1): </span><span class="' + this.options.short_class + '"></span><span class="descriptor"> Medium (0): </span><span class="' + this.options.medium_class + '"></span><span class="descriptor"> Long (-1): </span><span class="' + this.options.long_class + '"></span></span>');
+		weapon_control.insert('<span class="' + this.options.note_container_class + '" style="display: none;"><span class="descriptor"> Note: </span><span class="' + this.options.note_class + '"></span></span>');
+		weapon_control.insert('<' + this.options.firing_arc_tag + ' class="' + this.options.firing_arc_class + '"></' + this.options.firing_arc_tag + '>');
 		weapon_control.insert('<input type="button" class="' + this.options.delete_class + '" value="Delete" />');
+	},
+
+	decorate_control: function()
+	{
+		$(this.options.id).addClassName(this.options.weapon_class);
 	},
 
 	refresh_multiples: function(weapon_template)

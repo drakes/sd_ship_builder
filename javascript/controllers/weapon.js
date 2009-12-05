@@ -4,6 +4,7 @@ var WeaponController =
 	{
 		var weapon_control = $(this.options.id);
 		weapon_control.observe('click', this.click_handler.bindAsEventListener(this));
+		weapon_control.observe(this.options.firing_arc_changed_event, this.firing_arc_changed_handler.bindAsEventListener(this));
 		weapon_control.down('.' + this.options.type_class).observe('change', this.type_change_handler.bindAsEventListener(this));
 		weapon_control.down('.' + this.options.multiple_class).observe('change', this.multiples_change_handler.bindAsEventListener(this));
 	},
@@ -40,6 +41,12 @@ var WeaponController =
 		this.send_update();
 	},
 
+	firing_arc_changed_handler: function(event)
+	{
+		this.store_firing_arc_stats(event.memo);
+		this.send_update();
+	},
+
 	refresh: function()
 	{
 		this.refresh_weapon_stats(this.get_weapon_stats());
@@ -47,7 +54,7 @@ var WeaponController =
 
 	send_update: function()
 	{
-		var weapon_stats = this.get_weapon_stats();
+		var weapon_stats = this.get_weapon_stats_total();
 		var memo =
 		{
 			id: this.options.id,

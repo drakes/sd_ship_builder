@@ -23,7 +23,7 @@ var ArmamentsModel =
 	add_weapon: function()
 	{
 		var weapon_control = this.add_weapon_control();
-		//place the control in the DOM before initializing Weapon so events bubble
+		//place the control in the DOM before initializing so events bubble
 		new Weapon({ id: weapon_control.identify(), data: this.options.data });
 	}
 };
