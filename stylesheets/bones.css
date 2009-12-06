@@ -1,0 +1,39 @@
+#class_control, #cost_control
+{
+	margin-right: 0.5em;
+}
+
+#tons_control, .attribute
+{
+	margin-right: 3em;
+}
+
+.weapon
+{
+	overflow: hidden;
+	margin-bottom: 1em;
+	padding: 0.5em;
+	border-width: 1px;
+}
+
+.weapon .delete
+{
+	float: right;
+}
+
+.weapon .type_controls, .weapon .firing_arc
+{
+	float: left;
+	clear: left;
+}
+
+.weapon .controls, .weapon .stat
+{
+	float: left;
+	margin-right: 2em;
+}
+
+.weapon .controls
+{
+	margin-bottom: 0.5em;
+}

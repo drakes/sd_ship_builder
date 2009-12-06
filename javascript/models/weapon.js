@@ -23,6 +23,7 @@ var WeaponModel =
 			cost_class: 'cost',
 			slots_class: 'slots',
 			firing_arc_tag: 'span',
+			firing_arc_class: 'firing_arc',
 
 			//events
 			deleted_event: 'weapon:deleted',

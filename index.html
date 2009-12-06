@@ -31,28 +31,30 @@
 		<form action="" id="builder">
 			<fieldset>
 				<legend>Ship Template</legend>
-				<label for="ship_class">Ship Class:</label>
-				<select id="ship_class">
-					<option value="" class="hint"> - Select a ship class - </option>
-					<option value="light1pfighter">Light Single-Person Fighter</option>
-					<option value="medium1pfighter">Medium Single-Person Fighter</option>
-					<option value="heavy1pfighter">Heavy Single-Person Fighter</option>
-					<option value="light2pfighter">Light Two-Person Fighter</option>
-					<option value="light3pfighter">Light Three-Person Fighter</option>
-					<option value="medium2pfighter">Medium Two-Person Fighter</option>
-					<option value="medium3pfighter">Medium Three-Person Fighter</option>
-					<option value="heavy2pfighter">Heavy Two-Person Fighter</option>
-					<option value="heavy3pfighter">Heavy Three-Person Fighter</option>
-				</select>
-				<span id="tons_control" style="display: none;">
+				<span id="class_control" class="template_control">
+					<label for="ship_class" class="descriptor">Ship Class:</label>
+					<select id="ship_class">
+						<option value="" class="hint"> - Select a ship class - </option>
+						<option value="light1pfighter">Light Single-Person Fighter</option>
+						<option value="medium1pfighter">Medium Single-Person Fighter</option>
+						<option value="heavy1pfighter">Heavy Single-Person Fighter</option>
+						<option value="light2pfighter">Light Two-Person Fighter</option>
+						<option value="light3pfighter">Light Three-Person Fighter</option>
+						<option value="medium2pfighter">Medium Two-Person Fighter</option>
+						<option value="medium3pfighter">Medium Three-Person Fighter</option>
+						<option value="heavy2pfighter">Heavy Two-Person Fighter</option>
+						<option value="heavy3pfighter">Heavy Three-Person Fighter</option>
+					</select>
+				</span>
+				<span id="tons_control" class="template_control" style="display: none;">
 					<label for="tons">Tons:</label>
 					<select id="tons"></select>
 				</span>
-				<span id="cost_control" style="display: none;">
+				<span id="cost_control" class="template_control" style="display: none;">
 					<span class="descriptor">Cost:</span>
 					<span class="current"></span>
 				</span>
-				<span id="slots_control" style="display: none;">
+				<span id="slots_control" class="template_control" style="display: none;">
 					<span class="descriptor">Slots:</span>
 					<span class="current"></span>
 					<span class="separator">/</span>
@@ -61,29 +63,35 @@
 			</fieldset>
 			<fieldset>
 				<legend>Basic Stats</legend>
-				<span id="drive_control" style="display: none;">
+				<span id="drive_control" class="attribute" style="display: none;">
 					<label for="drive" class="descriptor">Drive:</label>
 					<select id="drive"></select>
-					(cost:
-					<span class="cost"></span>
-					slots:
-					<span class="slots"></span>)
+					<span class="construction_stats">
+						(cost:
+						<span class="cost"></span>
+						slots:
+						<span class="slots"></span>)
+					</span>
 				</span>
-				<span id="defense_control" style="display: none;">
+				<span id="defense_control" class="attribute" style="display: none;">
 					<label for="defense" class="descriptor">Defensive Value:</label>
 					<select id="defense"></select>
-					(cost:
-					<span class="cost"></span>
-					slots:
-					<span class="slots"></span>)
+					<span class="construction_stats">
+						(cost:
+						<span class="cost"></span>
+						slots:
+						<span class="slots"></span>)
+					</span>
 				</span>
-				<span id="damage_reduction_control" style="display: none;">
+				<span id="damage_reduction_control" class="attribute" style="display: none;">
 					<label for="damage_reduction" class="descriptor">Damage Reduction:</label>
 					<select id="damage_reduction"></select>
-					(cost:
-					<span class="cost"></span>
-					slots:
-					<span class="slots"></span>)
+					<span class="construction_stats">
+						(cost:
+						<span class="cost"></span>
+						slots:
+						<span class="slots"></span>)
+					</span>
 				</span>
 			</fieldset>
 			<fieldset>

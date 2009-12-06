@@ -11,11 +11,6 @@ var FiringArcView =
 		return this.find_arc_controls()[index];
 	},
 
-	decorate_control: function()
-	{
-		$(this.options.id).addClassName(this.options.firing_arc_class);
-	},
-
 	create_controls: function()
 	{
 		var firing_arc_control = $(this.options.id);
@@ -26,7 +21,7 @@ var FiringArcView =
 			this.create_arc_control(name, firing_arc_control);
 		}, this);
 
-		firing_arc_control.insert('<span> (cost: <span class="' + this.options.cost_class + '"></span> slots: <span class="' + this.options.slots_class + '"></span>) </span>');
+		firing_arc_control.insert('<span class="construction_stats"> (cost: <span class="' + this.options.cost_class + '"></span> slots: <span class="' + this.options.slots_class + '"></span>) </span>');
 	},
 
 	create_arc_control: function(arc_name, firing_arc_control)

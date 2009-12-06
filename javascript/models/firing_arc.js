@@ -29,7 +29,6 @@ var FiringArcModel =
 		};
 		Object.extend(this.options, options);
 
-		this.decorate_control();
 		this.create_controls();
 		this.connect_event_handlers();
 		this.set_arc_control(this.options.default_selection, true);

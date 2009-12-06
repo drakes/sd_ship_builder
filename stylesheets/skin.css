@@ -7,3 +7,32 @@ legend, .hint
 {
 	color: red;
 }
+
+.current
+{
+	color: blue;
+}
+
+.current, .separator, .template
+{
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.construction_stats
+{
+	font-style: italic;
+	color: gray;
+}
+
+.weapon
+{
+	border-color: gray;
+	border-style: solid;
+	background-color: rgb(245, 245, 245);
+}
+
+.note_container
+{
+	font-style: italic;
+}
