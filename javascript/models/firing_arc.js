@@ -9,9 +9,6 @@ var FiringArcModel =
 
 			//events
 
-			//behavior
-			default_selection: 0,
-
 			//messages
 			no_arcs_selected_message: 'At least one firing arc must be selected',
 
@@ -25,13 +22,14 @@ var FiringArcModel =
 				{ cost: 6, slots: 1 },
 				{ cost: 7, slots: 2 }
 			],
-			arc_names: ['F', 'FQL', 'FQR', 'RQL', 'RQR', 'R']
+			arc_names: ['F', 'FQL', 'FQR', 'RQL', 'RQR', 'R'],
+			front_index: 0
 		};
 		Object.extend(this.options, options);
 
 		this.create_controls();
 		this.connect_event_handlers();
-		this.set_arc_control(this.options.default_selection, true);
+		this.select_front_arc();
 	},
 
 	validate_arc_selection: function(arc_control)
@@ -67,6 +65,11 @@ var FiringArcModel =
 			}
 		}, this);
 		return selected_arcs;
+	},
+
+	select_front_arc: function()
+	{
+		this.set_arc_control(this.options.front_index, true);
 	},
 
 	set_arc_control: function(arc, selected)

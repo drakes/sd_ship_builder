@@ -1,7 +1,23 @@
+body, select
+{
+	font-family: Verdana, Arial, sans-serif;
+}
+
 #crew_control .template
 {
 	color: black;
 	font-weight: normal;
+}
+
+legend, .descriptor, .construction_stats
+{
+	font-family: 'Times New Roman', serif;
+}
+
+.construction_stats
+{
+	font-style: italic;
+	color: gray;
 }
 
 legend, .hint
@@ -22,12 +38,6 @@ legend, .hint
 .current, .separator, .template
 {
 	font-weight: bold;
-}
-
-.construction_stats
-{
-	font-style: italic;
-	color: gray;
 }
 
 .weapon
