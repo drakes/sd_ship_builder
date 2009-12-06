@@ -372,6 +372,96 @@ var ConstructionTemplateData =
 
 	medium2pfighter:
 	{
+		600:
+		{
+			crew: 2,
+			slots: 55,
+			max_torps: 15,
+			hit_boxes: 60,
+			drive:
+			{
+				10: { cost: 12, slots: 5 },
+				11: { cost: 13, slots: 6 },
+				12: { cost: 14, slots: 7 },
+				13: { cost: 16, slots: 8 },
+				14: { cost: 17, slots: 9 },
+				15: { cost: 27, slots: 17 },
+				16: { cost: 29, slots: 18 },
+				17: { cost: 30, slots: 21 },
+				18: { cost: 33, slots: 24 },
+				19: { cost: 35, slots: 26 },
+				20: { cost: 36, slots: 29 }
+			},
+			defense:
+			{
+				6: { cost: 7, slots: 2 },
+				7: { cost: 8, slots: 2 },
+				8: { cost: 10, slots: 3 },
+				9: { cost: 11, slots: 4 },
+				10: { cost: 12, slots: 5 },
+				11: { cost: 13, slots: 6 },
+				12: { cost: 14, slots: 7 },
+				13: { cost: 24, slots: 12 },
+				14: { cost: 26, slots: 14 },
+				15: { cost: 27, slots: 17 },
+				16: { cost: 29, slots: 18 },
+				17: { cost: 30, slots: 21 }
+			},
+			damage_reduction:
+			{
+				0: { cost: 0, slots: 0 },
+				1: { cost: 3, slots: 6 },
+				2: { cost: 6, slots: 12 },
+				3: { cost: 9, slots: 18 },
+				4: { cost: 12, slots: 24 },
+				5: { cost: 15, slots: 30 }
+			}
+		},
+		700:
+		{
+			crew: 2,
+			slots: 65,
+			max_torps: 15,
+			hit_boxes: 70,
+			drive:
+			{
+				10: { cost: 14, slots: 6 },
+				11: { cost: 15, slots: 7 },
+				12: { cost: 17, slots: 8 },
+				13: { cost: 18, slots: 9 },
+				14: { cost: 30, slots: 17 },
+				15: { cost: 32, slots: 20 },
+				16: { cost: 33, slots: 21 },
+				17: { cost: 36, slots: 24 },
+				18: { cost: 38, slots: 27 },
+				19: { cost: 41, slots: 30 },
+				20: { cost: 42, slots: 33 }
+			},
+			defense:
+			{
+				6: { cost: 8, slots: 2 },
+				7: { cost: 10, slots: 3 },
+				8: { cost: 11, slots: 4 },
+				9: { cost: 13, slots: 5 },
+				10: { cost: 14, slots: 6 },
+				11: { cost: 15, slots: 7 },
+				12: { cost: 17, slots: 8 },
+				13: { cost: 27, slots: 14 },
+				14: { cost: 30, slots: 17 },
+				15: { cost: 32, slots: 20 },
+				16: { cost: 33, slots: 21 },
+				17: { cost: 36, slots: 24 }
+			},
+			damage_reduction:
+			{
+				0: { cost: 0, slots: 0 },
+				1: { cost: 4, slots: 7 },
+				2: { cost: 7, slots: 14 },
+				3: { cost: 11, slots: 21 },
+				4: { cost: 14, slots: 28 },
+				5: { cost: 18, slots: 35 }
+			}
+		}
 	},
 
 	medium3pfighter:
