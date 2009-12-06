@@ -1,11 +1,21 @@
-#class_control, #cost_control
+#class_control, #tons_control, #cost_control
 {
 	margin-right: 0.5em;
 }
 
-#tons_control, .attribute
+#crew_control, .attribute
 {
 	margin-right: 3em;
+}
+
+.current, .separator, .template
+{
+	font-size: 2em;
+}
+
+#crew_control .template
+{
+	font-size: 1em;
 }
 
 .weapon

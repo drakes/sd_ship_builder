@@ -1,3 +1,9 @@
+#crew_control .template
+{
+	color: black;
+	font-weight: normal;
+}
+
 legend, .hint
 {
 	color: gray;
@@ -15,7 +21,6 @@ legend, .hint
 
 .current, .separator, .template
 {
-	font-size: 2em;
 	font-weight: bold;
 }
 

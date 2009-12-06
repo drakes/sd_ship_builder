@@ -1,17 +1,12 @@
 var ConstructionStatController =
 {
-	connect_event_handlers: function()
+	connect_event_handlers: function($super)
 	{
-		document.observe(this.options.template_changed_event, this.template_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.attribute_changed_event, this.attribute_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.weapon_changed_event, this.weapon_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.weapon_deleted_event, this.weapon_deleted_handler.bindAsEventListener(this));
-	},
 
-	template_changed_handler: function(event)
-	{
-		this.store_template(event.memo[this.options.stat_property]);
-		this.refresh();
+		$super();
 	},
 
 	attribute_changed_handler: function(event)

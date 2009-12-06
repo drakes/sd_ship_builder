@@ -1,36 +1,26 @@
 var ConstructionStatModel =
 {
-	initialize: function(options)
+	initialize: function($super, options)
 	{
 		this.options =
 		{
 			//selectors and CSS
-			id: 'stat',
 			current_class: 'current',
-			template_class: 'template',
 			invalid_class: 'invalid',
 
 			//events
-			template_changed_event: 'template:changed',
 			attribute_changed_event: 'attribute:changed',
 			weapon_changed_event: 'weapon:changed',
 			weapon_deleted_event: 'weapon:deleted',
 
 			//data
-			stat_property: 'stat'
 		};
 		Object.extend(this.options, options);
 
-		this.template = null;
 		this.control_attributes = $H();
 		this.weapons = $H();
 
-		this.connect_event_handlers();
-	},
-
-	store_template: function(template)
-	{
-		this.template = template;
+		$super(this.options);
 	},
 
 	store_control_attribute: function(attribute_package)
@@ -46,11 +36,6 @@ var ConstructionStatModel =
 	delete_weapon: function(weapon_id)
 	{
 		this.weapons.unset(weapon_id);
-	},
-
-	get_template: function()
-	{
-		return this.template;
 	},
 
 	calculate_current: function()
