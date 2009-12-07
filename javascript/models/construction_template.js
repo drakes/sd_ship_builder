@@ -21,6 +21,7 @@ var ConstructionTemplateModel =
 		Object.extend(this.options, options);
 
 		this.fill_ship_classes(this.get_ship_class_options());
+		this.select_ship_classes_hint();
 		this.connect_event_handlers();
 	},
 
@@ -86,5 +87,11 @@ var ConstructionTemplateModel =
 		{
 			return this.find_selector_template(selector).innerHTML;
 		}
+	},
+
+	select_ship_classes_hint: function()
+	{
+		//the hint is placed at the top; this is a workaround for Opera's tendency to show the last option in the control
+		$(this.options.ship_class_id).selectedIndex = 0;
 	}
 };
