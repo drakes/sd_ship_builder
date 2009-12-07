@@ -4,8 +4,7 @@
 	var classes =
 	[
 		{ name: 'ConstructionTemplate', instantiate: true },
-		{ name: 'TemplateStat' },
-		{ name: 'ConstructionStat', superclass: 'TemplateStat' },
+		{ name: 'ConstructionStat' },
 		{ name: 'Attribute' },
 		{ name: 'Armaments', instantiate: true },
 		{ name: 'Weapon' },
@@ -14,15 +13,6 @@
 	
 	var instances =
 	[
-		{
-			name: 'crew_control',
-			class_name: 'TemplateStat',
-			options:
-			{
-				id: 'crew_control',
-				stat_property: 'crew'
-			}
-	   	},
 		{
 			name: 'cost_control',
 			class_name: 'ConstructionStat',
@@ -38,7 +28,8 @@
 			options:
 			{
 				id: 'slots_control',
-				stat_property: 'slots'
+				stat_property: 'slots',
+				crew_based: true
 			}
 		},
 		{
