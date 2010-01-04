@@ -8,6 +8,7 @@ var WeaponView =
 	create_controls: function()
 	{
 		var weapon_control = $(this.options.id);
+		weapon_control.insert('<input type="button" class="' + this.options.delete_class + '" value="Delete" />');
 		var controls = new Element('span', { 'class': 'controls' });
 		var type_control = new Element('span', { 'class': 'type_control' });
 		var type_selector = new Element('select', { 'class': this.options.type_class });
@@ -32,7 +33,6 @@ var WeaponView =
 		weapon_control.insert('<span class="stat"><span class="descriptor"> Target Speed Restriction: </span><span class="' + this.options.speed_restriction_class + '"></span>');
 		weapon_control.insert('<span class="' + this.options.range_class + ' stat"><span class="descriptor"> Range: </span><span class="descriptor"> Short (+1): </span><span class="' + this.options.short_class + '"></span><span class="descriptor"> Medium (0): </span><span class="' + this.options.medium_class + '"></span><span class="descriptor"> Long (-1): </span><span class="' + this.options.long_class + '"></span></span>');
 		weapon_control.insert('<span class="' + this.options.note_container_class + ' stat" style="display: none;"><span class="descriptor"> Note: </span><span class="' + this.options.note_class + '"></span></span>');
-		weapon_control.insert('<input type="button" class="' + this.options.delete_class + '" value="Delete" />');
 	},
 
 	decorate_control: function()
