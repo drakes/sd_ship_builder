@@ -40,7 +40,7 @@ legend, .hint
 	font-weight: bold;
 }
 
-.weapon
+.crew, .weapon
 {
 	border-color: gray;
 	border-style: solid;
