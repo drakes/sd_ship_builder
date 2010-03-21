@@ -7,6 +7,7 @@
 		{ name: 'ConstructionStat' },
 		{ name: 'Attribute' },
 		{ name: 'CrewMembers', instantiate: true },
+		{ name: 'Crew' },
 		{ name: 'Armaments', instantiate: true },
 		{ name: 'Weapon' },
 		{ name: 'FiringArc' }

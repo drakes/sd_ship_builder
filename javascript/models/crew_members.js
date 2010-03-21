@@ -20,7 +20,7 @@ var CrewMembersModel =
 		this.connect_event_handlers();
 	},
 
-	add_crew: function()
+	add_crew: function(current_crew_size)
 	{
 		var crew_control = this.add_crew_control();
 		//place the control in the DOM before initializing so events bubble
@@ -29,7 +29,8 @@ var CrewMembersModel =
 			id: crew_control.identify(),
 			crew_tag: 'div',
 			crew_class: 'crew',
-			data: this.options.data
+			data: this.options.data,
+			pilot: current_crew_size < 1
 		});
 	}
 };

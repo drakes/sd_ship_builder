@@ -10,7 +10,12 @@ var CrewView =
 		var crew_control = $(this.options.id);
 		if (pilot)
 		{
+			crew_control.insert('<span class="crew_type">Pilot</span>');
 			this.create_skill(crew_control, pilot);
+		}
+		else
+		{
+			crew_control.insert('<span class="crew_type">Gunner</span>');
 		}
 		this.create_skill(crew_control);
 	},

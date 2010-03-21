@@ -23,6 +23,12 @@ fieldset
 	font-size: 1em;
 }
 
+#crew_members
+{
+	overflow: hidden;
+	margin-bottom: -0.75em;
+}
+
 .current, .separator, .template
 {
 	font-size: 2em;
@@ -34,12 +40,23 @@ fieldset
 	margin-right: 0.5em;
 }
 
-.weapon
+.crew, .weapon
 {
 	overflow: hidden;
 	margin-bottom: 1em;
 	padding: 0.5em;
 	border-width: 1px;
+}
+
+.crew
+{
+	float: left;
+	margin-right: 1em;
+}
+
+.crew_type
+{
+	display: block;
 }
 
 .weapon .delete

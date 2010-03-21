@@ -1,8 +1,8 @@
 var CrewMembersView =
 {
-	find_last_crew_member: function()
+	find_crew: function()
 	{
-		return $(this.options.id).childElements().last();
+		return $(this.options.id).childElements();
 	},
 
 	add_crew_control: function()

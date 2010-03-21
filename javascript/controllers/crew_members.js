@@ -11,7 +11,7 @@ var CrewMembersController =
 		var current_crew_size = this.find_crew().length;
 		if (current_crew_size < crew_template_size)
 		{
-			this.add_crew_members(crew_template_size - current_crew_size);
+			this.add_crew_members(crew_template_size, current_crew_size);
 		}
 		else if (current_crew_size > crew_template_size)
 		{
@@ -19,19 +19,19 @@ var CrewMembersController =
 		}
 	},
 
-	add_crew_members: function(crew_to_add)
+	add_crew_members: function(crew_template_size, current_crew_size)
 	{
-		crew_to_add.times(function()
+		while (current_crew_size < crew_template_size)
 		{
-			this.add_crew();
-		}, this);
+			this.add_crew(current_crew_size++);
+		}
 	},
 
 	delete_crew_members: function(crew_to_delete)
 	{
 		crew_to_delete.times(function()
 		{
-			this.find_last_crew_member().remove();
+			this.find_crew().last().remove();
 		}, this);
 	}
 };
