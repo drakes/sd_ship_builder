@@ -1,4 +1,4 @@
-var CrewController =
+var CrewMembersController =
 {
 	connect_event_handlers: function()
 	{

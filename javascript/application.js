@@ -6,6 +6,7 @@
 		{ name: 'ConstructionTemplate', instantiate: true },
 		{ name: 'ConstructionStat' },
 		{ name: 'Attribute' },
+		{ name: 'CrewMembers', instantiate: true },
 		{ name: 'Armaments', instantiate: true },
 		{ name: 'Weapon' },
 		{ name: 'FiringArc' }
@@ -21,7 +22,7 @@
 				id: 'cost_control',
 				stat_property: 'cost'
 			}
-	   	},
+		},
 		{
 			name: 'slots_control',
 			class_name: 'ConstructionStat',
@@ -58,7 +59,7 @@
 				id: 'damage_reduction',
 				attribute_property: 'damage_reduction'
 			}
-		},
+		}
 	];
 	
 	//event handlers

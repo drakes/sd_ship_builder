@@ -1,4 +1,4 @@
-var CrewModel =
+var CrewMembersModel =
 {
 	initialize: function(options)
 	{
@@ -27,8 +27,8 @@ var CrewModel =
 		new Crew(
 		{
 			id: crew_control.identify(),
-			crew_class: 'crew',
 			crew_tag: 'div',
+			crew_class: 'crew',
 			data: this.options.data
 		});
 	}

@@ -1,4 +1,4 @@
-var CrewView =
+var CrewMembersView =
 {
 	find_last_crew_member: function()
 	{
