@@ -9,12 +9,13 @@ var CrewModel =
 			crew_tag: 'div',
 			crew_class: 'crew',
 			skill_class: 'skill',
+			skill_die_class: 'skill_die',
 			cost_class: 'cost',
 
 			//events
 
 			//data
-			data: null,
+			template: null,
 			pilot: true
 		};
 		Object.extend(this.options, options);
@@ -24,11 +25,11 @@ var CrewModel =
 		this.connect_event_handlers();
 	},
 
-	create_skill_options: function()
+	create_skill_options: function(piloting)
 	{
-		return $H(this.options.data).inject('', function(options, pair)
+		return this.options.template[piloting ? 'piloting' : 'gunnery'].inject('', function(options, die_size, index)
 		{
-			return options + '<option value="' + pair.key + '"' + (!options ? ' selected="selected"' : '') + '>' + pair.value.name + '</option>';
+			return options + '<option value="' + index + '"' + (!options ? ' selected="selected"' : '') + '>' + (index + 1) + '</option>';
 		});
 	}
 };

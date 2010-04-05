@@ -13,7 +13,11 @@ var CrewMembersModel =
 			crew_template_changed_event: 'crew_template:changed',
 
 			//crew data
-			data: null
+			template:
+			{
+				piloting: [10, 10, 8, 8, 6, 6, 4, 4, 4, 4],
+				gunnery: [4, 4, 4, 4, 6, 6, 8, 8, 10, 10]
+			}
 		};
 		Object.extend(this.options, options);
 
@@ -29,7 +33,7 @@ var CrewMembersModel =
 			id: crew_control.identify(),
 			crew_tag: 'div',
 			crew_class: 'crew',
-			data: this.options.data,
+			template: this.options.template,
 			pilot: current_crew_size < 1
 		});
 	}
