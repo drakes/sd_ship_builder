@@ -17,6 +17,7 @@ var CrewController =
 	{
 		var index = Number(piloting_selector.value);
 		this.update_skill_die(index, this.options.template.piloting, true);
+		this.update_skill_cost(index + 1, true);
 		this.send_update(index + 1, true);
 	},
 
@@ -24,6 +25,7 @@ var CrewController =
 	{
 		var index = Number(gunnery_selector.value);
 		this.update_skill_die(index, this.options.template.gunnery);
+		this.update_skill_cost(index + 1);
 		this.send_update(index + 1);
 	},
 

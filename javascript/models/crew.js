@@ -9,6 +9,7 @@ var CrewModel =
 			crew_tag: 'div',
 			crew_class: 'crew',
 			skill_class: 'skill',
+			skill_control_class: 'skill_control',
 			skill_die_class: 'skill_die',
 			cost_class: 'cost',
 
