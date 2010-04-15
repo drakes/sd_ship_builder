@@ -11,6 +11,7 @@ var CrewMembersModel =
 
 			//events
 			crew_template_changed_event: 'crew_template:changed',
+			crew_deleted_event: 'crew:deleted',
 
 			//crew data
 			template:

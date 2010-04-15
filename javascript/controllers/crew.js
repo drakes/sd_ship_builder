@@ -2,6 +2,8 @@ var CrewController =
 {
 	connect_event_handlers: function()
 	{
+		var control = $(this.options.id);
+		control.observe(this.options.deleted_event, this.delete_handler.bindAsEventListener(this));
 		if (this.options.pilot)
 		{
 			var piloting_selector = this.find_skill_selector(true);
@@ -18,7 +20,7 @@ var CrewController =
 		var index = Number(piloting_selector.value);
 		this.update_skill_die(index, this.options.template.piloting, true);
 		this.update_skill_cost(index + 1, true);
-		this.send_update(index + 1, true);
+		this.send_update();
 	},
 
 	gunnery_change_handler: function(event, gunnery_selector)
@@ -26,11 +28,26 @@ var CrewController =
 		var index = Number(gunnery_selector.value);
 		this.update_skill_die(index, this.options.template.gunnery);
 		this.update_skill_cost(index + 1);
-		this.send_update(index + 1);
+		this.send_update();
 	},
 
-	send_update: function(value, piloting)
+	delete_handler: function(event)
 	{
-		var control = $(this.options.id);
+		$(this.options.id).remove();
+	},
+
+	send_update: function()
+	{
+		var cost = 1 + Number(this.find_skill_selector().value);
+		if (this.options.pilot)
+		{
+			cost += 1 + Number(this.find_skill_selector(true).value);
+		}
+		var memo =
+		{
+			id: this.options.id,
+			cost: cost
+		};
+		$(this.options.id).fire(this.options.changed_event, memo);
 	}
 };

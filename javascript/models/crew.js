@@ -14,6 +14,8 @@ var CrewModel =
 			cost_class: 'cost',
 
 			//events
+			changed_event: 'crew:changed',
+			deleted_event: 'crew:deleted',
 
 			//data
 			template: null,
@@ -24,6 +26,7 @@ var CrewModel =
 		this.decorate_control();
 		this.create_controls(this.options.pilot);
 		this.connect_event_handlers();
+		this.send_update();
 	},
 
 	create_skill_options: function(piloting)

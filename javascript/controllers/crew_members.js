@@ -31,7 +31,8 @@ var CrewMembersController =
 	{
 		crew_to_delete.times(function()
 		{
-			this.find_crew().last().remove();
+			var crew = this.find_crew().last();
+			crew.fire(this.options.crew_deleted_event, crew.id);
 		}, this);
 	}
 };

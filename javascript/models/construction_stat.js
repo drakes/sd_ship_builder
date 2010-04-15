@@ -16,6 +16,8 @@ var ConstructionStatModel =
 			attribute_changed_event: 'attribute:changed',
 			weapon_changed_event: 'weapon:changed',
 			weapon_deleted_event: 'weapon:deleted',
+			crew_changed_event: 'crew:changed',
+			crew_deleted_event: 'crew:deleted',
 
 			//data
 			stat_property: 'stat',
@@ -24,9 +26,10 @@ var ConstructionStatModel =
 		Object.extend(this.options, options);
 
 		this.template = null;
-		this.crew = 1;
+		this.crew_size = 1;
 		this.control_attributes = $H();
 		this.weapons = $H();
+		this.crew_costs = $H();
 
 		this.connect_event_handlers();
 	},
@@ -36,9 +39,9 @@ var ConstructionStatModel =
 		this.template = template;
 	},
 
-	store_crew: function(crew)
+	store_crew_template: function(crew)
 	{
-		this.crew = crew;
+		this.crew_size = crew;
 	},
 
 	store_control_attribute: function(attribute_package)
@@ -56,13 +59,26 @@ var ConstructionStatModel =
 		this.weapons.unset(weapon_id);
 	},
 
+	store_crew: function(crew_package)
+	{
+		if (crew_package[this.options.stat_property] !== undefined)
+		{
+			this.crew_costs.set(crew_package.id, crew_package[this.options.stat_property]);
+		}
+	},
+
+	delete_crew: function(crew_id)
+	{
+		this.crew_costs.unset(crew_id);
+	},
+
 	get_template_value: function()
 	{
 		if (this.options.crew_based)
 		{
 			//sometimes the template changes before the crew's been updated
 			//the crew_template change event immediately following has the necessary info, in the meantime this covers the gap
-			return (this.template.crew[this.get_crew()] || {})[this.options.stat_property];
+			return (this.template.crew[this.get_crew_template()] || {})[this.options.stat_property];
 		}
 		else
 		{
@@ -70,20 +86,21 @@ var ConstructionStatModel =
 		}
 	},
 
-	get_crew: function()
+	get_crew_template: function()
 	{
-		return this.crew;
+		return this.crew_size;
 	},
 
 	calculate_current: function()
 	{
-		var current_stat = this.control_attributes.values().inject(0, function(current, value)
-		{
-			return current + value;
-		});
-		return this.weapons.values().inject(current_stat, function(current, value)
-		{
-			return current + value;
-		});
+		var current_stat = this.control_attributes.values().inject(0, this.tally_current);
+		current_stat = this.weapons.values().inject(current_stat, this.tally_current);
+		current_stat = this.crew_costs.values().inject(current_stat, this.tally_current);
+		return current_stat;
+	},
+
+	tally_current: function(current, value)
+	{
+		return current + value;
 	}
 };
