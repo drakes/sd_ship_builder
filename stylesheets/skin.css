@@ -9,19 +9,25 @@ body, select
 	font-weight: normal;
 }
 
+#damage_track, #damage_track div
+{
+	border-style: solid;
+	border-color: black;
+}
+
 legend, .descriptor, .construction_stats
 {
 	font-family: 'Times New Roman', serif;
 }
 
-.construction_stats
+legend, .hint
 {
-	font-style: italic;
 	color: gray;
 }
 
-legend, .hint
+.construction_stats
 {
+	font-style: italic;
 	color: gray;
 }
 

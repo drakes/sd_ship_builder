@@ -10,7 +10,8 @@
 		{ name: 'Crew' },
 		{ name: 'Armaments', instantiate: true },
 		{ name: 'Weapon' },
-		{ name: 'FiringArc' }
+		{ name: 'FiringArc' },
+		{ name: 'DamageTrack', instantiate: true }
 	];
 	
 	var instances =
