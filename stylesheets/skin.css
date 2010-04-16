@@ -13,6 +13,7 @@ body, select
 {
 	border-style: solid;
 	border-color: black;
+	text-align: center;
 }
 
 legend, .descriptor, .construction_stats

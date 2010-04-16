@@ -8,7 +8,10 @@ var DamageTrackModel =
 			id: 'damage_track',
 
 			//events
-			template_changed_event: 'template:changed'
+			template_changed_event: 'template:changed',
+
+			//presentation text
+			destruction_symbol: 'X'
 		};
 		Object.extend(this.options, options);
 
@@ -30,6 +33,12 @@ var DamageTrackModel =
 	generate_hit_boxes: function()
 	{
 		var hit_boxes = new Array(this.get_template());
+		this.add_destruction(hit_boxes);
 		return hit_boxes;
+	},
+
+	add_destruction: function(hit_boxes)
+	{
+		hit_boxes[hit_boxes.length - 1] = this.options.destruction_symbol;
 	}
 };
