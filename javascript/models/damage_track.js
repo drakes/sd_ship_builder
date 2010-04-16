@@ -25,5 +25,11 @@ var DamageTrackModel =
 	get_template: function()
 	{
 		return this.template;
+	},
+
+	generate_hit_boxes: function()
+	{
+		var hit_boxes = new Array(this.get_template());
+		return hit_boxes;
 	}
 };

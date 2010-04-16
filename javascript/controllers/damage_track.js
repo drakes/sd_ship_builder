@@ -15,6 +15,6 @@ var DamageTrackController =
 	refresh: function()
 	{
 		this.clear();
-		this.add_hit_boxes(this.get_template());
+		this.add_hit_boxes(this.generate_hit_boxes());
 	}
 };

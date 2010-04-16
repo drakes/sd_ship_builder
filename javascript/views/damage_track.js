@@ -8,7 +8,7 @@ var DamageTrackView =
 	add_hit_boxes: function(boxes)
 	{
 		var control = $(this.options.id);
-		boxes.times(function()
+		boxes.length.times(function()
 		{
 			control.insert('<div></div>');
 		});
