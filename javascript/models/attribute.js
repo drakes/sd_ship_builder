@@ -23,7 +23,7 @@ var AttributeModel =
 		this.connect_event_handlers();
 	},
 
-	store_template: function(template)
+	set_template: function(template)
 	{
 		this.template = template;
 	},

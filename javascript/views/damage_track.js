@@ -5,7 +5,7 @@ var DamageTrackView =
 		$(this.options.id).update();
 	},
 
-	add_hit_boxes: function(hit_boxes)
+	render_hit_boxes: function(hit_boxes)
 	{
 		var control = $(this.options.id);
 		for (var i = 0, l = hit_boxes.length; i < l; i++)
