@@ -14,6 +14,7 @@ var DamageTrackController =
 
 	refresh: function()
 	{
+		$(this.options.id).show();
 		this.clear();
 		this.add_hit_boxes(this.generate_hit_boxes());
 	}
