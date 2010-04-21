@@ -6,6 +6,8 @@ var DamageTrackModel =
 		{
 			//selectors and css
 			id: 'damage_track',
+			destruction_class: 'destruction',
+			drive_class: 'drive',
 
 			//events
 			template_changed_event: 'template:changed',
@@ -52,7 +54,11 @@ var DamageTrackModel =
 
 	add_destruction: function(hit_boxes)
 	{
-		hit_boxes[hit_boxes.length - 1] = this.options.destruction_symbol;
+		hit_boxes[hit_boxes.length - 1] =
+		{
+			value: this.options.destruction_symbol,
+			css_class: this.options.destruction_class
+		};
 	},
 
 	add_drive: function(hit_boxes, drive)
@@ -73,7 +79,11 @@ var DamageTrackModel =
 		{
 			if (!hit_boxes[index])
 			{
-				hit_boxes[index] = current_drive;
+				hit_boxes[index] =
+				{
+					value: current_drive,
+					css_class: this.options.drive_class
+				};
 			}
 			current_drive = current_drive - factor;
 			index += frequency;

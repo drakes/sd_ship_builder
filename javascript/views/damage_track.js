@@ -10,8 +10,10 @@ var DamageTrackView =
 		var control = $(this.options.id);
 		for (var i = 0, l = hit_boxes.length; i < l; i++)
 		{
-			var symbol = hit_boxes[i] || '&nbsp;';
-			control.insert('<div>' + symbol + '</div>');
+			var box = hit_boxes[i] || {};
+			var value = box.value || '&nbsp;';
+			var css_class = box.css_class ? ' class="' + box.css_class + '"' : '';
+			control.insert('<div' + css_class + '>' + value + '</div>');
 		}
 	}
 };
