@@ -9,7 +9,6 @@ var ArmamentsController =
 	add_button_click_handler: function(event)
 	{
 		event.stop();
-
 		this.add_weapon();
 	},
 
