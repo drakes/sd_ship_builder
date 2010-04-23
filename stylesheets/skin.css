@@ -24,7 +24,6 @@ body, select
 #damage_track .drive
 {
 	border-style: double;
-	color: green;
 }
 
 legend, .descriptor, .construction_stats
@@ -56,6 +55,16 @@ legend, .hint
 .current, .separator, .template
 {
 	font-weight: bold;
+}
+
+.drive
+{
+	color: green;
+}
+
+.damage_reduction
+{
+	color: purple;
 }
 
 .crew, .weapon
