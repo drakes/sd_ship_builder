@@ -14,6 +14,6 @@ var ArmamentsController =
 
 	template_changed_handler: function(event)
 	{
-		$(this.options.add_button_id).enable();
+		$(this.options.add_button_id).show();
 	}
 };
