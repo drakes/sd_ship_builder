@@ -16,14 +16,15 @@ body, select
 	text-align: center;
 }
 
-#damage_track .destruction
-{
-	color: red;
-}
-
 #damage_track .drive
 {
 	border-style: double;
+}
+
+.destruction, .critical
+{
+	font-weight: bold;
+	color: red;
 }
 
 legend, .descriptor, .construction_stats

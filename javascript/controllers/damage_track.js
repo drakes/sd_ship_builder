@@ -3,6 +3,7 @@ var DamageTrackController =
 	connect_event_handlers: function()
 	{
 		document.observe(this.options.template_changed_event, this.template_changed_handler.bindAsEventListener(this));
+		document.observe(this.options.tons_changed_event, this.tons_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.attribute_changed_event, this.attribute_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.weapon_changed_event, this.weapon_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.weapon_deleted_event, this.weapon_deleted_handler.bindAsEventListener(this));
@@ -12,6 +13,13 @@ var DamageTrackController =
 	{
 		var template = event.memo;
 		this.set_template(template);
+		this.refresh();
+	},
+
+	tons_changed_handler: function(event)
+	{
+		var tons = event.memo;
+		this.set_tons(tons);
 		this.refresh();
 	},
 

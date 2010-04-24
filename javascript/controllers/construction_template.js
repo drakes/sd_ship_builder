@@ -39,6 +39,7 @@ var ConstructionTemplateController =
 	{
 		var ship_template = this.get_ship_template(ship_class, tons);
 		$(this.options.ship_class_id).fire(this.options.template_changed_event, ship_template);
+		$(this.options.tons_id).fire(this.options.tons_changed_event, tons);
 		$(this.options.crew_id).fire(this.options.crew_template_changed_event, crew);
 	}
 };

@@ -13,6 +13,7 @@ var ConstructionTemplateModel =
 
 			//events
 			template_changed_event: 'template:changed',
+			tons_changed_event: 'tons:changed',
 			crew_template_changed_event: 'crew_template:changed',
 
 			//templates

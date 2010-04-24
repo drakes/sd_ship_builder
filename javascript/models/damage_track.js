@@ -10,9 +10,11 @@ var DamageTrackModel =
 			drive_class: 'drive',
 			damage_reduction_class: 'damage_reduction',
 			weapon_class: 'weapon_hit_box',
+			critical_class: 'critical',
 
 			//events
 			template_changed_event: 'template:changed',
+			tons_changed_event: 'tons:changed',
 			attribute_changed_event: 'attribute:changed',
 			weapon_changed_event: 'weapon:changed',
 			weapon_deleted_event: 'weapon:deleted',
@@ -21,11 +23,21 @@ var DamageTrackModel =
 			destruction_symbol: 'X',
 			damage_reduction_symbol: '&loz;',
 			weapon_symbol: 'w',
-			weapon_alt_symbol: 'W'
+			weapon_alt_symbol: 'W',
+			critical_symbol: '*',
+
+			//data
+			criticals: $H(
+			{
+				1: $R(1, 200),
+				2: $R(201, 400),
+				3: $R(401, 1000)
+			})
 		};
 		Object.extend(this.options, options);
 
 		this.template = null;
+		this.tons = 1;
 		this.attributes = {};
 		this.weapons = $H();
 
@@ -35,6 +47,11 @@ var DamageTrackModel =
 	set_template: function(template)
 	{
 		this.template = template.hit_boxes;
+	},
+
+	set_tons: function(tons)
+	{
+		this.tons = tons;
 	},
 
 	set_attribute: function(attribute_package)
@@ -72,6 +89,21 @@ var DamageTrackModel =
 		return this.weapons.keys().length;
 	},
 
+	get_criticals: function()
+	{
+		var criticals = 1;
+		this.options.criticals.each(function(pair)
+		{
+			var range = pair.value;
+			if (range.include(this.tons))
+			{
+				criticals = pair.key;
+				throw $break;
+			}
+		}, this);
+		return criticals;
+	},
+
 	generate_hit_boxes: function()
 	{
 		var hit_boxes = new Array(this.get_template());
@@ -79,6 +111,7 @@ var DamageTrackModel =
 		this.add_drive(hit_boxes, this.get_drive());
 		this.place_symbols(hit_boxes, this.get_damage_reduction(), this.make_damage_reduction_box.bind(this));
 		this.place_symbols(hit_boxes, this.get_weapons(), this.make_weapon_box.bind(this));
+		this.place_symbols(hit_boxes, this.get_criticals(), this.make_critical_box.bind(this));
 		return hit_boxes;
 	},
 
@@ -136,6 +169,16 @@ var DamageTrackModel =
 		{
 			value: symbol,
 			css_class: this.options.weapon_class
+		};
+		return box;
+	},
+
+	make_critical_box: function()
+	{
+		var box =
+		{
+			value: this.options.critical_symbol,
+			css_class: this.options.critical_class
 		};
 		return box;
 	},
