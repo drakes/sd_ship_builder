@@ -78,7 +78,7 @@ var DamageTrackModel =
 		this.add_destruction(hit_boxes);
 		this.add_drive(hit_boxes, this.get_drive());
 		this.add_damage_reduction(hit_boxes, this.get_damage_reduction());
-		this.add_weapons(hit_boxes, this.get_weapons());
+		this.place_symbols(hit_boxes, this.get_weapons(), this.make_weapon_box.bind(this));
 		return hit_boxes;
 	},
 
@@ -141,27 +141,33 @@ var DamageTrackModel =
 		}
 	},
 
-	add_weapons: function(hit_boxes, weapons)
+	make_weapon_box: function(weapons, current_weapons)
 	{
-		var frequency = Math.ceil(hit_boxes.length / (weapons + 1));
-		var index = frequency - 1;
-		var current_weapons = weapons;
-		while (index < hit_boxes.length && current_weapons > 0)
+		var symbol = this.options.weapon_symbol;
+		if ((weapons - current_weapons) % 2 == 1)
 		{
-			var new_weapons = weapons - Math.floor((index + 1) / frequency);
-			if (!hit_boxes[index] && new_weapons < current_weapons)
+			symbol = this.options.weapon_alt_symbol;
+		}
+		var box =
+		{
+			value: symbol,
+			css_class: this.options.weapon_class
+		};
+		return box;
+	},
+
+	place_symbols: function(hit_boxes, total, yield)
+	{
+		var frequency = Math.ceil(hit_boxes.length / (total + 1));
+		var index = frequency - 1;
+		var current_count = total;
+		while (index < hit_boxes.length && current_count > 0)
+		{
+			var new_count = total - Math.floor((index + 1) / frequency);
+			if (!hit_boxes[index] && new_count < current_count)
 			{
-				var symbol = this.options.weapon_symbol;
-				if ((weapons - current_weapons) % 2 == 1)
-				{
-					symbol = this.options.weapon_alt_symbol;
-				}
-				hit_boxes[index] =
-				{
-					value: symbol,
-					css_class: this.options.weapon_class
-				};
-				current_weapons = current_weapons - 1;
+				hit_boxes[index] = yield(total, current_count);
+				current_count = current_count - 1;
 			}
 			index++;
 		}
