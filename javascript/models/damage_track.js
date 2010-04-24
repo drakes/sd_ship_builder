@@ -77,7 +77,7 @@ var DamageTrackModel =
 		var hit_boxes = new Array(this.get_template());
 		this.add_destruction(hit_boxes);
 		this.add_drive(hit_boxes, this.get_drive());
-		this.add_damage_reduction(hit_boxes, this.get_damage_reduction());
+		this.place_symbols(hit_boxes, this.get_damage_reduction(), this.make_damage_reduction_box.bind(this));
 		this.place_symbols(hit_boxes, this.get_weapons(), this.make_weapon_box.bind(this));
 		return hit_boxes;
 	},
@@ -102,46 +102,30 @@ var DamageTrackModel =
 		{
 			factor = 8;
 		}
-		var frequency = Math.ceil(hit_boxes.length / ((drive / factor) + 1));
-		var index = frequency - 1;
-		var current_drive = drive;
-		while (index < hit_boxes.length)
-		{
-			if (!hit_boxes[index])
-			{
-				hit_boxes[index] =
-				{
-					value: current_drive,
-					css_class: this.options.drive_class
-				};
-			}
-			current_drive = current_drive - factor;
-			index += frequency;
-		}
+		this.place_symbols(hit_boxes, drive, this.make_drive_box.bind(this), factor);
 	},
 
-	add_damage_reduction: function(hit_boxes, damage_reduction)
+	make_drive_box: function(current_drive)
 	{
-		var frequency = Math.ceil(hit_boxes.length / (damage_reduction + 1));
-		var index = frequency - 1;
-		var current_damage_reduction = damage_reduction;
-		while (index < hit_boxes.length && current_damage_reduction > 0)
+		var box =
 		{
-			var new_damage_reduction = damage_reduction - Math.floor((index + 1) / frequency);
-			if (!hit_boxes[index] && new_damage_reduction < current_damage_reduction)
-			{
-				hit_boxes[index] =
-				{
-					value: this.options.damage_reduction_symbol + ' ' + current_damage_reduction,
-					css_class: this.options.damage_reduction_class
-				};
-				current_damage_reduction = current_damage_reduction - 1;
-			}
-			index++;
-		}
+			value: current_drive,
+			css_class: this.options.drive_class
+		};
+		return box;
 	},
 
-	make_weapon_box: function(weapons, current_weapons)
+	make_damage_reduction_box: function(current_damage_reduction)
+	{
+		var box =
+		{
+			value: this.options.damage_reduction_symbol + ' ' + current_damage_reduction,
+			css_class: this.options.damage_reduction_class
+		};
+		return box;
+	},
+
+	make_weapon_box: function(current_weapons, weapons)
 	{
 		var symbol = this.options.weapon_symbol;
 		if ((weapons - current_weapons) % 2 == 1)
@@ -156,18 +140,19 @@ var DamageTrackModel =
 		return box;
 	},
 
-	place_symbols: function(hit_boxes, total, yield)
+	place_symbols: function(hit_boxes, total, yield, factor)
 	{
-		var frequency = Math.ceil(hit_boxes.length / (total + 1));
+		factor = factor || 1;
+		var frequency = Math.ceil(hit_boxes.length / (total / factor + 1));
 		var index = frequency - 1;
 		var current_count = total;
 		while (index < hit_boxes.length && current_count > 0)
 		{
-			var new_count = total - Math.floor((index + 1) / frequency);
+			var new_count = total - Math.floor((index + 1) / frequency) * factor;
 			if (!hit_boxes[index] && new_count < current_count)
 			{
-				hit_boxes[index] = yield(total, current_count);
-				current_count = current_count - 1;
+				hit_boxes[index] = yield(current_count, total);
+				current_count = current_count - factor;
 			}
 			index++;
 		}
