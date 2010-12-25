@@ -1,6 +1,12 @@
+h1 span
+{
+	font-size: 0.5em;
+}
+
 fieldset
 {
 	overflow: hidden;
+	padding: 0.5em;
 }
 
 #cost_control, #slots_control
@@ -79,7 +85,7 @@ fieldset
 
 .crew_type
 {
-	display: block;
+	margin-right: 1em;
 }
 
 .skill_die_container

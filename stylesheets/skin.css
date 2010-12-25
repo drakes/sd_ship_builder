@@ -3,6 +3,16 @@ body, select
 	font-family: Verdana, Arial, sans-serif;
 }
 
+legend, .descriptor, .construction_stats
+{
+	font-family: 'Times New Roman', serif;
+}
+
+h1 span, legend, .hint
+{
+	color: gray;
+}
+
 #crew_control .template
 {
 	color: black;
@@ -25,16 +35,6 @@ body, select
 {
 	font-weight: bold;
 	color: red;
-}
-
-legend, .descriptor, .construction_stats
-{
-	font-family: 'Times New Roman', serif;
-}
-
-legend, .hint
-{
-	color: gray;
 }
 
 .construction_stats
