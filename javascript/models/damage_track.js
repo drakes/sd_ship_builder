@@ -152,7 +152,7 @@ var DamageTrackModel =
 	{
 		var box =
 		{
-			value: this.options.damage_reduction_symbol + ' ' + current_damage_reduction,
+			value: this.options.damage_reduction_symbol + current_damage_reduction,
 			css_class: this.options.damage_reduction_class
 		};
 		return box;
