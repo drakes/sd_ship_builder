@@ -1,6 +1,6 @@
 var WeaponModel =
 {
-	initialize: function(options)
+	initialize: function(current_crew_size, options)
 	{
 		this.options =
 		{
@@ -43,7 +43,7 @@ var WeaponModel =
 		this.create_controls();
 		this.type_change_handler();
 		this.connect_event_handlers();
-		this.create_firing_arc();
+		this.create_firing_arc(current_crew_size);
 	},
 
 	get_weapon_type: function()
@@ -105,11 +105,11 @@ var WeaponModel =
 		return weapon_stats;
 	},
 
-	create_firing_arc: function()
+	create_firing_arc: function(current_crew_size)
 	{
 		var firing_arc_control = this.find_firing_arc();
 		//place the control in the DOM before initializing so events bubble
-		new FiringArc(
+		new FiringArc(current_crew_size,
 		{
 			id: firing_arc_control.identify(),
 			cost_class: this.options.cost_class,

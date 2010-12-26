@@ -1,6 +1,6 @@
 var FiringArcModel =
 {
-	initialize: function(options)
+	initialize: function(current_crew_size, options)
 	{
 		this.options =
 		{
@@ -8,6 +8,7 @@ var FiringArcModel =
 			firing_arc_class: 'firing_arc',
 
 			//events
+			crew_template_changed_event: 'crew_template:changed',
 
 			//messages
 			no_arcs_selected_message: 'At least one firing arc must be selected',
@@ -30,6 +31,7 @@ var FiringArcModel =
 		this.create_controls();
 		this.connect_event_handlers();
 		this.select_front_arc();
+		this.crew_size_changed(current_crew_size);
 	},
 
 	validate_arc_selection: function(arc_control)

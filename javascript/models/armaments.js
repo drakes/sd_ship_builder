@@ -11,6 +11,7 @@ var ArmamentsModel =
 
 			//events
 			template_changed_event: 'template:changed',
+			crew_template_changed_event: 'crew_template:changed',
 
 			//weapon templates
 			data: null
@@ -24,6 +25,15 @@ var ArmamentsModel =
 	{
 		var weapon_control = this.add_weapon_control();
 		//place the control in the DOM before initializing so events bubble
-		new Weapon({ id: weapon_control.identify(), data: this.options.data });
+		new Weapon(this.current_crew_size,
+		{
+			id: weapon_control.identify(),
+			data: this.options.data
+		});
+	},
+
+	store_current_crew_size: function(current_crew_size)
+	{
+		this.current_crew_size = current_crew_size;
 	}
 };
