@@ -19,6 +19,7 @@ h1
 {
 	margin-bottom: 0.1em;
 	padding: 0.2em;
+	font-size: 2em;
 }
 
 h1 span
@@ -35,6 +36,7 @@ fieldset
 {
 	overflow: hidden;
 	padding: 0.2em 0.5em 0.2em 0.5em;
+	border-width: 2px;
 }
 
 #cost_control, #slots_control
@@ -49,7 +51,7 @@ fieldset
 
 #crew_control, .attribute
 {
-	margin-right: 3em;
+	margin-right: 1em;
 }
 
 #crew_control .template
@@ -110,9 +112,9 @@ fieldset
 	margin-right: 0.3em;
 }
 
-.crew_type
+.skill_control
 {
-	margin-right: 1em;
+	margin-left: 1em;
 }
 
 .skill_die_container
@@ -125,7 +127,7 @@ fieldset
 	float: right;
 }
 
-.weapon .type_controls, .weapon .firing_arc
+.weapon .type_control, .weapon .firing_arc
 {
 	float: left;
 	clear: left;
@@ -140,6 +142,11 @@ fieldset
 .weapon .controls
 {
 	margin-bottom: 0.5em;
+}
+
+.weapon .stat
+{
+	margin-bottom: 0.1em;
 }
 
 .credit
