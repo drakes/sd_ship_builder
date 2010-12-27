@@ -13,7 +13,23 @@ var DamageTrackView =
 			var box = hit_boxes[i] || {};
 			var value = box.value || '&nbsp;';
 			var css_class = this.options.hit_box_class + ' ' + (box.css_class || '');
-			control.insert('<' + this.options.hit_box_tag + ' class="' + css_class + '">' + value + '</' + this.options.hit_box_tag + '>');
+			var title = String(i + 1);
+			if (box.title)
+			{
+				title += ': ' + box.title;
+				if (box.value)
+				{
+					if (Object.isNumber(box.value))
+					{
+						title += ' (' + box.value + ')';
+					}
+					else if (Object.isString(box.value) && /\d/.test(box.value))
+					{
+						title += ' (' + box.value.match(/\d+/)[0] + ')';
+					}
+				}
+			}
+			control.insert('<' + this.options.hit_box_tag + ' class="' + css_class + '" title="' + title + '">' + value + '</' + this.options.hit_box_tag + '>');
 		}
 	},
 

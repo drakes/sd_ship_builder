@@ -55,16 +55,6 @@ fieldset
 	color: red;
 }
 
-.damaged
-{
-	background-color: red;
-}
-
-.damaged.destruction, .damaged.critical
-{
-	color: rgb(128, 0, 0);
-}
-
 .hit_box
 {
 	cursor: pointer;
@@ -99,6 +89,31 @@ fieldset
 .damage_reduction
 {
 	color: purple;
+}
+
+.damaged
+{
+	background-color: red;
+}
+
+.damaged.drive, .damaged.damage_reduction
+{
+	text-decoration: line-through;
+}
+
+.damaged.drive
+{
+	color: rgb(0, 101, 0);
+}
+
+.damaged.damage_reduction
+{
+	color: rgb(101, 0, 101);
+}
+
+.damaged.destruction, .damaged.critical
+{
+	color: rgb(128, 0, 0);
 }
 
 .crew, .weapon

@@ -24,10 +24,16 @@ var DamageTrackModel =
 
 			//presentation text
 			destruction_symbol: 'X',
+			destruction_title: 'Destruction',
 			damage_reduction_symbol: '&loz;',
+			damage_reduction_title: 'Damage reduction',
 			weapon_symbol: 'w',
+			weapon_title: 'Weapon destroyed (defender\'s choice)',
 			weapon_alt_symbol: 'W',
+			weapon_alt_title: 'Weapon destroyed (attacker\'s choice)',
 			critical_symbol: '*',
+			critical_title: 'Critical',
+			drive_title: 'Drive',
 
 			//data
 			criticals: $H(
@@ -124,7 +130,8 @@ var DamageTrackModel =
 		hit_boxes[hit_boxes.length - 1] =
 		{
 			value: this.options.destruction_symbol,
-			css_class: this.options.destruction_class
+			css_class: this.options.destruction_class,
+			title: this.options.destruction_title
 		};
 	},
 
@@ -147,7 +154,8 @@ var DamageTrackModel =
 		var box =
 		{
 			value: current_drive,
-			css_class: this.options.drive_class
+			css_class: this.options.drive_class,
+			title: this.options.drive_title
 		};
 		return box;
 	},
@@ -157,7 +165,8 @@ var DamageTrackModel =
 		var box =
 		{
 			value: this.options.damage_reduction_symbol + current_damage_reduction,
-			css_class: this.options.damage_reduction_class
+			css_class: this.options.damage_reduction_class,
+			title: this.options.damage_reduction_title
 		};
 		return box;
 	},
@@ -165,14 +174,17 @@ var DamageTrackModel =
 	make_weapon_box: function(current_weapons, weapons)
 	{
 		var symbol = this.options.weapon_symbol;
+		var title = this.options.weapon_title;
 		if ((weapons - current_weapons) % 2 == 1)
 		{
 			symbol = this.options.weapon_alt_symbol;
+			title = this.options.weapon_alt_title;
 		}
 		var box =
 		{
 			value: symbol,
-			css_class: this.options.weapon_class
+			css_class: this.options.weapon_class,
+			title: title
 		};
 		return box;
 	},
@@ -182,7 +194,8 @@ var DamageTrackModel =
 		var box =
 		{
 			value: this.options.critical_symbol,
-			css_class: this.options.critical_class
+			css_class: this.options.critical_class,
+			title: this.options.critical_title
 		};
 		return box;
 	},
