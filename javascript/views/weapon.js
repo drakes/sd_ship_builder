@@ -5,6 +5,16 @@ var WeaponView =
 		return $(this.options.id).down('.' + this.options.firing_arc_class);
 	},
 
+	find_ammo_control: function()
+	{
+		return $(this.options.id).down('.' + this.options.ammo_class);
+	},
+
+	find_ammo_selector: function()
+	{
+		return this.find_ammo_control().down('select');
+	},
+
 	create_controls: function()
 	{
 		var weapon_control = $(this.options.id);
@@ -17,8 +27,14 @@ var WeaponView =
 		var multiple_selector = new Element('select', { 'class': this.options.multiple_class });
 		type_control.insert(multiple_selector);
 		type_control.insert(type_selector);
-		type_control.insert('<span class="construction_stats"> (cost: <span class="' + this.options.cost_class + '"></span> slots: <span class="' + this.options.slots_class + '"></span>) </span>');
+		type_control.insert('<span class="construction_stats"> (cost: <span class="' + this.options.cost_class + '"></span> slots: <span class="' + this.options.slots_class + '"></span>)</span>');
+		var ammo_control = new Element('span', { 'class': this.options.ammo_class });
+		var ammo_selector = new Element('select');
+		ammo_control.insert('<label for=' + ammo_selector.identify() + '" class="descriptor">Ammo: </label>');
+		ammo_control.insert(ammo_selector);
+		ammo_control.insert('<span class="construction_stats"> (cost: <span class="' + this.options.cost_class + '">0</span> slots: <span class="' + this.options.slots_class + '">0</span>)</span>');
 		controls.insert(type_control);
+		controls.insert(ammo_control);
 		controls.insert('<' + this.options.firing_arc_tag + ' class="' + this.options.firing_arc_class + '"></' + this.options.firing_arc_tag + '>');
 		weapon_control.insert(controls);
 
@@ -29,7 +45,6 @@ var WeaponView =
 	{
 		weapon_control.insert('<span class="stat"><span class="descriptor"> Base Attack Dice: </span><span class="' + this.options.attack_dice_class + '"></span></span>');
 		weapon_control.insert('<span class="stat"><span class="descriptor"> Damage: </span><span class="' + this.options.damage_class + '"></span>');
-		weapon_control.insert('<span class="stat"><span class="descriptor"> Ammo: </span><span class="' + this.options.ammo_class + '"></span>');
 		weapon_control.insert('<span class="stat"><span class="descriptor"> Target Speed Restriction: </span><span class="' + this.options.speed_restriction_class + '"></span>');
 		weapon_control.insert('<span class="' + this.options.range_class + ' stat"><span class="descriptor"> Range: </span><span class="descriptor"> Short (+1): </span><span class="' + this.options.short_class + '"></span><span class="descriptor"> Medium (0): </span><span class="' + this.options.medium_class + '"></span><span class="descriptor"> Long (-1): </span><span class="' + this.options.long_class + '"></span></span>');
 		weapon_control.insert('<span class="' + this.options.note_container_class + ' stat" style="display: none;"><span class="descriptor"> Note: </span><span class="' + this.options.note_class + '"></span></span>');
@@ -53,12 +68,34 @@ var WeaponView =
 		}
 	},
 
+	refresh_ammo: function(ammo_template)
+	{
+		var ammo_control = this.find_ammo_control();
+		var ammo_selector = this.find_ammo_selector();
+		if (ammo_template)
+		{
+			ammo_selector.update(this.create_ammo_options());
+			ammo_control.show();
+		}
+		else
+		{
+			ammo_control.hide();
+			ammo_selector.update();
+		}
+	},
+
+	refresh_ammo_stats: function(ammo_stats)
+	{
+		var ammo_control = this.find_ammo_control();
+		this.refresh_stat(this.options.cost_class, ammo_stats.cost, ammo_control);
+		this.refresh_stat(this.options.slots_class, ammo_stats.slots, ammo_control);
+	},
+
 	refresh_weapon_stats: function(weapon_stats)
 	{
 		var weapon_control = $(this.options.id);
 		this.refresh_stat(this.options.attack_dice_class, weapon_stats.attack_dice, weapon_control);
 		this.refresh_stat(this.options.damage_class, weapon_stats.damage, weapon_control);
-		this.refresh_stat(this.options.ammo_class, weapon_stats.ammo || '-', weapon_control);
 		this.refresh_stat(this.options.speed_restriction_class, (weapon_stats.speed_restriction ? ('Drive =< ' + weapon_stats.speed_restriction) : '-'), weapon_control);
 		this.refresh_stat(this.options.short_class, weapon_stats.short_range, weapon_control);
 		this.refresh_stat(this.options.medium_class, weapon_stats.medium_range, weapon_control);
@@ -78,9 +115,8 @@ var WeaponView =
 		}
 	},
 
-	refresh_stat: function(stat_class, stat_value, weapon_control)
+	refresh_stat: function(stat_class, stat_value, control)
 	{
-		weapon_control = weapon_control || $(this.options.id);
-		weapon_control.down('.' + stat_class).update(stat_value);
+		control.down('.' + stat_class).update(stat_value);
 	}
 };

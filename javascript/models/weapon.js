@@ -56,9 +56,26 @@ var WeaponModel =
 		return $(this.options.id).down('.' + this.options.multiple_class).getValue();
 	},
 
+	get_ammo_expansions: function()
+	{
+		return Number(this.find_ammo_selector().getValue());
+	},
+
 	get_weapon_template: function()
 	{
 		return this.options.data[this.get_weapon_type()];
+	},
+
+	get_ammo_template: function()
+	{
+		var weapon_template = this.get_weapon_template();
+		var multiple_key = this.get_multiple_key();
+		if (multiple_key)
+		{
+			var multiple = weapon_template.multiples[multiple_key];
+			return multiple.ammo;
+		}
+		return weapon_template.ammo;
 	},
 
 	get_damage_types: function()
@@ -66,16 +83,22 @@ var WeaponModel =
 		return this.options.damage_types;
 	},
 
-	get_weapon_stats: function(add_firing_arc)
+	get_weapon_stats: function(add_extras)
 	{
 		//shallow copy
 		var weapon_stats = Object.clone(this.get_weapon_template());
 		weapon_stats.attack_dice = '2D' + weapon_stats.attack_die;
 		weapon_stats.damage = this.options.damage_types[weapon_stats.damage_index];
-		if (add_firing_arc)
+		if (add_extras)
 		{
 			weapon_stats.cost += this.firing_arc_stats.cost;
 			weapon_stats.slots += this.firing_arc_stats.slots;
+			if (this.get_ammo_template())
+			{
+				var ammo_stats = this.get_ammo_stats();
+				weapon_stats.cost += ammo_stats.cost;
+				weapon_stats.slots += ammo_stats.slots;
+			}
 		}
 		return this.add_multiples_bonuses(weapon_stats);
 	},
@@ -83,6 +106,16 @@ var WeaponModel =
 	get_weapon_stats_total: function()
 	{
 		return this.get_weapon_stats(true);
+	},
+
+	get_ammo_stats: function()
+	{
+		var ammo_expansions = this.get_ammo_expansions();
+		var ammo_template = this.get_ammo_template();
+		return {
+			cost: ammo_template.cost * ammo_expansions,
+			slots: ammo_template.slots * ammo_expansions
+		};
 	},
 
 	store_firing_arc_stats: function(firing_arc_stats)
@@ -134,5 +167,20 @@ var WeaponModel =
 		{
 			return options + '<option value="' + multiple_key + '">' + this.options.multiples_names[multiple_key] + '</option>';
 		}, this);
+	},
+
+	create_ammo_options: function()
+	{
+		var ammo_template = this.get_ammo_template();
+		var options = '';
+		var ammo_expansions = 0;
+		var ammo = ammo_template.min;
+		while (ammo <= ammo_template.max)
+		{
+			options += '<option value="' + ammo_expansions + '">' + ammo + '</option>';
+			ammo += ammo_template.add;
+			ammo_expansions++;
+		}
+		return options;
 	}
 };

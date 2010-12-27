@@ -10,23 +10,54 @@ var ArmamentsData =
 		short_range: 2,
 		medium_range: 5,
 		long_range: 12,
-		ammo: 4,
+		ammo:
+		{
+			min: 4,
+			max: 8,
+			add: 2,
+			cost: 0,
+			slots: 1
+		},
 		multiples:
 		{
 			2:
 			{
 				cost_bonus: 1,
-				slots_bonus: 0
+				slots_bonus: 0,
+				ammo:
+				{
+					min: 4,
+					max: 8,
+					add: 2,
+					cost: 1,
+					slots: 1
+				}
 			},
 			3:
 			{
 				cost_bonus: 2,
-				slots_bonus: 1
+				slots_bonus: 1,
+				ammo:
+				{
+					min: 4,
+					max: 8,
+					add: 2,
+					cost: 2,
+					slots: 1
+				}
 			},
 			4:
 			{
 				cost_bonus: 3,
-				slots_bonus: 2
+				slots_bonus: 2,
+				ammo:
+				{
+					min: 4,
+					max: 8,
+					add: 2,
+					cost: 2,
+					slots: 2
+				}
 			}
 		},
 		note: 'Whenever two of the attack dice roll doubles, multiply the base damage by 2.'
@@ -41,19 +72,42 @@ var ArmamentsData =
 		short_range: 3,
 		medium_range: 10,
 		long_range: 24,
-		ammo: 4,
+		ammo:
+		{
+			min: 4,
+			max: 8,
+			add: 2,
+			cost: 1,
+			slots: 1
+		},
 		speed_restriction: 10,
 		multiples:
 		{
 			2:
 			{
 				cost_bonus: 2,
-				slots_bonus: 1
+				slots_bonus: 1,
+				ammo:
+				{
+					min: 4,
+					max: 8,
+					add: 1,
+					cost: 1,
+					slots: 1
+				}
 			},
 			4:
 			{
 				cost_bonus: 6,
-				slots_bonus: 4
+				slots_bonus: 4,
+				ammo:
+				{
+					min: 4,
+					max: 8,
+					add: 1,
+					cost: 2,
+					slots: 2
+				}
 			}
 		},
 		note: 'Whenever two of the attack dice roll doubles, multiply the base damage by 2.'
@@ -68,7 +122,14 @@ var ArmamentsData =
 		short_range: 4,
 		medium_range: 15,
 		long_range: 36,
-		ammo: 4,
+		ammo:
+		{
+			min: 4,
+			max: 8,
+			add: 1,
+			cost: 2,
+			slots: 2
+		},
 		speed_restriction: 6,
 		note: 'Whenever two of the attack dice roll doubles, multiply the base damage by 2.'
 	},
@@ -295,7 +356,14 @@ var ArmamentsData =
 		short_range: 8,
 		medium_range: 12,
 		long_range: 16,
-		ammo: 1,
+		ammo:
+		{
+			min: 1,
+			max: 8,
+			add: 1,
+			cost: 1,
+			slots: 1
+		},
 		speed_restriction: 14
 	}
 };

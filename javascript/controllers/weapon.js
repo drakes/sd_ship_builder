@@ -7,6 +7,7 @@ var WeaponController =
 		weapon_control.observe(this.options.firing_arc_changed_event, this.firing_arc_changed_handler.bindAsEventListener(this));
 		weapon_control.down('.' + this.options.type_class).observe('change', this.type_change_handler.bindAsEventListener(this));
 		weapon_control.down('.' + this.options.multiple_class).observe('change', this.multiples_change_handler.bindAsEventListener(this));
+		this.find_ammo_selector().observe('change', this.ammo_change_handler.bindAsEventListener(this));
 	},
 
 	click_handler: function(event)
@@ -31,11 +32,19 @@ var WeaponController =
 	type_change_handler: function(event)
 	{
 		this.refresh_multiples(this.get_weapon_template());
+		this.refresh_ammo(this.get_ammo_template());
 		this.refresh();
 		this.send_update();
 	},
 
 	multiples_change_handler: function(event)
+	{
+		this.refresh_ammo(this.get_ammo_template());
+		this.refresh();
+		this.send_update();
+	},
+
+	ammo_change_handler: function(event)
 	{
 		this.refresh();
 		this.send_update();
@@ -50,6 +59,11 @@ var WeaponController =
 	refresh: function()
 	{
 		this.refresh_weapon_stats(this.get_weapon_stats());
+		var ammo_template = this.get_ammo_template();
+		if (ammo_template)
+		{
+			this.refresh_ammo_stats(this.get_ammo_stats());
+		}
 	},
 
 	send_update: function()

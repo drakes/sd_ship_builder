@@ -120,26 +120,26 @@ fieldset
 	float: right;
 }
 
-.weapon .type_control, .weapon .firing_arc
-{
-	float: left;
-	clear: left;
-}
-
-.weapon .controls, .weapon .stat
-{
-	float: left;
-	margin-right: 2em;
-}
-
 .weapon .controls
 {
+	float: left;
 	margin-bottom: 0.5em;
+}
+
+.weapon .controls > span, .weapon .stat
+{
+	float: left;
+	margin-right: 1em;
 }
 
 .weapon .stat
 {
 	margin-bottom: 0.1em;
+}
+
+.firing_arc
+{
+	clear: left;
 }
 
 .credit
