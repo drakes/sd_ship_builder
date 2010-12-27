@@ -44,8 +44,6 @@ systems.
 
 There are plenty of features yet to be implemented:
 
-  * Missiles
-
   * Torpedoes
 
   * Gunboats and larger ship classes
