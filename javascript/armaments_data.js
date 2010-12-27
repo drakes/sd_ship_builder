@@ -169,7 +169,7 @@ var ArmamentsData =
 			{
 				cost_bonus: 5,
 				slots_bonus: 4
-			},
+			}
 		}
 	},
 	meldlaser:

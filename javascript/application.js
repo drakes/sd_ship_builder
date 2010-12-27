@@ -86,7 +86,7 @@
 			view = eval(class_spec.name + 'View');
 			controller = eval(class_spec.name + 'Controller');
 		}
-		catch(exception)
+		catch(component_exception)
 		{
 			//component(s) of the class not here, moving on...
 		}
@@ -118,7 +118,7 @@
 				{
 					options.data = eval(class_spec.name + 'Data');
 				}
-				catch(exception)
+				catch(data_exception)
 				{
 					//data not here, moving on...
 				}
@@ -144,7 +144,7 @@
 				{
 					options = eval(instance_spec.name + '_options');
 				}
-				catch(exception)
+				catch(options_exception)
 				{
 					//options for the instance not here, moving on...
 				}

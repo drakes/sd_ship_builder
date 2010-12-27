@@ -106,7 +106,8 @@ var DamageTrackModel =
 
 	generate_hit_boxes: function()
 	{
-		var hit_boxes = new Array(this.get_template());
+		var hit_boxes = [];
+		hit_boxes.length = this.get_template();
 		this.add_destruction(hit_boxes);
 		this.add_drive(hit_boxes, this.get_drive());
 		this.place_symbols(hit_boxes, this.get_damage_reduction(), this.make_damage_reduction_box.bind(this));
@@ -183,7 +184,7 @@ var DamageTrackModel =
 		return box;
 	},
 
-	place_symbols: function(hit_boxes, total, yield, factor)
+	place_symbols: function(hit_boxes, total, yield_function, factor)
 	{
 		factor = factor || 1;
 		var frequency = Math.ceil(hit_boxes.length / (total / factor + 1));
@@ -194,7 +195,7 @@ var DamageTrackModel =
 			var new_count = total - Math.floor((index + 1) / frequency) * factor;
 			if (!hit_boxes[index] && new_count < current_count)
 			{
-				hit_boxes[index] = yield(current_count, total);
+				hit_boxes[index] = yield_function(current_count, total);
 				current_count = current_count - factor;
 			}
 			index++;
