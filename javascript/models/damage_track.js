@@ -6,11 +6,14 @@ var DamageTrackModel =
 		{
 			//selectors and css
 			id: 'damage_track',
+			hit_box_tag: 'div',
+			hit_box_class: 'hit_box',
 			destruction_class: 'destruction',
 			drive_class: 'drive',
 			damage_reduction_class: 'damage_reduction',
 			weapon_class: 'weapon_hit_box',
 			critical_class: 'critical',
+			damaged_class: 'damaged',
 
 			//events
 			template_changed_event: 'template:changed',

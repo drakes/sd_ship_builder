@@ -7,6 +7,7 @@ var DamageTrackController =
 		document.observe(this.options.attribute_changed_event, this.attribute_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.weapon_changed_event, this.weapon_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.weapon_deleted_event, this.weapon_deleted_handler.bindAsEventListener(this));
+		$(this.options.id).on('click', '.' + this.options.hit_box_class, this.hit_box_click_handler.bind(this));
 	},
 
 	template_changed_handler: function(event)
@@ -42,6 +43,11 @@ var DamageTrackController =
 		var weapon_id = event.memo;
 		this.delete_weapon(weapon_id);
 		this.refresh();
+	},
+
+	hit_box_click_handler: function(event, target_box)
+	{
+		this.update_damage(target_box);
 	},
 
 	refresh: function()
