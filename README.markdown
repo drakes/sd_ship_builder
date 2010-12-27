@@ -40,23 +40,24 @@ systems.
 
 There are plenty of features yet to be implemented:
 
-  * missiles
+  * Missiles
 
-  * torpedoes
+  * Torpedoes
 
-  * gunboats and larger ship classes
+  * Gunboats and larger ship classes
 
-  * ship options
+  * Ship options
 
-  * ship quirks
+  * Ship quirks
 
   * Allowing multiple ship designs on a single page, to total points for
 building a squadron
 
-  * Changing from design to play mode to lock down designs and allow damage to
-be tracked
+  * Changing from design to play mode to lock down designs and allow damage to be tracked
 
   * Saving designs in cookies or local storage
+
+  * Encoding serialized designs to shareable URLs
 
 ## License (MIT)
 
