@@ -40,8 +40,6 @@ systems.
 
 There are plenty of features yet to be implemented:
 
-  * expanded magazines
-
   * missiles
 
   * torpedoes
@@ -50,7 +48,7 @@ There are plenty of features yet to be implemented:
 
   * ship options
 
-  * quirks
+  * ship quirks
 
   * Allowing multiple ship designs on a single page, to total points for
 building a squadron
