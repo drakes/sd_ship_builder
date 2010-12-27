@@ -33,6 +33,11 @@ fieldset
 	border-width: 2px;
 }
 
+input
+{
+	font-size: 0.8em;
+}
+
 #cost_control, #slots_control
 {
 	float: right;
