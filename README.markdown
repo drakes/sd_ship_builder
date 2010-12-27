@@ -36,6 +36,10 @@ nice to have in the future.
   * Includes light, medium, and heavy fighters plus basic non-warhead weapon
 systems.
 
+## Known Bugs
+
+  * Front-only firing arc when crew is one is not enforced in IE(8)
+
 ## Future
 
 There are plenty of features yet to be implemented:

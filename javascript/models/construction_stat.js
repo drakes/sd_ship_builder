@@ -78,11 +78,13 @@ var ConstructionStatModel =
 		{
 			//sometimes the template changes before the crew's been updated
 			//the crew_template change event immediately following has the necessary info, in the meantime this covers the gap
-			return (this.template.crew[this.get_crew_template()] || {})[this.options.stat_property];
+			return (((this.template || {}).crew || {})[this.get_crew_template()] || {})[this.options.stat_property];
 		}
 		else
 		{
-			return this.template[this.options.stat_property];
+			//sometimes the attribute change event fires before the template's been updated
+			//the template change event immediately following has the necessary info, in the meantime this covers the gap
+			return (this.template || {})[this.options.stat_property];
 		}
 	},
 
