@@ -32,7 +32,8 @@ var WeaponModel =
 
 			//weapon templates
 			data: null,
-			damage_types: ['Low', 'Medium', 'High', 'All', 'Allx2', '10/8/6'],
+			default_number_of_attack_dice: 2,
+			damage_types: ['Low', 'Medium', 'High', 'All', 'Allx2', '10/8/6', 'High +1/'],
 			multiples_names: { 2: 'Twin', 3: 'Triple', 4: 'Quad', 5: 'Quint', 6: 'Sext' }
 		};
 		Object.extend(this.options, options);
@@ -83,11 +84,17 @@ var WeaponModel =
 		return this.options.damage_types;
 	},
 
+	get_attack_dice: function()
+	{
+		var weapon_template = this.get_weapon_template();
+		return (weapon_template.number_of_attack_dice || this.options.default_number_of_attack_dice) + 'D' + weapon_template.attack_die;
+	},
+
 	get_weapon_stats: function(add_extras)
 	{
 		//shallow copy
 		var weapon_stats = Object.clone(this.get_weapon_template());
-		weapon_stats.attack_dice = '2D' + weapon_stats.attack_die;
+		weapon_stats.attack_dice = this.get_attack_dice();
 		weapon_stats.damage = this.options.damage_types[weapon_stats.damage_index];
 		if (add_extras)
 		{

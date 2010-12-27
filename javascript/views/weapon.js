@@ -96,7 +96,7 @@ var WeaponView =
 		var weapon_control = $(this.options.id);
 		this.refresh_stat(this.options.attack_dice_class, weapon_stats.attack_dice, weapon_control);
 		this.refresh_stat(this.options.damage_class, weapon_stats.damage, weapon_control);
-		this.refresh_stat(this.options.speed_restriction_class, (weapon_stats.speed_restriction ? ('Drive =< ' + weapon_stats.speed_restriction) : '-'), weapon_control);
+		this.refresh_stat(this.options.speed_restriction_class, (weapon_stats.speed_restriction ? ('Drive =< ' + weapon_stats.speed_restriction) : null), weapon_control);
 		this.refresh_stat(this.options.short_class, weapon_stats.short_range, weapon_control);
 		this.refresh_stat(this.options.medium_class, weapon_stats.medium_range, weapon_control);
 		this.refresh_stat(this.options.long_class, weapon_stats.long_range, weapon_control);
@@ -117,6 +117,10 @@ var WeaponView =
 
 	refresh_stat: function(stat_class, stat_value, control)
 	{
+		if (!stat_value && stat_value !== 0)
+		{
+			stat_value = '-';
+		}
 		control.down('.' + stat_class).update(stat_value);
 	}
 };
