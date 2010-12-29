@@ -147,9 +147,10 @@ var WeaponModel =
 
 	create_firing_arc: function(current_crew_size)
 	{
+		var weapon_control = $(this.options.id);
 		var firing_arc_control = this.find_firing_arc();
 		//place the control in the DOM before initializing so events bubble
-		new FiringArc(current_crew_size,
+		new FiringArc(weapon_control, current_crew_size,
 		{
 			id: firing_arc_control.identify(),
 			cost_class: this.options.cost_class,

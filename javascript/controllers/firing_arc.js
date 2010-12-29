@@ -1,9 +1,23 @@
 var FiringArcController =
 {
-	connect_event_handlers: function()
+	connect_event_handlers: function(weapon_control)
 	{
-		document.observe(this.options.crew_template_changed_event, this.crew_template_changed_handler.bindAsEventListener(this));
+		//save reference to detach later
+		this.bound_crew_template_changed_handler = this.crew_template_changed_handler.bindAsEventListener(this);
+		document.observe(this.options.crew_template_changed_event, this.bound_crew_template_changed_handler);
 		this.find_arc_controls().each(this.connect_arc_event_handler, this);
+		weapon_control.observe(this.options.weapon_deleted_event, this.weapon_deleted_handler.bindAsEventListener(this));
+	},
+
+	disconnect_event_handlers: function()
+	{
+		//in order for this object to be reclaimed when the weapon is deleted it must detach the handler from document
+		document.stopObserving(this.options.crew_template_changed_event, this.bound_crew_template_changed_handler);
+	},
+
+	weapon_deleted_handler: function(event)
+	{
+		this.disconnect_event_handlers();
 	},
 
 	connect_arc_event_handler: function(arc_control)
