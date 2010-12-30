@@ -4,7 +4,7 @@
 
   * Code available on [Github][2] ([contact Scott][3] with questions, feedback)
 
-  * Discuss in the [Silent Death][4] area of Pair O' Dice Games.
+  * Discuss at the [Metal Express forums][4] or [Pair O' Dice Games][5].
 
    [1]: http://silentdeath.pairodicegames.com/
 
@@ -12,15 +12,17 @@
 
    [3]: http://3dmdesign.com/about
 
-   [4]: http://games-blog.pairodicegames.com/games/silent-death
+   [4]: http://www.metal-express.net/forum/index.php?board=6.0
+
+   [5]: http://games-blog.pairodicegames.com/games/silent-death
 
 ## Description
 
 Quickly and easily build ships for the game Silent Death.
 
-[Silent Death][5] is a space combat miniatures game. This ship builder implements the Starcraft Design System found in Silent Death: The Next Millennium. You will need the rules to play.
+[Silent Death][6] is a space combat miniatures game. This ship builder implements the Starcraft Design System found in Silent Death: The Next Millennium. You will need the rules to play.
 
-   [5]: http://www.ironcrown.com/?page_id=232
+   [6]: http://www.ironcrown.com/?page_id=232
 
 The focus is on automating record-keeping to ease the process of designing ships. Additional features such as limited record-keeping during play might be nice to have in the future.
 
@@ -56,11 +58,11 @@ There are plenty of features yet to be implemented:
 
 ## License (MIT)
 
-Copyright (C) 2010 [Scott Drake][6].
+Copyright (C) 2010 [Scott Drake][7].
 
 Silent Death: The Next Millennium is a trademark of Mythic Entertainment LLC.
 
-   [6]: http://scottdrake.info/
+   [7]: http://scottdrake.info/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
