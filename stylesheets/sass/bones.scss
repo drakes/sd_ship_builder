@@ -1,18 +1,21 @@
+$small: 0.5em;
+$mini: 0.2em;
+
 form
 {
-	margin: 0.2em 0 0.2em 0;
-	padding: 0.2em 0.5em 0.5em 0.5em;
+	margin: $mini 0 $mini 0;
+	padding: $mini $small $small $small;
 }
 
 body > p
 {
-	margin: 0.5em;
+	margin: $small;
 }
 
 h1
 {
 	margin-bottom: 0.1em;
-	padding: 0.2em;
+	padding: $mini;
 	font-size: 2em;
 }
 
@@ -29,7 +32,7 @@ legend
 fieldset
 {
 	overflow: hidden;
-	padding: 0.2em 0.5em 0.2em 0.5em;
+	padding: $mini $small $mini $small;
 	border-width: 2px;
 }
 
@@ -61,31 +64,32 @@ input
 #crew_members
 {
 	overflow: hidden;
-	margin-right: -0.5em;
+	margin-right: -$small;
 }
 
 #damage_track
 {
 	float: left;
 	border-width: 2px;
+
+	div
+	{
+		float: left;
+		width: 1.5em;
+		height: 1em;
+		border-width: 1px;
+		margin: 2px;
+		padding: 2px;
+		font-size: 0.8em;
+	}
+
+	.drive
+	{
+		border-width: 3px;
+		padding: 0;
+	}
 }
 
-#damage_track div
-{
-	float: left;
-	width: 1.5em;
-	height: 1em;
-	border-width: 1px;
-	margin: 2px;
-	padding: 2px;
-	font-size: 0.8em;
-}
-
-#damage_track .drive
-{
-	border-width: 3px;
-	padding: 0;
-}
 
 .current, .separator, .template
 {
@@ -95,13 +99,13 @@ input
 .template_control
 {
 	float: left;
-	margin-right: 0.5em;
+	margin-right: $small;
 }
 
 .crew, .weapon
 {
 	overflow: hidden;
-	margin-bottom: 0.5em;
+	margin-bottom: $small;
 	padding: 0.3em;
 	border-width: 1px;
 }
@@ -109,7 +113,7 @@ input
 .crew
 {
 	float: left;
-	margin-right: 0.5em;
+	margin-right: $small;
 }
 
 .skill_control
@@ -122,26 +126,29 @@ input
 	margin-left: 0.25em;
 }
 
-.weapon .delete
+.weapon
 {
-	float: right;
-}
+	.delete
+	{
+		float: right;
+	}
 
-.weapon .controls
-{
-	float: left;
-	margin-bottom: 0.5em;
-}
+	.controls
+	{
+		float: left;
+		margin-bottom: $small;
+	}
 
-.weapon .controls > span, .weapon .stat
-{
-	float: left;
-	margin-right: 1em;
-}
+	.controls > span, .stat
+	{
+		float: left;
+		margin-right: 1em;
+	}
 
-.weapon .stat
-{
-	margin-bottom: 0.1em;
+	.stat
+	{
+		margin-bottom: 0.1em;
+	}
 }
 
 .firing_arc

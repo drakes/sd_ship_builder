@@ -1,3 +1,5 @@
+$secondary_color: gray;
+
 body
 {
 	color: white;
@@ -22,7 +24,7 @@ legend, .descriptor, .construction_stats
 
 h1 span, legend, .hint
 {
-	color: gray;
+	color: $secondary_color;
 }
 
 fieldset
@@ -63,7 +65,7 @@ fieldset
 .construction_stats
 {
 	font-style: italic;
-	color: gray;
+	color: $secondary_color;
 }
 
 .invalid .current
@@ -118,7 +120,7 @@ fieldset
 
 .crew, .weapon
 {
-	border-color: gray;
+	border-color: $secondary_color;
 	border-style: solid;
 	background-color: rgb(245, 245, 245);
 }
@@ -135,5 +137,5 @@ fieldset
 
 .credit
 {
-	color: gray;
+	color: $secondary_color;
 }
