@@ -4,7 +4,7 @@
 
   * Code available on [Github][2] ([contact Scott][3] with questions, feedback)
 
-  * Discuss at the [Metal Express forums][4] or [Pair O' Dice Games][5].
+  * Discuss at the [Metal Express forums][4] and [Pair O' Dice Games][5].
 
    [1]: http://silentdeath.pairodicegames.com/
 
@@ -56,13 +56,25 @@ There are plenty of features yet to be implemented:
 
   * Encoding serialized designs to shareable URLs
 
-## License (MIT)
+## Development Dependencies
 
-Copyright (C) 2010 [Scott Drake][7].
+In order to work with the code and contribute to the project, you should be familiar with:
+
+  * [Prototype][7] (included)
+
+  * [Sass][8]
+
+   [7]: http://prototypejs.org/
+
+   [8]: http://sass-lang.com/
+
+## License (MIT)
 
 Silent Death: The Next Millennium is a trademark of Mythic Entertainment LLC.
 
-   [7]: http://scottdrake.info/
+Copyright (C) 2010 [Scott Drake][9].
+
+   [9]: http://scottdrake.info/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
