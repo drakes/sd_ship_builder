@@ -119,6 +119,14 @@ var WeaponModel =
 	{
 		var ammo_expansions = this.get_ammo_expansions();
 		var ammo_template = this.get_ammo_template();
+		//some weapons, such as missile launchers, don't have a nice progression and instead list the cost and slots bonuses at each quantity
+		if (Object.isArray(ammo_template))
+		{
+			return {
+				cost: ammo_template[ammo_expansions].cost_bonus,
+				slots: ammo_template[ammo_expansions].slots_bonus
+			};
+		}
 		return {
 			cost: ammo_template.cost * ammo_expansions,
 			slots: ammo_template.slots * ammo_expansions
@@ -181,6 +189,14 @@ var WeaponModel =
 	{
 		var ammo_template = this.get_ammo_template();
 		var options = '';
+		if (Object.isArray(ammo_template))
+		{
+			ammo_template.each(function(ammo, index)
+			{
+				options += '<option value="' + index + '">' + ammo.count + '</option>';
+			});
+			return options;
+		}
 		var ammo_expansions = 0;
 		var ammo = ammo_template.min;
 		while (ammo <= ammo_template.max)

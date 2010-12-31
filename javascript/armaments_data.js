@@ -366,48 +366,38 @@ var ArmamentsData =
 		},
 		speed_restriction: 14
 	},
-	missilelauncher5:
+	missilelauncher:
 	{
-		name: 'Missile Launcher (5)',
+		name: 'Missile Launcher',
 		cost: 1,
 		slots: 1,
 		attack_die: 6,
-		number_of_attack_dice: 5,
+		number_of_attack_dice: '(5 or 10)',
 		damage_index: 6,
 		medium_range: 10,
-		note: 'Lock-on roll required to launch.'
-	},
-	missilelauncher10:
-	{
-		name: 'Missile Launcher (10)',
-		cost: 2,
-		slots: 1,
-		attack_die: 6,
-		number_of_attack_dice: 10,
-		damage_index: 6,
-		medium_range: 10,
-		note: 'Lock-on roll required to launch.'
-	},
-	missilelauncher15:
-	{
-		name: 'Missile Launcher (15)',
-		cost: 3,
-		slots: 2,
-		attack_die: 6,
-		number_of_attack_dice: 15,
-		damage_index: 6,
-		medium_range: 10,
-		note: 'Lock-on roll required to launch.'
-	},
-	missilelauncher20:
-	{
-		name: 'Missile Launcher (20)',
-		cost: 4,
-		slots: 2,
-		attack_die: 6,
-		number_of_attack_dice: 20,
-		damage_index: 6,
-		medium_range: 10,
-		note: 'Lock-on roll required to launch.'
+		ammo:
+		[
+			{
+				count: 5,
+				cost_bonus: 0,
+				slots_bonus: 0
+			},
+			{
+				count: 10,
+				cost_bonus: 1,
+				slots_bonus: 0
+			},
+			{
+				count: 15,
+				cost_bonus: 2,
+				slots_bonus: 1
+			},
+			{
+				count: 20,
+				cost_bonus: 3,
+				slots_bonus: 1
+			}
+		],
+		note: 'Launches salvos of 5 or 10. Lock-on roll required to launch.'
 	}
 };
