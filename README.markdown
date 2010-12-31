@@ -40,6 +40,8 @@ The focus is on automating record-keeping to ease the process of designing ships
 
 There are plenty of features yet to be implemented:
 
+  * Missile loads selectable as ammo (instead of different weapon type entries)
+
   * Torpedoes
 
   * Gunboats and larger ship classes
@@ -55,6 +57,8 @@ There are plenty of features yet to be implemented:
   * Saving designs in cookies or local storage
 
   * Encoding serialized designs to shareable URLs
+
+  * Optimizations and loading speed improvement
 
 ## Development Dependencies
 
@@ -72,7 +76,7 @@ In order to work with the code and contribute to the project, you should be fami
 
 Silent Death: The Next Millennium is a trademark of Mythic Entertainment LLC.
 
-Copyright (C) 2010 [Scott Drake][9].
+Copyright (C) 2009-2010 [Scott Drake][9].
 
    [9]: http://scottdrake.info/
 
