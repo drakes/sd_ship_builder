@@ -1,8 +1,8 @@
 # Silent Death Ship Builder
 
-  * [Try it now][1]
+  * [Try it now][1].
 
-  * Code available on [Github][2] ([contact Scott][3] with questions, feedback)
+  * Code available on [Github][2] ([contact Scott][3] with questions, feedback).
 
   * Discuss at the [Metal Express forums][4] and [Pair O' Dice Games][5].
 
