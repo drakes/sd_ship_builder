@@ -40,8 +40,6 @@ The focus is on automating record-keeping to ease the process of designing ships
 
 There are plenty of features yet to be implemented:
 
-  * Missile loads selectable as ammo (instead of different weapon type entries)
-
   * Torpedoes
 
   * Gunboats and larger ship classes
