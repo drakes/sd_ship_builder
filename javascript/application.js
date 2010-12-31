@@ -11,9 +11,10 @@
 		{ name: 'Armaments', instantiate: true },
 		{ name: 'Weapon' },
 		{ name: 'FiringArc' },
-		{ name: 'DamageTrack', instantiate: true }
+		{ name: 'DamageTrack', instantiate: true },
+		{ name: 'SectionToggle' }
 	];
-	
+
 	var instances =
 	[
 		{
@@ -60,6 +61,14 @@
 			{
 				id: 'damage_reduction',
 				attribute_property: 'damage_reduction'
+			}
+		},
+		{
+			name: 'crew_section_toggle',
+			class_name: 'SectionToggle',
+			options:
+			{
+				id: 'crew_section_toggle'
 			}
 		}
 	];

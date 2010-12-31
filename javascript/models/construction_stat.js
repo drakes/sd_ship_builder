@@ -18,6 +18,7 @@ var ConstructionStatModel =
 			weapon_deleted_event: 'weapon:deleted',
 			crew_changed_event: 'crew:changed',
 			crew_deleted_event: 'crew:deleted',
+			crew_toggled_event: 'crew:toggled',
 
 			//data
 			stat_property: 'stat',
@@ -67,6 +68,11 @@ var ConstructionStatModel =
 		}
 	},
 
+	store_crew_disabled: function(disabled)
+	{
+		this.crew_disabled = disabled;
+	},
+
 	delete_crew: function(crew_id)
 	{
 		this.crew_costs.unset(crew_id);
@@ -97,7 +103,10 @@ var ConstructionStatModel =
 	{
 		var current_stat = this.control_attributes.values().inject(0, this.tally_current);
 		current_stat = this.weapons.values().inject(current_stat, this.tally_current);
-		current_stat = this.crew_costs.values().inject(current_stat, this.tally_current);
+		if (!this.crew_disabled)
+		{
+			current_stat = this.crew_costs.values().inject(current_stat, this.tally_current);
+		}
 		return current_stat;
 	},
 

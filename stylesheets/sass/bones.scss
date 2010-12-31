@@ -1,5 +1,6 @@
 $small: 0.5em;
 $mini: 0.2em;
+$reduced: 0.8em;
 
 form
 {
@@ -26,7 +27,7 @@ h1 span
 
 legend
 {
-	font-size: 0.8em;
+	font-size: $reduced;
 }
 
 fieldset
@@ -38,7 +39,7 @@ fieldset
 
 input
 {
-	font-size: 0.8em;
+	font-size: $reduced;
 }
 
 #cost_control, #slots_control
@@ -67,6 +68,11 @@ input
 	margin-right: -$small;
 }
 
+#crew_members.hide .crew
+{
+	display: none;
+}
+
 #damage_track
 {
 	float: left;
@@ -80,7 +86,7 @@ input
 		border-width: 1px;
 		margin: 2px;
 		padding: 2px;
-		font-size: 0.8em;
+		font-size: $reduced;
 	}
 
 	.drive
@@ -89,7 +95,6 @@ input
 		padding: 0;
 	}
 }
-
 
 .current, .separator, .template
 {
@@ -156,8 +161,43 @@ input
 	clear: left;
 }
 
+.section_toggle
+{
+	float: right;
+	margin:
+	{
+		top: -1em -$mini;
+		right: -$mini;
+	}
+	padding:
+	{
+		left: 0.1em;
+		right: 0.1em;
+	}
+	border-width: 1px;
+	font-size: $reduced;
+}
+
+.section_toggle.hide
+{
+	.toggle_hide
+	{
+		display: none;
+	}
+
+	.toggle_show
+	{
+		display: inline;
+	}
+}
+
+.toggle_show
+{
+	display: none;
+}
+
 .credit
 {
 	margin-top: 1em;
-	font-size: 0.8em;
+	font-size: $reduced;
 }

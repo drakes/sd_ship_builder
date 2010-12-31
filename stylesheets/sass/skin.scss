@@ -1,4 +1,5 @@
 $secondary_color: gray;
+$very_light: rgb(245, 245, 245);
 
 body
 {
@@ -29,8 +30,11 @@ h1 span, legend, .hint
 
 fieldset
 {
-	border-style: groove;
-	border-color: rgb(222, 222, 222);
+	border:
+	{
+		style: groove;
+		color: rgb(222, 222, 222);
+	}
 }
 
 #crew_control .template
@@ -41,8 +45,11 @@ fieldset
 
 #damage_track, #damage_track div
 {
-	border-style: solid;
-	border-color: black;
+	border:
+	{
+		style: solid;
+		color: black;
+	}
 	text-align: center;
 }
 
@@ -120,9 +127,12 @@ fieldset
 
 .crew, .weapon
 {
-	border-color: $secondary_color;
-	border-style: solid;
-	background-color: rgb(245, 245, 245);
+	border:
+	{
+		color: $secondary_color;
+		style: solid;
+	}
+	background-color: $very_light;
 }
 
 .crew_type
@@ -133,6 +143,24 @@ fieldset
 .note_container
 {
 	font-style: italic;
+}
+
+.section_toggle
+{
+	border:
+	{
+		color: $secondary_color;
+		style: solid;
+	}
+	color: $secondary_color;
+	background-color: white;
+	cursor: pointer;
+
+	&:hover
+	{
+		background-color: $very_light;
+		border-style: outset;
+	}
 }
 
 .credit

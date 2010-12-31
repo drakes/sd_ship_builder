@@ -6,12 +6,16 @@ var CrewMembersModel =
 		{
 			//selectors and css
 			id: 'crew_members',
+			section_toggle_id: 'crew_section_toggle',
 			crew_class: 'crew',
 			crew_tag: 'div',
+			hide_class: 'hide',
 
 			//events
 			crew_template_changed_event: 'crew_template:changed',
 			crew_deleted_event: 'crew:deleted',
+			section_toggled_event: 'section:toggled',
+			crew_toggled_event: 'crew:toggled',
 
 			//crew data
 			template:
