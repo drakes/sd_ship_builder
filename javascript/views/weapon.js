@@ -22,14 +22,16 @@ var WeaponView =
 		var controls = new Element('span', { 'class': 'controls' });
 		var type_control = new Element('span', { 'class': 'type_control' });
 		var type_selector = new Element('select', { 'class': this.options.type_class });
-		type_selector.update(this.create_type_options());
-		type_control.insert('<label for="' + type_selector.identify() + '" class="descriptor">Type: </label>');
+		var type_id = type_selector.identify();
+		type_control.insert('<label for="' + type_id + '" class="descriptor">Type: </label>');
 		var multiple_selector = new Element('select', { 'class': this.options.multiple_class });
+		var multiple_id = multiple_selector.identify();
 		type_control.insert(multiple_selector);
 		type_control.insert(type_selector);
 		type_control.insert('<span class="construction_stats"> (cost: <span class="' + this.options.cost_class + '"></span> slots: <span class="' + this.options.slots_class + '"></span>)</span>');
 		var ammo_control = new Element('span', { 'class': this.options.ammo_class });
 		var ammo_selector = new Element('select');
+		var ammo_id = ammo_selector.identify();
 		ammo_control.insert('<label for=' + ammo_selector.identify() + '" class="descriptor">Ammo: </label>');
 		ammo_control.insert(ammo_selector);
 		ammo_control.insert('<span class="construction_stats"> (cost: <span class="' + this.options.cost_class + '">0</span> slots: <span class="' + this.options.slots_class + '">0</span>)</span>');
@@ -39,6 +41,11 @@ var WeaponView =
 		weapon_control.insert(controls);
 
 		this.create_stats(weapon_control);
+		return {
+			type: type_id,
+			multiple: multiple_id,
+			ammo: ammo_id
+		};
 	},
 	
 	create_stats: function(weapon_control)
@@ -60,11 +67,14 @@ var WeaponView =
 		var multiple_selector = $(this.options.id).down('.' + this.options.multiple_class);
 		if (weapon_template.multiples)
 		{
-			multiple_selector.update(this.create_multiples_options()).show();
+			var multiples_options = this.create_multiples_options();
+			this.multiple_select.update_options(multiples_options);
+			this.multiple_select.set(multiples_options[0].key);
+			multiple_selector.show();
 		}
 		else
 		{
-			multiple_selector.update().hide();
+			multiple_selector.hide();
 		}
 	},
 
@@ -74,13 +84,14 @@ var WeaponView =
 		var ammo_selector = this.find_ammo_selector();
 		if (ammo_template)
 		{
-			ammo_selector.update(this.create_ammo_options());
+			var ammo_options = this.create_ammo_options();
+			this.ammo_select.update_options(ammo_options);
+			this.ammo_select.set(ammo_options[0].key);
 			ammo_control.show();
 		}
 		else
 		{
 			ammo_control.hide();
-			ammo_selector.update();
 		}
 	},
 

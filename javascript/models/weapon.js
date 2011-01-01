@@ -29,6 +29,7 @@ var WeaponModel =
 			deleted_event: 'weapon:deleted',
 			changed_event: 'weapon:changed',
 			firing_arc_changed_event: 'firing_arc:changed',
+			selection_changed_event: 'selection:changed',
 
 			//weapon templates
 			data: null,
@@ -41,25 +42,36 @@ var WeaponModel =
 		this.firing_arc_stats = { cost: 0, slots: 0 };
 
 		this.decorate_control();
-		this.create_controls();
+		this.initialize_controls();
 		this.type_change_handler();
 		this.connect_event_handlers();
 		this.create_firing_arc(current_crew_size);
 	},
 
+	initialize_controls: function()
+	{
+		var ids = this.create_controls();
+		this.type_select = new EasySelect({ id: ids.type });
+		var type_options = this.create_type_options();
+		this.type_select.update_options(type_options);
+		this.type_select.set(type_options[0].key);
+		this.multiple_select = new EasySelect({ id: ids.multiple });
+		this.ammo_select = new EasySelect({ id: ids.ammo });
+	},
+
 	get_weapon_type: function()
 	{
-		return $(this.options.id).down('.' + this.options.type_class).getValue();
+		return this.type_select.get();
 	},
 
 	get_multiple_key: function()
 	{
-		return $(this.options.id).down('.' + this.options.multiple_class).getValue();
+		return this.multiple_select.get();
 	},
 
 	get_ammo_expansions: function()
 	{
-		return Number(this.find_ammo_selector().getValue());
+		return Number(this.ammo_select.get());
 	},
 
 	get_weapon_template: function()
@@ -169,39 +181,56 @@ var WeaponModel =
 
 	create_type_options: function()
 	{
-		return $H(this.options.data).inject('', function(options, pair)
+		return $H(this.options.data).collect(function(pair)
 		{
-			return options + '<option value="' + pair.key + '"' + (!options ? ' selected="selected"' : '') + '>' + pair.value.name + '</option>';
+			return {
+				key: pair.key,
+				value: pair.value.name
+			};
 		});
 	},
 
 	create_multiples_options: function()
 	{
 		var multiples = $H(this.get_weapon_template().multiples);
-		var first_option = '<option value="">Single</option>';
-		return multiples.keys().inject(first_option, function(options, multiple_key)
+		var options = multiples.collect(function(pair)
 		{
-			return options + '<option value="' + multiple_key + '">' + this.options.multiples_names[multiple_key] + '</option>';
+			return {
+				key: pair.key,
+				value: this.options.multiples_names[pair.key]
+			};
 		}, this);
+		options.unshift(
+		{
+			key: '',
+			value: 'Single'
+		});
+		return options;
 	},
 
 	create_ammo_options: function()
 	{
 		var ammo_template = this.get_ammo_template();
-		var options = '';
 		if (Object.isArray(ammo_template))
 		{
-			ammo_template.each(function(ammo, index)
+			return ammo_template.collect(function(ammo, index)
 			{
-				options += '<option value="' + index + '">' + ammo.count + '</option>';
+				return {
+					key: index,
+					value: ammo.count
+				};
 			});
-			return options;
 		}
 		var ammo_expansions = 0;
 		var ammo = ammo_template.min;
+		var options = [];
 		while (ammo <= ammo_template.max)
 		{
-			options += '<option value="' + ammo_expansions + '">' + ammo + '</option>';
+			options.push(
+			{
+				key: ammo_expansions,
+				value: ammo
+			});
 			ammo += ammo_template.add;
 			ammo_expansions++;
 		}

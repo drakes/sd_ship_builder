@@ -38,6 +38,10 @@ var EasySelectModel =
 	format_option_data: function(pairs)
 	{
 		var option_pairs = [];
+		if (!pairs)
+		{
+			return option_pairs;
+		}
 		if (Object.isString(pairs[0]) || Object.isNumber(pairs[0]))
 		{
 			option_pairs = pairs.collect(function(key)

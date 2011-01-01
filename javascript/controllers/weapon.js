@@ -5,9 +5,9 @@ var WeaponController =
 		var weapon_control = $(this.options.id);
 		weapon_control.observe('click', this.click_handler.bindAsEventListener(this));
 		weapon_control.observe(this.options.firing_arc_changed_event, this.firing_arc_changed_handler.bindAsEventListener(this));
-		weapon_control.down('.' + this.options.type_class).observe('change', this.type_change_handler.bindAsEventListener(this));
-		weapon_control.down('.' + this.options.multiple_class).observe('change', this.multiples_change_handler.bindAsEventListener(this));
-		this.find_ammo_selector().observe('change', this.ammo_change_handler.bindAsEventListener(this));
+		weapon_control.down('.' + this.options.type_class).observe(this.options.selection_changed_event, this.type_change_handler.bindAsEventListener(this));
+		weapon_control.down('.' + this.options.multiple_class).observe(this.options.selection_changed_event, this.multiples_change_handler.bindAsEventListener(this));
+		this.find_ammo_selector().observe(this.options.selection_changed_event, this.ammo_change_handler.bindAsEventListener(this));
 	},
 
 	click_handler: function(event)
