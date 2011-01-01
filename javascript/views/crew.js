@@ -25,25 +25,26 @@ var CrewView =
 		if (pilot)
 		{
 			crew_control.insert('<span class="crew_type">Pilot</span>');
-			this.create_skill(crew_control, pilot);
+			this.piloting_id = this.create_skill(crew_control, pilot);
 		}
 		else
 		{
 			crew_control.insert('<span class="crew_type">Gunner</span>');
 		}
-		this.create_skill(crew_control);
+		this.gunnery_id = this.create_skill(crew_control);
 	},
 
 	create_skill: function(crew_control, piloting)
 	{
 		var skill_control = new Element('span', { 'class': this.options.skill_control_class });
 		var skill_selector = new Element('select', { 'class': this.options.skill_class });
-		skill_selector.update(this.create_skill_options(piloting));
-		skill_control.insert('<label for="' + skill_selector.identify() + '" class="descriptor">' + (piloting ? 'Piloting' : 'Gunnery') + ': </label>');
+		var skill_id = skill_selector.identify();
+		skill_control.insert('<label for="' + skill_id + '" class="descriptor">' + (piloting ? 'Piloting' : 'Gunnery') + ': </label>');
 		skill_control.insert(skill_selector);
 		skill_control.insert('<span class="skill_die_container">1d<span class="' + this.options.skill_die_class + '"></span> </span><span>' + (piloting ? 'tight turn cost' : 'attack bonus') + '</span>');
 		skill_control.insert('<span class="construction_stats"> (cost: <span class="' + this.options.cost_class + '"></span>) </span>');
 		crew_control.insert(skill_control);
+		return skill_id;
 	},
 
 	update_skill_die: function(index, skill_template, piloting)
