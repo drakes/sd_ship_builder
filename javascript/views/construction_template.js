@@ -12,17 +12,14 @@ var ConstructionTemplateView =
 		this.ship_class_select.add_hint(hint);
 	},
 
-	refresh_selector: function(options, selector_id)
+	refresh_selector: function(options, selector_id, easy_select)
 	{
 		var selector = $(selector_id);
 		var text_element = this.find_selector_template(selector);
 		if (options.length > 1)
 		{
-			var options_html = options.inject('', function(html, value)
-			{
-				return html + '<option value="' + value + '"' + (!html ? 'selected="selected"' : '') + '>' + value + '</option>';
-			});
-			selector.update(options_html).show();
+			easy_select.update_options(options);
+			selector.show();
 			text_element.hide();
 		}
 		else

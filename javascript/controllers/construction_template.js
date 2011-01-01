@@ -3,17 +3,17 @@ var ConstructionTemplateController =
 	connect_event_handlers: function()
 	{
 		$(this.options.ship_class_id).observe(this.options.selection_changed_event, this.ship_class_change_handler.bindAsEventListener(this));
-		$(this.options.tons_id).observe('change', this.tons_change_handler.bindAsEventListener(this));
-		$(this.options.crew_id).observe('change', this.crew_change_handler.bindAsEventListener(this));
+		$(this.options.tons_id).observe(this.options.selection_changed_event, this.tons_change_handler.bindAsEventListener(this));
+		$(this.options.crew_id).observe(this.options.selection_changed_event, this.crew_change_handler.bindAsEventListener(this));
 	},
 
 	ship_class_change_handler: function(event)
 	{
-		var ship_class = this.get_ship_class();
+		var ship_class = event.memo.value;
 		if (ship_class)
 		{
-			var tons = this.refresh_selector(this.get_tons_options(ship_class), this.options.tons_id);
-			var crew = this.refresh_selector(this.get_crew_options(ship_class, tons), this.options.crew_id);
+			var tons = this.refresh_selector(this.get_tons_options(ship_class), this.options.tons_id, this.tons_select);
+			var crew = this.refresh_selector(this.get_crew_options(ship_class, tons), this.options.crew_id, this.crew_select);
 			this.send_update(ship_class, tons, crew);
 		}
 	},
@@ -21,8 +21,8 @@ var ConstructionTemplateController =
 	tons_change_handler: function(event)
 	{
 		var ship_class = this.get_ship_class();
-		var tons = this.get_tons();
-		var crew = this.refresh_selector(this.get_crew_options(ship_class, tons), this.options.crew_id);
+		var tons = event.memo.value;
+		var crew = this.refresh_selector(this.get_crew_options(ship_class, tons), this.options.crew_id, this.crew_select);
 		this.send_update(ship_class, tons, crew);
 	},
 
@@ -30,7 +30,7 @@ var ConstructionTemplateController =
 	{
 		var ship_class = this.get_ship_class();
 		var tons = this.get_tons();
-		var crew = this.get_crew();
+		var crew = event.memo.value;
 		this.send_update(ship_class, tons, crew);
 	},
 

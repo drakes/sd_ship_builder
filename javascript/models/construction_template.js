@@ -25,14 +25,16 @@ var ConstructionTemplateModel =
 		};
 		Object.extend(this.options, options);
 
-		this.initialize_ship_classes();
+		this.initialize_selectors();
 		this.connect_event_handlers();
 	},
 
-	initialize_ship_classes: function()
+	initialize_selectors: function()
 	{
 		this.ship_class_select = new EasySelect({ id: this.options.ship_class_id });
 		this.fill_ship_classes(this.get_ship_class_options(), this.options.ship_class_hint);
+		this.tons_select = new EasySelect({ id: this.options.tons_id });
+		this.crew_select = new EasySelect({ id: this.options.crew_id });
 	},
 
 	get_ship_class_options: function()
@@ -78,20 +80,20 @@ var ConstructionTemplateModel =
 
 	get_tons: function()
 	{
-		return this.get_template_value(this.options.tons_id);
+		return this.get_template_value(this.options.tons_id, this.tons_select);
 	},
 	
 	get_crew: function()
 	{
-		return this.get_template_value(this.options.crew_id);
+		return this.get_template_value(this.options.crew_id, this.crew_select);
 	},
 	
-	get_template_value: function(selector_id)
+	get_template_value: function(selector_id, easy_select)
 	{
 		var selector = $(selector_id);
 		if (selector.visible())
 		{
-			return $F(selector);
+			return easy_select.get();
 		}
 		else
 		{
