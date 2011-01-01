@@ -3,6 +3,7 @@
 	//instantiate: true to create a single instance immediately
 	var classes =
 	[
+		{ name: 'EasySelect' },
 		{ name: 'ConstructionTemplate', instantiate: true },
 		{ name: 'ConstructionStat' },
 		{ name: 'Attribute' },

@@ -3,7 +3,7 @@ var AttributeController =
 	connect_event_handlers: function()
 	{
 		document.observe(this.options.template_changed_event, this.template_changed_handler.bindAsEventListener(this));
-		$(this.options.id).observe('change', this.attribute_changed_handler.bindAsEventListener(this));
+		$(this.options.id).observe(this.options.selection_changed_event, this.selection_changed_handler.bindAsEventListener(this));
 	},
 
 	template_changed_handler: function(event)
@@ -14,16 +14,15 @@ var AttributeController =
 		this.send_update();
 	},
 
-	attribute_changed_handler: function(event)
+	selection_changed_handler: function(event)
 	{
 		this.refresh_construction_stats(this.get_template());
-		this.send_update();
+		this.send_update(event.memo.value);
 	},
 
-	send_update: function()
+	send_update: function(value)
 	{
-		var attribute = $(this.options.id);
-		var value = $F(attribute);
+		value = value === undefined ? this.select.get() : value;
 		var memo =
 		{
 			id: this.options.id,
@@ -31,6 +30,6 @@ var AttributeController =
 			value: value
 		};
 		var attribute_construction = this.get_template()[value];
-		attribute.fire(this.options.attribute_changed_event, Object.extend(memo, attribute_construction));
+		$(this.options.id).fire(this.options.attribute_changed_event, Object.extend(memo, attribute_construction));
 	}
 };

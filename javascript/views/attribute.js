@@ -5,14 +5,11 @@ var AttributeView =
 		var attribute_values = $H(template).keys();
 		var attribute = $(this.options.id);
 		var attribute_control = attribute.up();
-		var last_value = $F(attribute);
+		var last_value = this.select.get();
 		last_value = attribute_values.include(last_value) ? last_value : attribute_values.first();
 		
-		var options = attribute_values.inject('', function(html, value)
-		{
-			return html + '<option value="' + value + '"' + (value == last_value ? 'selected="selected"' : '') + '>' + value + '</option>';
-		});
-		attribute.update(options);
+		this.select.update_options(attribute_values);
+		this.select.set(last_value);
 
 		this.refresh_construction_stats(template);
 		attribute_control.show();
@@ -20,9 +17,8 @@ var AttributeView =
 
 	refresh_construction_stats: function(template)
 	{
-		var attribute = $(this.options.id);
-		var attribute_control = attribute.up();
-		var value = $F(attribute);
+		var attribute_control = $(this.options.id).up();
+		var value = this.select.get();
 		attribute_control.down('.' + this.options.cost_class).update(template[value].cost);
 		attribute_control.down('.' + this.options.slots_class).update(template[value].slots);
 	}
