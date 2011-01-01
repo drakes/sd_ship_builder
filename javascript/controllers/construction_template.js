@@ -2,7 +2,7 @@ var ConstructionTemplateController =
 {
 	connect_event_handlers: function()
 	{
-		$(this.options.ship_class_id).observe('change', this.ship_class_change_handler.bindAsEventListener(this));
+		$(this.options.ship_class_id).observe(this.options.selection_changed_event, this.ship_class_change_handler.bindAsEventListener(this));
 		$(this.options.tons_id).observe('change', this.tons_change_handler.bindAsEventListener(this));
 		$(this.options.crew_id).observe('change', this.crew_change_handler.bindAsEventListener(this));
 	},
@@ -12,7 +12,6 @@ var ConstructionTemplateController =
 		var ship_class = this.get_ship_class();
 		if (ship_class)
 		{
-			this.strip_hint(event.findElement());
 			var tons = this.refresh_selector(this.get_tons_options(ship_class), this.options.tons_id);
 			var crew = this.refresh_selector(this.get_crew_options(ship_class, tons), this.options.crew_id);
 			this.send_update(ship_class, tons, crew);

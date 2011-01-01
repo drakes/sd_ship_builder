@@ -14,6 +14,10 @@ var EasySelectController =
 		var value = this.get();
 		if (this.has_changed(value))
 		{
+			if (this.options.disappearing_hint)
+			{
+				this.remove_hint();
+			}
 			this.send_update(value);
 		}
 	},
@@ -37,7 +41,15 @@ var EasySelectController =
 	update_options: function(keys)
 	{
 		var value = this.get();
-		this.replace_options(keys);
-		this.set(value);
+		this.replace_options(this.format_option_data(keys));
+		if (value)
+		{
+			this.set(value);
+		}
+	},
+
+	add_hint: function(hint)
+	{
+		this.prepend_hint(hint);
 	}
 };

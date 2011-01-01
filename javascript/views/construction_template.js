@@ -6,14 +6,10 @@ var ConstructionTemplateView =
 		return selector.up().down('.' + this.options.template_class);
 	},
 
-	fill_ship_classes: function(ship_class_options)
+	fill_ship_classes: function(ship_class_options, hint)
 	{
-		var ship_class_element = $(this.options.ship_class_id);
-		ship_class_options.each(function(class_id_and_name, index)
-		{
-			ship_class_element.insert('<option value="' + class_id_and_name.key + '">' + class_id_and_name.value + '</option>');
-		});
-		ship_class_element.insert({ top: '<option value="" class="' + this.options.hint_class + '">Select a ship class</option>' });
+		this.ship_class_select.update_options(ship_class_options);
+		this.ship_class_select.add_hint(hint);
 	},
 
 	refresh_selector: function(options, selector_id)
@@ -37,14 +33,5 @@ var ConstructionTemplateView =
 		}
 		selector.up().show();
 		return options.first();
-	},
-
-	strip_hint: function(element)
-	{
-		var hint = element.down('.' + this.options.hint_class);
-		if (hint)
-		{
-			hint.remove();
-		}
 	}
 };

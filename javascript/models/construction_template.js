@@ -15,15 +15,24 @@ var ConstructionTemplateModel =
 			template_changed_event: 'template:changed',
 			tons_changed_event: 'tons:changed',
 			crew_template_changed_event: 'crew_template:changed',
+			selection_changed_event: 'selection:changed',
+
+			//presentation text
+			ship_class_hint: 'Select a ship class',
 
 			//templates
 			data: null
 		};
 		Object.extend(this.options, options);
 
-		this.fill_ship_classes(this.get_ship_class_options());
-		this.select_ship_classes_hint();
+		this.initialize_ship_classes();
 		this.connect_event_handlers();
+	},
+
+	initialize_ship_classes: function()
+	{
+		this.ship_class_select = new EasySelect({ id: this.options.ship_class_id });
+		this.fill_ship_classes(this.get_ship_class_options(), this.options.ship_class_hint);
 	},
 
 	get_ship_class_options: function()
@@ -64,7 +73,7 @@ var ConstructionTemplateModel =
 
 	get_ship_class: function()
 	{
-		return $F(this.options.ship_class_id);
+		return this.ship_class_select.get();
 	},
 
 	get_tons: function()
@@ -88,11 +97,5 @@ var ConstructionTemplateModel =
 		{
 			return this.find_selector_template(selector).innerHTML;
 		}
-	},
-
-	select_ship_classes_hint: function()
-	{
-		//the hint is placed at the top; this is a workaround for Opera's tendency to show the last option in the control
-		$(this.options.ship_class_id).selectedIndex = 0;
 	}
 };
