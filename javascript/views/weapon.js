@@ -43,11 +43,11 @@ var WeaponView =
 	
 	create_stats: function(weapon_control)
 	{
-		weapon_control.insert('<span class="stat"><span class="descriptor"> Base Attack Dice: </span><span class="' + this.options.attack_dice_class + '"></span></span>');
-		weapon_control.insert('<span class="stat"><span class="descriptor"> Damage: </span><span class="' + this.options.damage_class + '"></span>');
-		weapon_control.insert('<span class="stat"><span class="descriptor"> Target Speed Restriction: </span><span class="' + this.options.speed_restriction_class + '"></span>');
-		weapon_control.insert('<span class="' + this.options.range_class + ' stat"><span class="descriptor"> Range: </span><span class="descriptor"> Short (+1): </span><span class="' + this.options.short_class + '"></span><span class="descriptor"> Medium (0): </span><span class="' + this.options.medium_class + '"></span><span class="descriptor"> Long (-1): </span><span class="' + this.options.long_class + '"></span></span>');
-		weapon_control.insert('<span class="' + this.options.note_container_class + ' stat" style="display: none;"><span class="descriptor"> Note: </span><span class="' + this.options.note_class + '"></span></span>');
+		weapon_control.insert('<span class="stat"><span class="descriptor">Base Attack Dice: </span><span class="' + this.options.attack_dice_class + '"></span></span>');
+		weapon_control.insert('<span class="stat"><span class="descriptor">Damage: </span><span class="' + this.options.damage_class + '"></span>');
+		weapon_control.insert('<span class="stat"><span class="descriptor">Target Speed Restriction: </span><span class="' + this.options.speed_restriction_class + '"></span>');
+		weapon_control.insert('<span class="' + this.options.range_class + ' stat"><span class="descriptor">Range: </span><span class="descriptor">Short (+1): </span><span class="' + this.options.short_class + '"></span><span class="descriptor">Medium (0): </span><span class="' + this.options.medium_class + '"></span><span class="descriptor">Long (-1): </span><span class="' + this.options.long_class + '"></span></span>');
+		weapon_control.insert('<span class="' + this.options.note_container_class + ' stat" style="display: none;"><span class="descriptor">Note: </span><span class="' + this.options.note_class + '"></span></span>');
 	},
 
 	decorate_control: function()
