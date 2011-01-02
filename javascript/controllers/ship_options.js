@@ -3,7 +3,7 @@ var ShipOptionsController =
 	connect_event_handlers: function()
 	{
 		$(this.options.selector_id).observe(this.options.selection_changed_event, this.add_option_changed_handler.bindAsEventListener(this));
-		$(this.options.id).on('click', this.options.delete_class, this.delete_handler.bind(this));
+		$(this.options.id).on(this.options.option_deleted_event, this.option_delete_handler.bind(this));
 		document.observe(this.options.template_changed_event, this.template_changed_handler.bindAsEventListener(this));
 	},
 
@@ -19,10 +19,9 @@ var ShipOptionsController =
 		this.remove_select_option(event.memo.value);
 	},
 
-	delete_handler: function(event, delete_button)
+	option_delete_handler: function(event)
 	{
-		event.stop();
-		var deleted_id = this.find_option_id(delete_button);
+		var deleted_id = event.memo;
 		this.reinstate_select_option(deleted_id);
 	}
 };

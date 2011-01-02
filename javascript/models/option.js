@@ -25,8 +25,8 @@ var OptionModel =
 
 		this.current_keys = [];
 
-		this.initialize_controls();
 		this.connect_event_handlers();
+		this.initialize_controls();
 	},
 
 	initialize_controls: function()
@@ -37,7 +37,8 @@ var OptionModel =
 			var select = new EasySelect({ id: id });
 			var dimension_options = this.create_dimension_options(index);
 			select.update_options(dimension_options);
-			select.set(dimension_options[0]);
+			var first_key = this.options.data.dimensions[index].spread ? dimension_options[0].key : dimension_options[0];
+			select.set(first_key, true);
 		}, this);
 	},
 
@@ -72,6 +73,10 @@ var OptionModel =
 
 	get_stats: function()
 	{
+		if (this.current_keys.length != this.options.data.dimensions.length)
+		{
+			return;
+		}
 		var set = $H(this.options.data.data);
 		var i = 0;
 		while (i < this.current_keys.length - 1)

@@ -32,10 +32,14 @@ var EasySelectController =
 		return $F(this.options.id);
 	},
 
-	set: function(value)
+	set: function(value, force_update)
 	{
 		this.store_value(value);
 		$(this.options.id).setValue(value);
+		if (force_update)
+		{
+			this.send_update(value);
+		}
 	},
 
 	update_options: function(keys)

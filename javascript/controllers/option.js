@@ -3,7 +3,7 @@ var OptionController =
 	connect_event_handlers: function()
 	{
 		var option_control = $(this.options.id);
-		option_control.on('click', this.options.delete_class, this.delete_handler.bind(this));
+		option_control.on('click', '.' + this.options.delete_class, this.delete_handler.bind(this));
 		option_control.on(this.options.selection_changed_event, 'select', this.selection_changed_handler.bind(this));
 	},
 
@@ -22,6 +22,11 @@ var OptionController =
 		var index = this.find_selector_index(selector);
 		this.store_key(event.memo.value, index);
 		var stats = this.get_stats();
+		if (!stats)
+		{
+			//during initialization with multiple dimensions wait until stats are available (all dimensions have changed)
+			return;
+		}
 		this.refresh_construction_stats(stats);
 		this.send_update(stats);
 	},

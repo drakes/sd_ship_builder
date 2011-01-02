@@ -13,6 +13,7 @@ var ShipOptionsModel =
 
 			//events
 			template_changed_event: 'template:changed',
+			option_deleted_event: 'option:deleted',
 			selection_changed_event: 'selection:changed',
 
 			//presentation text
@@ -73,6 +74,13 @@ var ShipOptionsModel =
 
 	reinstate_select_option: function(option_id)
 	{
-		this.option_select.add_option(this.keys_by_id.get(option_id));
+		var key = this.keys_by_id.get(option_id);
+		var value = this.options.data[key].name;
+		this.option_select.add_option(
+		{
+			key: key,
+			value: value
+		});
+		this.option_select.set('');
 	}
 };

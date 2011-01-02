@@ -2,7 +2,7 @@ var OptionView =
 {
 	find_selector_index: function(selector)
 	{
-		var previous_siblings = selector.up('.option_controls').previousSiblings();
+		var previous_siblings = selector.up().previousSiblings();
 		var previous_select_containers = previous_siblings.findAll(function(element)
 		{
 			return element.down('select');
