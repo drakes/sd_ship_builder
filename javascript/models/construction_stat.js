@@ -16,6 +16,8 @@ var ConstructionStatModel =
 			attribute_changed_event: 'attribute:changed',
 			weapon_changed_event: 'weapon:changed',
 			weapon_deleted_event: 'weapon:deleted',
+			option_changed_event: 'option:changed',
+			option_deleted_event: 'option:deleted',
 			crew_changed_event: 'crew:changed',
 			crew_deleted_event: 'crew:deleted',
 			crew_toggled_event: 'crew:toggled',
@@ -30,6 +32,7 @@ var ConstructionStatModel =
 		this.crew_size = 1;
 		this.control_attributes = $H();
 		this.weapons = $H();
+		this.ship_options = $H();
 		this.crew_costs = $H();
 
 		this.connect_event_handlers();
@@ -58,6 +61,16 @@ var ConstructionStatModel =
 	delete_weapon: function(weapon_id)
 	{
 		this.weapons.unset(weapon_id);
+	},
+
+	store_option: function(option_package)
+	{
+		this.ship_options.set(option_package.id, option_package[this.options.stat_property]);
+	},
+
+	delete_option: function(option_id)
+	{
+		this.ship_options.unset(option_id);
 	},
 
 	store_crew: function(crew_package)
@@ -103,6 +116,7 @@ var ConstructionStatModel =
 	{
 		var current_stat = this.control_attributes.values().inject(0, this.tally_current);
 		current_stat = this.weapons.values().inject(current_stat, this.tally_current);
+		current_stat = this.ship_options.values().inject(current_stat, this.tally_current);
 		if (!this.crew_disabled)
 		{
 			current_stat = this.crew_costs.values().inject(current_stat, this.tally_current);

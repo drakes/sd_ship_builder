@@ -125,7 +125,7 @@ fieldset
 	color: rgb(128, 0, 0);
 }
 
-.crew, .weapon
+.crew, .weapon, .ship_option
 {
 	border:
 	{
@@ -135,7 +135,7 @@ fieldset
 	background-color: $very_light;
 }
 
-.crew_type
+.crew_type, .option_type
 {
 	background-color: rgb(196, 196, 196);
 }

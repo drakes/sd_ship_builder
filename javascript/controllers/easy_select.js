@@ -48,6 +48,16 @@ var EasySelectController =
 		}
 	},
 
+	remove_option: function(key)
+	{
+		this.remove_option_by_key(key);
+	},
+
+	add_option: function(key)
+	{
+		this.append_options(this.format_option_data(key));
+	},
+
 	add_hint: function(hint)
 	{
 		this.prepend_hint(hint);

@@ -27,7 +27,7 @@ var EasySelectModel =
 			return false;
 		}
 		this.store_value(value);
-		return true;
+		return !this.hint_selected();
 	},
 
 	store_value: function(value)
@@ -41,6 +41,10 @@ var EasySelectModel =
 		if (!pairs)
 		{
 			return option_pairs;
+		}
+		if (!Object.isArray(pairs))
+		{
+			pairs = [pairs];
 		}
 		if (Object.isString(pairs[0]) || Object.isNumber(pairs[0]))
 		{

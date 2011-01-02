@@ -12,6 +12,8 @@
 		{ name: 'Armaments', instantiate: true },
 		{ name: 'Weapon' },
 		{ name: 'FiringArc' },
+		{ name: 'ShipOptions', instantiate: true },
+		{ name: 'Option' },
 		{ name: 'DamageTrack', instantiate: true },
 		{ name: 'SectionToggle' }
 	];

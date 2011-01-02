@@ -7,6 +7,8 @@ var ConstructionStatController =
 		document.observe(this.options.attribute_changed_event, this.attribute_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.weapon_changed_event, this.weapon_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.weapon_deleted_event, this.weapon_deleted_handler.bindAsEventListener(this));
+		document.observe(this.options.option_changed_event, this.option_changed_handler.bindAsEventListener(this));
+		document.observe(this.options.option_deleted_event, this.option_deleted_handler.bindAsEventListener(this));
 		document.observe(this.options.crew_changed_event, this.crew_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.crew_deleted_event, this.crew_deleted_handler.bindAsEventListener(this));
 		document.observe(this.options.crew_toggled_event, this.crew_toggled_handler.bindAsEventListener(this));
@@ -39,6 +41,18 @@ var ConstructionStatController =
 	weapon_deleted_handler: function(event)
 	{
 		this.delete_weapon(event.memo);
+		this.refresh();
+	},
+
+	option_changed_handler: function(event)
+	{
+		this.store_option(event.memo);
+		this.refresh();
+	},
+
+	option_deleted_handler: function(event)
+	{
+		this.delete_option(event.memo);
 		this.refresh();
 	},
 
