@@ -42,7 +42,9 @@ There are plenty of features yet to be implemented:
 
   * Torpedoes
 
-  * Gunboats and larger ship classes
+  * Scouts and shuttles
+
+  * Gunboats, freighters, and larger ship classes
 
   * Ship options
 
