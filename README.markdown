@@ -46,7 +46,7 @@ There are plenty of features yet to be implemented:
 
   * Gunboats, freighters, and larger ship classes
 
-  * Ship options
+  * More ship options
 
   * Ship quirks
 
