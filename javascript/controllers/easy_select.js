@@ -55,11 +55,13 @@ var EasySelectController =
 	remove_option: function(key)
 	{
 		this.remove_option_by_key(key);
+		this.toggle_by_option_presence();
 	},
 
 	add_option: function(key)
 	{
 		this.append_options(this.format_option_data(key));
+		this.toggle_by_option_presence();
 	},
 
 	add_hint: function(hint)

@@ -50,5 +50,19 @@ var EasySelectView =
 			return select.childElements()[index].hasClassName(this.options.hint_class);
 		}
 		return false;
+	},
+
+	toggle_by_option_presence: function()
+	{
+		var select = $(this.options.id);
+		var options = select.childElements();
+		if (!options.length || options.length == 1 && options[0].hasClassName(this.options.hint_class))
+		{
+			select.hide();
+		}
+		else
+		{
+			select.show();
+		}
 	}
 };

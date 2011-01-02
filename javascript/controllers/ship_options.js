@@ -4,12 +4,13 @@ var ShipOptionsController =
 	{
 		$(this.options.selector_id).observe(this.options.selection_changed_event, this.add_option_changed_handler.bindAsEventListener(this));
 		$(this.options.id).on(this.options.option_deleted_event, this.option_delete_handler.bind(this));
-		document.observe(this.options.template_changed_event, this.template_changed_handler.bindAsEventListener(this));
+		this.template_observer = $(document).on(this.options.template_changed_event, this.template_changed_handler.bind(this));
 	},
 
 	template_changed_handler: function(event)
 	{
 		$(this.options.selector_id).show();
+		this.template_observer.stop();
 	},
 
 	add_option_changed_handler: function(event)

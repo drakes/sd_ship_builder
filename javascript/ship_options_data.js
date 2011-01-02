@@ -7,7 +7,7 @@ var ShipOptionsData =
 		dimensions:
 		[
 			{
-				name: 'Success',
+				name: 'Success (1d10)',
 				spread: true
 			},
 			{
