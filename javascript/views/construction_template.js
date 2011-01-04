@@ -3,7 +3,7 @@ var ConstructionTemplateView =
 	//traversal helpers
 	find_selector_template: function(selector)
 	{
-		return selector.up().down('.' + this.options.template_class);
+		return selector.up().down(this.options.template_tag);
 	},
 
 	fill_ship_classes: function(ship_class_options, hint)

@@ -9,7 +9,7 @@ var ConstructionTemplateModel =
 			tons_id: 'tons',
 			crew_id: 'crew',
 			hint_class: 'hint',
-			template_class: 'template',
+			template_tag: 'span',
 
 			//events
 			template_changed_event: 'template:changed',
