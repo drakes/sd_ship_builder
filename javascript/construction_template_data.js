@@ -185,7 +185,6 @@ var ConstructionTemplateData =
 			}
 		}
 	},
-	
 	mediumfighter:
 	{
 		name: 'Medium Fighter',
@@ -383,7 +382,6 @@ var ConstructionTemplateData =
 			}
 		}
 	},
-
 	heavyfighter:
 	{
 		name: 'Heavy Fighter',
@@ -483,6 +481,158 @@ var ConstructionTemplateData =
 					4: { cost: 20, slots: 40 },
 					5: { cost: 25, slots: 50 },
 					6: { cost: 30, slots: 60 }
+				}
+			}
+		}
+	},
+	scout:
+	{
+		name: 'Scout',
+		tons:
+		{
+			300:
+			{
+				crew:
+				{
+					2: { slots: 15 }
+				},
+				max_torps: 10,
+				hit_boxes: 30,
+				drive:
+				{
+					10: { cost: 6, slots: 2 },
+					11: { cost: 7, slots: 3 },
+					12: { cost: 7, slots: 3 },
+					13: { cost: 8, slots: 4 },
+					14: { cost: 8, slots: 5 },
+					15: { cost: 9, slots: 5 },
+					16: { cost: 10, slots: 6 },
+					17: { cost: 15, slots: 11 },
+					18: { cost: 17, slots: 12 },
+					19: { cost: 17, slots: 14 },
+					20: { cost: 18, slots: 15 }
+				},
+				defense:
+				{
+					6: { cost: 4, slots: 1 },
+					7: { cost: 4, slots: 1 },
+					8: { cost: 5, slots: 2 },
+					9: { cost: 5, slots: 2 },
+					10: { cost: 6, slots: 2 },
+					11: { cost: 7, slots: 3 },
+					12: { cost: 7, slots: 3 },
+					13: { cost: 8, slots: 4 },
+					14: { cost: 12, slots: 8 },
+					15: { cost: 14, slots: 8 },
+					16: { cost: 15, slots: 9 },
+					17: { cost: 15, slots: 11 }
+				},
+				damage_reduction:
+				{
+					0: { cost: 0, slots: 0 },
+					1: { cost: 2, slots: 3 },
+					2: { cost: 3, slots: 6 },
+					3: { cost: 5, slots: 9 },
+					4: { cost: 6, slots: 12 },
+					5: { cost: 8, slots: 15 }
+				}
+			},
+			700:
+			{
+				crew:
+				{
+					4: { slots: 40 }
+				},
+				max_torps: 15,
+				hit_boxes: 70,
+				drive:
+				{
+					10: { cost: 20, slots: 8 },
+					11: { cost: 22, slots: 10 },
+					12: { cost: 24, slots: 12 },
+					13: { cost: 26, slots: 14 },
+					14: { cost: 42, slots: 24 },
+					15: { cost: 45, slots: 27 },
+					16: { cost: 48, slots: 30 },
+					17: { cost: 51, slots: 35 },
+					18: { cost: 54, slots: 39 }
+				},
+				defense:
+				{
+					6: { cost: 8, slots: 2 },
+					7: { cost: 10, slots: 3 },
+					8: { cost: 11, slots: 4 },
+					9: { cost: 13, slots: 5 },
+					10: { cost: 14, slots: 6 },
+					11: { cost: 15, slots: 7 },
+					12: { cost: 17, slots: 8 },
+					13: { cost: 27, slots: 14 },
+					14: { cost: 30, slots: 17 },
+					15: { cost: 32, slots: 20 },
+					16: { cost: 33, slots: 21 },
+					17: { cost: 36, slots: 24 }
+				},
+				damage_reduction:
+				{
+					0: { cost: 0, slots: 0 },
+					1: { cost: 4, slots: 7 },
+					2: { cost: 7, slots: 14 },
+					3: { cost: 11, slots: 21 },
+					4: { cost: 14, slots: 28 },
+					5: { cost: 18, slots: 35 }
+				}
+			}
+		}
+	},
+	shuttle:
+	{
+		name: 'Shuttle',
+		tons:
+		{
+			400:
+			{
+				crew:
+				{
+					2: { slots: 15 },
+					3: { slots: 10 }
+				},
+				max_torps: 10,
+				hit_boxes: 40,
+				drive:
+				{
+					10: { cost: 8, slots: 3 },
+					11: { cost: 9, slots: 4 },
+					12: { cost: 10, slots: 5 },
+					13: { cost: 10, slots: 5 },
+					14: { cost: 11, slots: 6 },
+					15: { cost: 12, slots: 7 },
+					16: { cost: 20, slots: 12 },
+					17: { cost: 21, slots: 14 }
+				},
+				defense:
+				{
+					6: { cost: 5, slots: 1 },
+					7: { cost: 6, slots: 2 },
+					8: { cost: 6, slots: 2 },
+					9: { cost: 7, slots: 3 },
+					10: { cost: 8, slots: 3 },
+					11: { cost: 9, slots: 4 },
+					12: { cost: 10, slots: 5 },
+					13: { cost: 15, slots: 8 },
+					14: { cost: 17, slots: 9 },
+					15: { cost: 18, slots: 11 },
+					16: { cost: 20, slots: 12 },
+					17: { cost: 21, slots: 14 }
+				},
+				damage_reduction:
+				{
+					0: { cost: 0, slots: 0 },
+					1: { cost: 2, slots: 1 },
+					2: { cost: 4, slots: 2 },
+					3: { cost: 6, slots: 3 },
+					4: { cost: 8, slots: 4 },
+					5: { cost: 10, slots: 5 },
+					5: { cost: 12, slots: 6 }
 				}
 			}
 		}
