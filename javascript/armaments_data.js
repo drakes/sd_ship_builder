@@ -346,9 +346,9 @@ var ArmamentsData =
 		speed_restriction: 11,
 		note: 'If the attack dice roll triples, the weapon mount overloads and is destroyed. The target is not affected.'
 	},
-	protobolt:
+	protobolter:
 	{
-		name: 'Protobolt',
+		name: 'Protobolter',
 		cost: 3,
 		slots: 2,
 		attack_die: 6,
@@ -364,7 +364,8 @@ var ArmamentsData =
 			cost: 1,
 			slots: 1
 		},
-		speed_restriction: 14
+		speed_restriction: 14,
+		note: 'Bolts do not arm before traveling 5 hexes (minimum range 5).'
 	},
 	missilelauncher:
 	{
