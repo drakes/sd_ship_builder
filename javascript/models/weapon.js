@@ -192,18 +192,34 @@ var WeaponModel =
 
 	create_multiples_options: function()
 	{
-		var multiples = $H(this.get_weapon_template().multiples);
-		var options = multiples.collect(function(pair)
+		var weapon_template = this.get_weapon_template();
+		var multiples = $H(weapon_template.multiples);
+		var options;
+		options = multiples.collect(function(pair)
 		{
+			var label;
+			if (weapon_template.multiples_prefix)
+			{
+				label = weapon_template.multiples_prefix + pair.key;
+			}
+			else
+			{
+				label = this.options.multiples_names[pair.key];
+			}
 			return {
 				key: pair.key,
-				value: this.options.multiples_names[pair.key]
+				value: label
 			};
 		}, this);
+		var first_label = 'Single';
+		if (weapon_template.multiples_prefix)
+		{
+			first_label = weapon_template.multiples_prefix + 1;
+		}
 		options.unshift(
 		{
 			key: '',
-			value: 'Single'
+			value: first_label
 		});
 		return options;
 	},

@@ -400,5 +400,203 @@ var ArmamentsData =
 			}
 		],
 		note: 'Launches salvos of 5 or 10. Lock-on roll required to launch.'
+	},
+	torpedoes:
+	{
+		name: 'Torpedoes',
+		cost: 0,
+		slots: 0,
+		attack_die: 12,
+		damage_index: 3,
+		torpedoes: true,
+		multiples_prefix: 'Mk. ',
+		ammo:
+		[
+			{
+				count: 1,
+				cost_bonus: 1,
+				slots_bonus: 1
+			},
+			{
+				count: 2,
+				cost_bonus: 2,
+				slots_bonus: 1
+			},
+			{
+				count: 3,
+				cost_bonus: 3,
+				slots_bonus: 1
+			},
+			{
+				count: 4,
+				cost_bonus: 4,
+				slots_bonus: 1
+			},
+			{
+				count: 6,
+				cost_bonus: 6,
+				slots_bonus: 2
+			},
+			{
+				count: 10,
+				cost_bonus: 10,
+				slots_bonus: 3
+			}
+		],
+		multiples:
+		{
+			2:
+			{
+				cost_bonus: 0,
+				slots_bonus: 0,
+				ammo:
+				[
+					{
+						count: 1,
+						cost_bonus: 2,
+						slots_bonus: 1
+					},
+					{
+						count: 2,
+						cost_bonus: 4,
+						slots_bonus: 1
+					},
+					{
+						count: 3,
+						cost_bonus: 6,
+						slots_bonus: 2
+					},
+					{
+						count: 4,
+						cost_bonus: 8,
+						slots_bonus: 2
+					},
+					{
+						count: 6,
+						cost_bonus: 12,
+						slots_bonus: 3
+					},
+					{
+						count: 10,
+						cost_bonus: 20,
+						slots_bonus: 5
+					}
+				],
+			},
+			3:
+			{
+				cost_bonus: 0,
+				slots_bonus: 0,
+				ammo:
+				[
+					{
+						count: 1,
+						cost_bonus: 3,
+						slots_bonus: 1
+					},
+					{
+						count: 2,
+						cost_bonus: 6,
+						slots_bonus: 2
+					},
+					{
+						count: 3,
+						cost_bonus: 9,
+						slots_bonus: 3
+					},
+					{
+						count: 4,
+						cost_bonus: 12,
+						slots_bonus: 3
+					},
+					{
+						count: 6,
+						cost_bonus: 18,
+						slots_bonus: 5
+					},
+					{
+						count: 10,
+						cost_bonus: 30,
+						slots_bonus: 8
+					}
+				],
+			},
+			4:
+			{
+				cost_bonus: 0,
+				slots_bonus: 0,
+				ammo:
+				[
+					{
+						count: 1,
+						cost_bonus: 4,
+						slots_bonus: 1
+					},
+					{
+						count: 2,
+						cost_bonus: 8,
+						slots_bonus: 2
+					},
+					{
+						count: 3,
+						cost_bonus: 12,
+						slots_bonus: 3
+					},
+					{
+						count: 4,
+						cost_bonus: 16,
+						slots_bonus: 4
+					},
+					{
+						count: 6,
+						cost_bonus: 24,
+						slots_bonus: 6
+					},
+					{
+						count: 10,
+						cost_bonus: 40,
+						slots_bonus: 10
+					}
+				],
+			},
+			5:
+			{
+				cost_bonus: 0,
+				slots_bonus: 0,
+				ammo:
+				[
+					{
+						count: 1,
+						cost_bonus: 5,
+						slots_bonus: 2
+					},
+					{
+						count: 2,
+						cost_bonus: 10,
+						slots_bonus: 3
+					},
+					{
+						count: 3,
+						cost_bonus: 15,
+						slots_bonus: 4
+					},
+					{
+						count: 4,
+						cost_bonus: 20,
+						slots_bonus: 5
+					},
+					{
+						count: 6,
+						cost_bonus: 30,
+						slots_bonus: 8
+					},
+					{
+						count: 10,
+						cost_bonus: 50,
+						slots_bonus: 13
+					}
+				],
+			},
+		},
 	}
 };
