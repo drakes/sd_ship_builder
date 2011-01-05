@@ -52,6 +52,8 @@ There are plenty of features yet to be implemented:
 
   * Allowing multiple ship designs on a single page, to total points for building a squadron
 
+  * Or rely on tabs for multiple ship designs, and prepend a ship name to title (if entered)
+
   * Changing from design to play mode to lock down designs and allow damage to be tracked
 
   * Saving designs in cookies or local storage
