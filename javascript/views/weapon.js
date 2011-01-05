@@ -62,6 +62,19 @@ var WeaponView =
 		$(this.options.id).addClassName(this.options.weapon_class);
 	},
 
+	toggle_firing_arc_display: function(show)
+	{
+		var firing_arc = this.find_firing_arc();
+		if (show)
+		{
+			firing_arc.show();
+		}
+		else
+		{
+			firing_arc.hide();
+		}
+	},
+
 	refresh_multiples: function(weapon_template)
 	{
 		var multiple_selector = $(this.options.id).down('.' + this.options.multiple_class);

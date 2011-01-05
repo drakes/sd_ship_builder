@@ -31,7 +31,9 @@ var WeaponController =
 
 	type_change_handler: function(event)
 	{
-		this.refresh_multiples(this.get_weapon_template());
+		var weapon_template = this.get_weapon_template();
+		this.toggle_firing_arc_display(!weapon_template.torpedoes);
+		this.refresh_multiples(weapon_template);
 		this.refresh_ammo(this.get_ammo_template());
 		this.refresh();
 		this.send_update();

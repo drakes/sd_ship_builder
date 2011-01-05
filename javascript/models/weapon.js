@@ -110,8 +110,11 @@ var WeaponModel =
 		weapon_stats.damage = this.options.damage_types[weapon_stats.damage_index];
 		if (add_extras)
 		{
-			weapon_stats.cost += this.firing_arc_stats.cost;
-			weapon_stats.slots += this.firing_arc_stats.slots;
+			if (!weapon_stats.torpedoes)
+			{
+				weapon_stats.cost += this.firing_arc_stats.cost;
+				weapon_stats.slots += this.firing_arc_stats.slots;
+			}
 			if (this.get_ammo_template())
 			{
 				var ammo_stats = this.get_ammo_stats();
