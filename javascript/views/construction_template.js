@@ -19,6 +19,7 @@ var ConstructionTemplateView =
 		if (options.length > 1)
 		{
 			easy_select.update_options(options);
+			easy_select.set(options[0]);
 			selector.show();
 			text_element.hide();
 		}

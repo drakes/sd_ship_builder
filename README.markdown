@@ -36,8 +36,6 @@ The focus is on automating record-keeping to ease the process of designing ships
 
   * Front-only firing arc when crew is one is not enforced in IE(8)
 
-  * Tons doesn't update in some situations: select Medium Fighter, 300 tons. Then switch to Light Fighter; tons still shows 300 and the crew stays at 1, which aren\'t both correct. Changing tons and changing it back displays the correct information.
-
 ## Future
 
 There are plenty of features yet to be implemented:
