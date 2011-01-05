@@ -1,6 +1,3 @@
-$secondary_color: gray;
-$very_light: rgb(245, 245, 245);
-
 body
 {
 	color: white;
@@ -25,7 +22,7 @@ legend, .descriptor, .construction_stats
 
 h1 span, legend, .hint
 {
-	color: $secondary_color;
+	color: gray;
 }
 
 h1 a
@@ -36,11 +33,8 @@ h1 a
 
 fieldset
 {
-	border:
-	{
-		style: groove;
-		color: rgb(222, 222, 222);
-	}
+	border-style: groove;
+	border-color: rgb(222, 222, 222);
 }
 
 #crew_control .template
@@ -51,11 +45,8 @@ fieldset
 
 #damage_track, #damage_track div
 {
-	border:
-	{
-		style: solid;
-		color: black;
-	}
+	border-style: solid;
+	border-color: black;
 	text-align: center;
 }
 
@@ -78,7 +69,7 @@ fieldset
 .construction_stats
 {
 	font-style: italic;
-	color: $secondary_color;
+	color: gray;
 }
 
 .invalid .current
@@ -133,12 +124,9 @@ fieldset
 
 .crew, .weapon, .ship_option
 {
-	border:
-	{
-		color: $secondary_color;
-		style: solid;
-	}
-	background-color: $very_light;
+	border-color: gray;
+	border-style: solid;
+	background-color: rgb(245, 245, 245);
 }
 
 .crew_type, .option_type
@@ -153,23 +141,20 @@ fieldset
 
 .section_toggle
 {
-	border:
-	{
-		color: $secondary_color;
-		style: solid;
-	}
-	color: $secondary_color;
+	border-color: gray;
+	border-style: solid;
+	color: gray;
 	background-color: white;
 	cursor: pointer;
+}
 
-	&:hover
-	{
-		background-color: $very_light;
-		border-style: outset;
-	}
+.section_toggle:hover
+{
+	background-color: rgb(245, 245, 245);
+	border-style: outset;
 }
 
 .credit
 {
-	color: $secondary_color;
+	color: gray;
 }

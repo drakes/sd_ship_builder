@@ -1,22 +1,18 @@
-$small: 0.5em;
-$mini: 0.2em;
-$reduced: 0.8em;
-
 form
 {
-	margin: $mini 0 $mini 0;
-	padding: $mini $small $small $small;
+	margin: 0.2em 0 0.2em 0;
+	padding: 0.2em 0.5em 0.5em 0.5em;
 }
 
 body > p
 {
-	margin: $small;
+	margin: 0.5em;
 }
 
 h1
 {
 	margin-bottom: 0.1em;
-	padding: $mini;
+	padding: 0.2em;
 	font-size: 2em;
 }
 
@@ -27,20 +23,20 @@ h1 span
 
 legend
 {
-	font-size: $reduced;
+	font-size: 0.8em;
 }
 
 fieldset
 {
 	overflow: hidden;
 	margin-top: 0.1em;
-	padding: $mini $small $mini $small;
+	padding: 0.2em 0.5em 0.2em 0.5em;
 	border-width: 2px;
 }
 
 input
 {
-	font-size: $reduced;
+	font-size: 0.8em;
 }
 
 #cost_control, #slots_control
@@ -61,7 +57,7 @@ input
 #crew_members
 {
 	overflow: hidden;
-	margin-right: -$small;
+	margin-right: -0.5em;
 }
 
 #crew_members.hide .crew
@@ -73,23 +69,23 @@ input
 {
 	float: left;
 	border-width: 2px;
+}
 
-	div
-	{
-		float: left;
-		width: 1.5em;
-		height: 1em;
-		border-width: 1px;
-		margin: 2px;
-		padding: 2px;
-		font-size: $reduced;
-	}
+#damage_track div
+{
+	float: left;
+	width: 1.5em;
+	height: 1em;
+	border-width: 1px;
+	margin: 2px;
+	padding: 2px;
+	font-size: 0.8em;
+}
 
-	.drive
-	{
-		border-width: 3px;
-		padding: 0;
-	}
+#damage_track .drive
+{
+	border-width: 3px;
+	padding: 0;
 }
 
 .current, .separator, .template
@@ -100,13 +96,13 @@ input
 .template_control
 {
 	float: left;
-	margin-right: $small;
+	margin-right: 0.5em;
 }
 
 .crew, .weapon, .ship_option
 {
 	overflow: hidden;
-	margin-bottom: $small;
+	margin-bottom: 0.5em;
 	padding: 0.3em;
 	border-width: 1px;
 }
@@ -114,7 +110,7 @@ input
 .crew
 {
 	float: left;
-	margin-right: $small;
+	margin-right: 0.5em;
 }
 
 .skill_control
@@ -144,12 +140,12 @@ input
 
 .ship_option .note_container
 {
-	margin-top: $mini;
+	margin-top: 0.2em;
 }
 
 .controls
 {
-	margin-bottom: $small;
+	margin-bottom: 0.5em;
 }
 
 .controls > span, .stat
@@ -176,31 +172,22 @@ input
 .section_toggle
 {
 	float: right;
-	margin:
-	{
-		top: -1em -$mini;
-		right: -$mini;
-	}
-	padding:
-	{
-		left: 0.1em;
-		right: 0.1em;
-	}
+	margin-top: -1.2em;
+	margin-right: -0.2em;
+	padding-left: 0.1em;
+	padding-right: 0.1em;
 	border-width: 1px;
-	font-size: $reduced;
+	font-size: 0.8em;
 }
 
-.section_toggle.hide
+.section_toggle.hide .toggle_hide
 {
-	.toggle_hide
-	{
-		display: none;
-	}
+	display: none;
+}
 
-	.toggle_show
-	{
-		display: inline;
-	}
+.section_toggle.hide .toggle_show
+{
+	display: inline;
 }
 
 .toggle_show
@@ -211,5 +198,5 @@ input
 .credit
 {
 	margin-top: 1em;
-	font-size: $reduced;
+	font-size: 0.8em;
 }
