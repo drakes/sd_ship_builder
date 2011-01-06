@@ -99,7 +99,12 @@ var WeaponModel =
 	get_attack_dice: function()
 	{
 		var weapon_template = this.get_weapon_template();
-		return (weapon_template.number_of_attack_dice || this.options.default_number_of_attack_dice) + 'D' + weapon_template.attack_die;
+		var torpedo_mk;
+		if (weapon_template.torpedoes)
+		{
+			torpedo_mk = this.get_multiple_key() || 1;
+		}
+		return (weapon_template.number_of_attack_dice || torpedo_mk || this.options.default_number_of_attack_dice) + 'D' + weapon_template.attack_die;
 	},
 
 	get_weapon_stats: function(add_extras)
