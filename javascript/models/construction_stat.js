@@ -126,6 +126,6 @@ var ConstructionStatModel =
 
 	tally_current: function(current, value)
 	{
-		return current + value;
+		return current + (value || 0);
 	}
 };

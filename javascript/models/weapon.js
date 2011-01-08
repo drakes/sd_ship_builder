@@ -74,6 +74,14 @@ var WeaponModel =
 		return Number(this.ammo_select.get());
 	},
 
+	get_ammo_count: function()
+	{
+		//currently this is only for array-type ammo templates (torpedoes) but can be expanded if needed
+		var ammo_expansions = this.get_ammo_expansions();
+		var ammo_template = this.get_ammo_template();
+		return ammo_template[ammo_expansions].count;
+	},
+
 	get_weapon_template: function()
 	{
 		return this.options.data[this.get_weapon_type()];

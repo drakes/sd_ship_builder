@@ -11,7 +11,7 @@ var ConstructionTemplateData =
 				{
 					1: { slots: 4 }
 				},
-				max_torps: 10,
+				torpedoes: 10,
 				hit_boxes: 5,
 				drive:
 				{
@@ -52,7 +52,7 @@ var ConstructionTemplateData =
 				{
 					1: { slots: 9 }
 				},
-				max_torps: 10,
+				torpedoes: 10,
 				hit_boxes: 10,
 				drive:
 				{
@@ -94,7 +94,7 @@ var ConstructionTemplateData =
 				{
 					2: { slots: 25 }
 				},
-				max_torps: 15,
+				torpedoes: 15,
 				hit_boxes: 30,
 				drive:
 				{
@@ -142,7 +142,7 @@ var ConstructionTemplateData =
 					2: { slots: 35 },
 					3: { slots: 30 }
 				},
-				max_torps: 15,
+				torpedoes: 15,
 				hit_boxes: 40,
 				drive:
 				{
@@ -196,7 +196,7 @@ var ConstructionTemplateData =
 				{
 					1: { slots: 18 }
 				},
-				max_torps: 10,
+				torpedoes: 10,
 				hit_boxes: 20,
 				drive:
 				{
@@ -243,7 +243,7 @@ var ConstructionTemplateData =
 				{
 					1: { slots: 28 }
 				},
-				max_torps: 10,
+				torpedoes: 10,
 				hit_boxes: 30,
 				drive:
 				{
@@ -291,7 +291,7 @@ var ConstructionTemplateData =
 					2: { slots: 55 },
 					3: { slots: 50 }
 				},
-				max_torps: 15,
+				torpedoes: 15,
 				hit_boxes: 60,
 				drive:
 				{
@@ -339,7 +339,7 @@ var ConstructionTemplateData =
 					2: { slots: 65 },
 					3: { slots: 60 }
 				},
-				max_torps: 15,
+				torpedoes: 15,
 				hit_boxes: 70,
 				drive:
 				{
@@ -393,7 +393,7 @@ var ConstructionTemplateData =
 				{
 					1: { slots: 38 }
 				},
-				max_torps: 10,
+				torpedoes: 10,
 				hit_boxes: 40,
 				drive:
 				{
@@ -441,7 +441,7 @@ var ConstructionTemplateData =
 					2: { slots: 95 },
 					3: { slots: 90 }
 				},
-				max_torps: 15,
+				torpedoes: 15,
 				hit_boxes: 100,
 				drive:
 				{
@@ -496,7 +496,7 @@ var ConstructionTemplateData =
 				{
 					2: { slots: 15 }
 				},
-				max_torps: 10,
+				torpedoes: 10,
 				hit_boxes: 30,
 				drive:
 				{
@@ -543,7 +543,7 @@ var ConstructionTemplateData =
 				{
 					4: { slots: 40 }
 				},
-				max_torps: 15,
+				torpedoes: 15,
 				hit_boxes: 70,
 				drive:
 				{
@@ -596,7 +596,7 @@ var ConstructionTemplateData =
 					2: { slots: 15 },
 					3: { slots: 10 }
 				},
-				max_torps: 10,
+				torpedoes: 10,
 				hit_boxes: 40,
 				drive:
 				{

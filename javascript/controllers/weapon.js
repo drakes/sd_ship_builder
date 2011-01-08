@@ -77,6 +77,10 @@ var WeaponController =
 			cost: weapon_stats.cost,
 			slots: weapon_stats.slots
 		};
+		if (weapon_stats.torpedoes)
+		{
+			memo.torpedoes = this.get_ammo_count();
+		}
 		$(this.options.id).fire(this.options.changed_event, memo);
 	}
 };

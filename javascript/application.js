@@ -40,6 +40,15 @@
 			}
 		},
 		{
+			name: 'torpedoes_control',
+			class_name: 'ConstructionStat',
+			options:
+			{
+				id: 'torpedoes_control',
+				stat_property: 'torpedoes'
+			}
+		},
+		{
 			name: 'drive_control',
 			class_name: 'Attribute',
 			options:

@@ -39,7 +39,7 @@ input
 	font-size: 0.8em;
 }
 
-#cost_control, #slots_control
+#cost_control, #slots_control, #torpedoes_control
 {
 	float: right;
 }
