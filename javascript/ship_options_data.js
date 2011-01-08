@@ -248,5 +248,99 @@ var ShipOptionsData =
 				}
 			}
 		}
+	},
+	decoys:
+	{
+		name: 'Decoys',
+		note: 'Use against torpedoes. Lose one decoy for each critical suffered.',
+		dimensions:
+		[
+			{
+				name: 'Number of decoys'
+			}
+		],
+		data:
+		{
+			1:
+			{
+				cost: 1,
+				slots: 0
+			},
+			2:
+			{
+				cost: 1,
+				slots: 1
+			},
+			3:
+			{
+				cost: 2,
+				slots: 1
+			},
+			4:
+			{
+				cost: 2,
+				slots: 2
+			},
+			5:
+			{
+				cost: 3,
+				slots: 2
+			},
+			6:
+			{
+				cost: 3,
+				slots: 3
+			}
+		}
+	},
+	damagecontrol:
+	{
+		name: 'Damage Control',
+		note: 'Limited field repairs, usable only at the end of a turn you did not fire or take fire.',
+		dimensions:
+		[
+			{
+				name: 'Success (1d10)',
+				spread: true
+			}
+		],
+		data:
+		{
+			2:
+			{
+				cost: 1,
+				slots: 0
+			},
+			3:
+			{
+				cost: 2,
+				slots: 1
+			},
+			4:
+			{
+				cost: 3,
+				slots: 1
+			},
+			5:
+			{
+				cost: 4,
+				slots: 2
+			},
+			6:
+			{
+				cost: 5,
+				slots: 2
+			},
+			7:
+			{
+				cost: 6,
+				slots: 3
+			},
+			8:
+			{
+				cost: 7,
+				slots: 3
+			}
+		}
 	}
 };
