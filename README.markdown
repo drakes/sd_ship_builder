@@ -30,7 +30,7 @@ The focus is on automating record-keeping to ease the process of designing ships
 
   * Browser-based, no install required.
 
-  * Includes light, medium, and heavy fighters plus most basic weapon systems.
+  * Includes light, medium, and heavy fighters, scouts, and shuttles, plus basic weapon systems.
 
 ## Known Bugs
 
