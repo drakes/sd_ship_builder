@@ -40,15 +40,13 @@ The focus is on automating record-keeping to ease the process of designing ships
 
 There are plenty of features yet to be implemented:
 
-  * Torpedoes
-
-  * Scouts and shuttles
-
-  * Gunboats, freighters, and larger ship classes
-
   * More ship options
 
   * Ship quirks
+
+  * Gunboats, freighters, and larger ship classes
+
+  * Encoding serialized designs to shareable URLs
 
   * Allowing multiple ship designs on a single page, to total points for building a squadron
 
@@ -57,8 +55,6 @@ There are plenty of features yet to be implemented:
   * Changing from design to play mode to lock down designs and allow damage to be tracked
 
   * Saving designs in cookies or local storage
-
-  * Encoding serialized designs to shareable URLs
 
   * Optimizations and loading speed improvement
 
