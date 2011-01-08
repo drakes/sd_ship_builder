@@ -161,7 +161,7 @@ var WeaponModel =
 	add_multiples_bonuses: function(weapon_stats)
 	{
 		var multiple_key = this.get_multiple_key();
-		if (multiple_key)
+		if (multiple_key && !weapon_stats.torpedoes)
 		{
 			var multiple = weapon_stats.multiples[multiple_key];
 			var combat_bonus = multiple_key - 1;
