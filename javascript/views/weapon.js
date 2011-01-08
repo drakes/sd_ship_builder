@@ -87,6 +87,7 @@ var WeaponView =
 		}
 		else
 		{
+			this.multiple_select.update_options();
 			multiple_selector.hide();
 		}
 	},
