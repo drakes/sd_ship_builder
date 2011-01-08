@@ -39,11 +39,6 @@ input
 	font-size: 0.8em;
 }
 
-#cost_control, #slots_control, #torpedoes_control
-{
-	float: right;
-}
-
 #slots_control
 {
 	margin-right: 0;
@@ -93,10 +88,19 @@ input
 	font-size: 2em;
 }
 
-.template_control
+.template_control_set
 {
 	float: left;
+}
+
+.template_control, .template_stat
+{
 	margin-right: 0.5em;
+}
+
+.template_stat_set
+{
+	float: right;
 }
 
 .crew, .weapon, .ship_option
