@@ -34,7 +34,8 @@ var DamageTrackController =
 	weapon_changed_handler: function(event)
 	{
 		var weapon_id = event.memo.id;
-		this.add_weapon(weapon_id);
+		var torpedoes = event.memo.torpedoes;
+		this.add_weapon(weapon_id, torpedoes);
 		this.refresh();
 	},
 

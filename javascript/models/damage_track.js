@@ -31,6 +31,10 @@ var DamageTrackModel =
 			weapon_title: 'Weapon destroyed (defender\'s choice)',
 			weapon_alt_symbol: 'W',
 			weapon_alt_title: 'Weapon destroyed (attacker\'s choice)',
+			torpedo_symbol: 't',
+			torpedo_title: 'Torpedo destroyed (defender\'s choice)',
+			torpedo_alt_symbol: 'T',
+			torpedo_alt_title: 'Torpedo destroyed (attacker\'s choice)',
 			critical_symbol: '*',
 			critical_title: 'Critical',
 			drive_title: 'Drive',
@@ -68,9 +72,9 @@ var DamageTrackModel =
 		this.attributes[attribute_package.attribute] = Number(attribute_package.value);
 	},
 
-	add_weapon: function(weapon_id)
+	add_weapon: function(weapon_id, torpedoes)
 	{
-		this.weapons.set(weapon_id, true);
+		this.weapons.set(weapon_id, { torpedoes: torpedoes });
 	},
 
 	delete_weapon: function(weapon_id)
@@ -95,7 +99,19 @@ var DamageTrackModel =
 
 	get_weapons: function()
 	{
-		return this.weapons.keys().length;
+		//non-torpedoes
+		return this.weapons.values().inject(0, function(sum, weapon)
+		{
+			return sum + (weapon.torpedoes ? 0 : 1);
+		});
+	},
+
+	get_torpedoes: function()
+	{
+		return this.weapons.values().inject(0, function(sum, weapon)
+		{
+			return sum + (weapon.torpedoes || 0);
+		});
 	},
 
 	get_criticals: function()
@@ -121,6 +137,7 @@ var DamageTrackModel =
 		this.add_drive(hit_boxes, this.get_drive());
 		this.place_symbols(hit_boxes, this.get_damage_reduction(), this.make_damage_reduction_box.bind(this));
 		this.place_symbols(hit_boxes, this.get_weapons(), this.make_weapon_box.bind(this));
+		this.place_symbols(hit_boxes, this.get_torpedoes(), this.make_torpedo_box.bind(this));
 		this.place_symbols(hit_boxes, this.get_criticals(), this.make_critical_box.bind(this));
 		return hit_boxes;
 	},
@@ -179,6 +196,24 @@ var DamageTrackModel =
 		{
 			symbol = this.options.weapon_alt_symbol;
 			title = this.options.weapon_alt_title;
+		}
+		var box =
+		{
+			value: symbol,
+			css_class: this.options.weapon_class,
+			title: title
+		};
+		return box;
+	},
+
+	make_torpedo_box: function(current_torpedoes, torpedoes)
+	{
+		var symbol = this.options.torpedo_symbol;
+		var title = this.options.torpedo_title;
+		if ((torpedoes - current_torpedoes) % 2 == 1)
+		{
+			symbol = this.options.torpedo_alt_symbol;
+			title = this.options.torpedo_alt_title;
 		}
 		var box =
 		{
