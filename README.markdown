@@ -36,6 +36,8 @@ The focus is on automating record-keeping to ease the process of designing ships
 
   * Basic ship options.
 
+  * Damage track generation, click to mark damage and hover to decipher symbols.
+
 ## Known Bugs
 
   * Front-only firing arc when crew is one is not enforced in IE(8).
