@@ -365,7 +365,7 @@ var ArmamentsData =
 			slots: 1
 		},
 		speed_restriction: 14,
-		note: 'Bolts do not arm before traveling 5 hexes (minimum range 5).'
+		note: 'Bolts do not arm before traveling 5 hexes (minimum range 5). May fire two bolts in one turn at a single target.'
 	},
 	missilelauncher:
 	{
