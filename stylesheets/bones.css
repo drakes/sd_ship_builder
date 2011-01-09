@@ -137,7 +137,7 @@ input
 	float: right;
 }
 
-.controls, .option_controls
+.controls, .option_controls, .range
 {
 	float: left;
 }

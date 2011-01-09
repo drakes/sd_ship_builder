@@ -9,6 +9,7 @@ var WeaponModel =
 			weapon_class: 'weapon',
 			delete_class: 'delete',
 			type_class: 'weapon_type',
+			stat_class: 'stat',
 			attack_dice_class: 'base_attack_dice',
 			damage_class: 'damage',
 			ammo_class: 'ammo',

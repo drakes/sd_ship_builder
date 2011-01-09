@@ -50,11 +50,11 @@ var WeaponView =
 	
 	create_stats: function(weapon_control)
 	{
-		weapon_control.insert('<span class="stat"><span class="descriptor">Base Attack Dice: </span><span class="' + this.options.attack_dice_class + '"></span></span>');
-		weapon_control.insert('<span class="stat"><span class="descriptor">Damage: </span><span class="' + this.options.damage_class + '"></span>');
-		weapon_control.insert('<span class="stat"><span class="descriptor">Target Speed Restriction: </span><span class="' + this.options.speed_restriction_class + '"></span>');
-		weapon_control.insert('<span class="' + this.options.range_class + ' stat"><span class="descriptor">Range: </span><span class="descriptor">Short (+1): </span><span class="' + this.options.short_class + '"></span><span class="descriptor">Medium (0): </span><span class="' + this.options.medium_class + '"></span><span class="descriptor">Long (-1): </span><span class="' + this.options.long_class + '"></span></span>');
-		weapon_control.insert('<span class="' + this.options.note_container_class + ' stat" style="display: none;"><span class="descriptor">Note: </span><span class="' + this.options.note_class + '"></span></span>');
+		weapon_control.insert('<span class="' + this.options.stat_class + '"><span class="descriptor">Base Attack Dice: </span><span class="' + this.options.attack_dice_class + '"></span></span>');
+		weapon_control.insert('<span class="' + this.options.stat_class + '"><span class="descriptor">Damage: </span><span class="' + this.options.damage_class + '"></span>');
+		weapon_control.insert('<span class="' + this.options.stat_class + '"><span class="descriptor">Target Speed Restriction: </span><span class="' + this.options.speed_restriction_class + '"></span>');
+		weapon_control.insert('<div class="' + this.options.range_class + '"><span class="descriptor">Range: </span><span class="descriptor">Short (+1): </span><span class="' + this.options.short_class + '"></span><span class="descriptor">Medium (0): </span><span class="' + this.options.medium_class + '"></span><span class="descriptor">Long (-1): </span><span class="' + this.options.long_class + '"></span></div>');
+		weapon_control.insert('<span class="' + this.options.note_container_class + ' ' + this.options.stat_class + '" style="display: none;"><span class="descriptor">Note: </span><span class="' + this.options.note_class + '"></span></span>');
 	},
 
 	decorate_control: function()
@@ -122,12 +122,21 @@ var WeaponView =
 		this.refresh_stat(this.options.attack_dice_class, weapon_stats.attack_dice, weapon_control);
 		this.refresh_stat(this.options.damage_class, weapon_stats.damage, weapon_control);
 		this.refresh_stat(this.options.speed_restriction_class, (weapon_stats.speed_restriction ? ('Drive &le; ' + weapon_stats.speed_restriction) : null), weapon_control);
-		this.refresh_stat(this.options.short_class, weapon_stats.short_range, weapon_control);
-		this.refresh_stat(this.options.medium_class, weapon_stats.medium_range, weapon_control);
-		this.refresh_stat(this.options.long_class, weapon_stats.long_range, weapon_control);
 		this.refresh_stat(this.options.cost_class, weapon_stats.cost, weapon_control);
 		this.refresh_stat(this.options.slots_class, weapon_stats.slots, weapon_control);
 
+		var range_container = weapon_control.down('.' + this.options.range_class);
+		if ([weapon_stats.short_range, weapon_stats.medium_range, weapon_stats.long_range].any())
+		{
+			this.refresh_stat(this.options.short_class, weapon_stats.short_range, weapon_control);
+			this.refresh_stat(this.options.medium_class, weapon_stats.medium_range, weapon_control);
+			this.refresh_stat(this.options.long_class, weapon_stats.long_range, weapon_control);
+			range_container.show();
+		}
+		else
+		{
+			range_container.hide();
+		}
 		var note_container = weapon_control.down('.' + this.options.note_container_class);
 		if (weapon_stats.note)
 		{
@@ -142,10 +151,21 @@ var WeaponView =
 
 	refresh_stat: function(stat_class, stat_value, control)
 	{
+		var stat = control.down('.' + stat_class);
+		var stat_container = stat.up('.' + this.options.stat_class);
 		if (!stat_value && stat_value !== 0)
 		{
+			if (stat_container)
+			{
+				stat_container.hide();
+				return;
+			}
 			stat_value = '-';
 		}
-		control.down('.' + stat_class).update(stat_value);
+		else if (stat_container)
+		{
+			stat_container.show();
+		}
+		stat.update(stat_value);
 	}
 };
