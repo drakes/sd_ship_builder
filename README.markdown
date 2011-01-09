@@ -30,39 +30,43 @@ The focus is on automating record-keeping to ease the process of designing ships
 
   * Browser-based, no install required.
 
-  * Includes light, medium, and heavy fighters, scouts, and shuttles, plus basic weapon systems.
+  * Ship types include light, medium, and heavy fighters, scouts, and shuttles.
+
+  * Weapon systems include all standard cannons, launchers, and torpedoes.
+
+  * Basic ship options.
 
 ## Known Bugs
 
-  * Front-only firing arc when crew is one is not enforced in IE(8)
+  * Front-only firing arc when crew is one is not enforced in IE(8).
+
+  * Ship options are not sorted, after being deleted they return to the select in the order they are deleted.
 
 ## Future
 
 There are plenty of features yet to be implemented:
 
-  * More ship options
+  * Gunboats, freighters, and larger ship classes.
 
-  * Ship quirks
+  * Ship quirks.
 
-  * Gunboats, freighters, and larger ship classes
+  * Encoding serialized designs to shareable URLs.
 
-  * Encoding serialized designs to shareable URLs
+  * Allowing multiple ship designs on a single page, to total points for building a squadron.
 
-  * Allowing multiple ship designs on a single page, to total points for building a squadron
+  * Or rely on tabs for multiple ship designs, and prepend a ship name to title (if entered).
 
-  * Or rely on tabs for multiple ship designs, and prepend a ship name to title (if entered)
+  * Changing from design to play mode to lock down designs and allow damage to be tracked.
 
-  * Changing from design to play mode to lock down designs and allow damage to be tracked
+  * Saving designs in cookies or local storage.
 
-  * Saving designs in cookies or local storage
-
-  * Optimizations and loading speed improvement
+  * Optimizations and loading speed improvement.
 
 ## Development Dependencies
 
 In order to work with the code and contribute to the project, you should be familiar with:
 
-  * [Prototype][7] (included)
+  * [Prototype][7] (included).
 
    [7]: http://prototypejs.org/
 
