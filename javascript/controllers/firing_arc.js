@@ -35,20 +35,21 @@ var FiringArcController =
 		//pilots cannot fire a weapon unless it is limited to only the Front arc
 		if (current_crew_size == 1)
 		{
-			//when the crew is one (just a pilot), disable and uncheck other arcs
-			this.find_arc_controls().splice(1).each(function(arc_control)
+			//when the crew is one (just a pilot), hide and uncheck other arcs
+			this.find_arc_containers().splice(1).each(function(arc_container)
 			{
+				var arc_control = arc_container.down('input');
 				arc_control.checked = false;
 				this.arc_selection_handler(arc_control);
-				arc_control.disabled = true;
+				arc_container.hide();
 			}, this);
 		}
 		else
 		{
-			//when the crew is more than one (gunner(s) present), enable other arcs
-			this.find_arc_controls().splice(1).each(function(arc_control)
+			//when the crew is more than one (gunner(s) present), show other arcs
+			this.find_arc_containers().splice(1).each(function(arc_container)
 			{
-				arc_control.disabled = false;
+				arc_container.show();
 			});
 		}
 	},

@@ -11,6 +11,11 @@ var FiringArcView =
 		return this.find_arc_controls()[index];
 	},
 
+	find_arc_containers: function()
+	{
+		return $(this.options.id).select('.' + this.options.arc_class);
+	},
+
 	create_controls: function()
 	{
 		var firing_arc_control = $(this.options.id);
@@ -38,7 +43,10 @@ var FiringArcView =
 		});
 		var arc_id = checkbox.identify();
 
-		var arc_container = new Element('span');
+		var arc_container = new Element(this.options.arc_container_tag,
+		{
+			'class': this.options.arc_class
+		});
 		arc_container.insert(checkbox);
 		arc_container.insert('<label for="' + arc_id + '">(' + arc_name + ')</label> ');
 		firing_arc_control.insert(arc_container);

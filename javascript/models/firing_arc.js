@@ -6,6 +6,8 @@ var FiringArcModel =
 		{
 			//selectors and css
 			firing_arc_class: 'firing_arc',
+			arc_container_tag: 'span',
+			arc_class: 'arc',
 
 			//events
 			crew_template_changed_event: 'crew_template:changed',
