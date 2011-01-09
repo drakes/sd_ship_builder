@@ -8,6 +8,7 @@ var OptionModel =
 			id: null,
 			option_class: 'option',
 			delete_class: 'delete',
+			dimension_class: 'option_dimension',
 			note_class: 'note',
 			note_container_class: 'note_container',
 			cost_class: 'cost',

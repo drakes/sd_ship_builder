@@ -127,11 +127,6 @@ input
 	margin-left: 0.25em;
 }
 
-.option_controls > span
-{
-	margin-right: 1em;
-}
-
 .delete
 {
 	float: right;
@@ -140,6 +135,16 @@ input
 .controls, .option_controls, .range
 {
 	float: left;
+}
+
+.option_controls
+{
+	margin-right: 1em;
+}
+
+.option_dimension
+{
+	margin-left: 1em;
 }
 
 .ship_option .note_container

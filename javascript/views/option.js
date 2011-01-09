@@ -30,12 +30,15 @@ var OptionView =
 		{
 			var selector = new Element('select');
 			var id = selector.identify();
-			var select_container = new Element('span');
+			var select_container = new Element('span',
+			{
+				'class': this.options.dimension_class
+			});
 			select_container.insert('<label for="' + id + '" class="descriptor">' + dimension.name + ': </label>');
 			select_container.insert(selector);
 			container.insert(select_container);
 			select_ids.push(id);
-		});
+		}, this);
 		return select_ids;
 	},
 	
