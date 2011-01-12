@@ -636,5 +636,412 @@ var ConstructionTemplateData =
 				}
 			}
 		}
+	},
+	lightgunboat:
+	{
+		name: 'Light Gunboat',
+		tons:
+		{
+			700:
+			{
+				crew:
+				{
+					3: { slots: 60 }
+				},
+				torpedoes: 15,
+				gunboat: true,
+				hit_boxes:
+				{
+					front: 45,
+					sides: 35,
+					rear: 25
+				},
+				drive:
+				{
+					6: { cost: 8, slots: 2 },
+					7: { cost: 10, slots: 3 },
+					8: { cost: 11, slots: 4 },
+					9: { cost: 13, slots: 5 },
+					10: { cost: 14, slots: 6 },
+					11: { cost: 15, slots: 7 },
+					12: { cost: 17, slots: 8 },
+					13: { cost: 18, slots: 9 },
+					14: { cost: 30, slots: 17 },
+					15: { cost: 32, slots: 20 },
+					16: { cost: 33, slots: 21 },
+					17: { cost: 36, slots: 24 },
+					18: { cost: 38, slots: 27 },
+					19: { cost: 41, slots: 30 },
+					20: { cost: 42, slots: 33 }
+				},
+				defense:
+				{
+					6: { cost: 8, slots: 2 },
+					7: { cost: 10, slots: 3 },
+					8: { cost: 11, slots: 4 },
+					9: { cost: 13, slots: 5 },
+					10: { cost: 14, slots: 6 },
+					11: { cost: 15, slots: 7 },
+					12: { cost: 17, slots: 8 },
+					13: { cost: 18, slots: 9 },
+					14: { cost: 20, slots: 11 },
+					15: { cost: 21, slots: 13 },
+					16: { cost: 22, slots: 14 },
+					17: { cost: 24, slots: 16 }
+				},
+				damage_reduction:
+				{
+					0: { cost: 0, slots: 0 },
+					1: { cost: 1, slots: 2 },
+					2: { cost: 2, slots: 4 },
+					3: { cost: 3, slots: 6 },
+					4: { cost: 4, slots: 7 },
+					5: { cost: 5, slots: 9 },
+					6: { cost: 6, slots: 11 }
+				}
+			},
+			1000:
+			{
+				crew:
+				{
+					4: { slots: 90 },
+					5: { slots: 85 }
+				},
+				torpedoes: 20,
+				gunboat: true,
+				hit_boxes:
+				{
+					front: 65,
+					sides: 50,
+					rear: 35
+				},
+				drive:
+				{
+					6: { cost: 12, slots: 3 },
+					7: { cost: 14, slots: 4 },
+					8: { cost: 16, slots: 5 },
+					9: { cost: 18, slots: 6 },
+					10: { cost: 20, slots: 8 },
+					11: { cost: 22, slots: 10 },
+					12: { cost: 24, slots: 12 },
+					13: { cost: 26, slots: 14 },
+					14: { cost: 42, slots: 24 },
+					15: { cost: 45, slots: 27 },
+					16: { cost: 48, slots: 30 },
+					17: { cost: 51, slots: 35 }
+				},
+				defense:
+				{
+					6: { cost: 12, slots: 3 },
+					7: { cost: 14, slots: 4 },
+					8: { cost: 16, slots: 5 },
+					9: { cost: 18, slots: 6 },
+					10: { cost: 20, slots: 8 },
+					11: { cost: 22, slots: 10 },
+					12: { cost: 24, slots: 12 },
+					13: { cost: 39, slots: 21 },
+					14: { cost: 42, slots: 23 },
+					15: { cost: 45, slots: 27 },
+					16: { cost: 48, slots: 30 },
+					17: { cost: 51, slots: 35 }
+				},
+				damage_reduction:
+				{
+					0: { cost: 0, slots: 0 },
+					1: { cost: 1, slots: 3 },
+					2: { cost: 3, slots: 5 },
+					3: { cost: 4, slots: 8 },
+					4: { cost: 5, slots: 10 },
+					5: { cost: 6, slots: 12 },
+					6: { cost: 8, slots: 16 }
+				}
+			}
+		}
+	},
+	mediumgunboat:
+	{
+		name: 'Medium Gunboat',
+		tons:
+		{
+			1500:
+			{
+				crew:
+				{
+					6: { slots: 135 },
+					7: { slots: 130 }
+				},
+				torpedoes: 30,
+				gunboat: true,
+				hit_boxes:
+				{
+					front: 100,
+					sides: 75,
+					rear: 50
+				},
+				drive:
+				{
+					6: { cost: 18, slots: 4 },
+					7: { cost: 21, slots: 6 },
+					8: { cost: 24, slots: 8 },
+					9: { cost: 27, slots: 10 },
+					10: { cost: 30, slots: 12 },
+					11: { cost: 33, slots: 15 },
+					12: { cost: 36, slots: 17 },
+					13: { cost: 59, slots: 30 },
+					14: { cost: 63, slots: 36 },
+					15: { cost: 68, slots: 41 }
+				},
+				defense:
+				{
+					6: { cost: 18, slots: 4 },
+					7: { cost: 21, slots: 6 },
+					8: { cost: 24, slots: 8 },
+					9: { cost: 27, slots: 10 },
+					10: { cost: 30, slots: 12 },
+					11: { cost: 33, slots: 15 },
+					12: { cost: 54, slots: 26 },
+					13: { cost: 59, slots: 30 },
+					14: { cost: 63, slots: 36 },
+					15: { cost: 68, slots: 41 },
+					16: { cost: 72, slots: 47 },
+					17: { cost: 77, slots: 53 }
+				},
+				damage_reduction:
+				{
+					0: { cost: 0, slots: 0 },
+					1: { cost: 2, slots: 4 },
+					2: { cost: 4, slots: 8 },
+					3: { cost: 6, slots: 12 },
+					4: { cost: 8, slots: 16 },
+					5: { cost: 10, slots: 20 },
+					6: { cost: 12, slots: 24 }
+				}
+			}
+		}
+	},
+	heavygunboat:
+	{
+		name: 'Heavy Gunboat',
+		tons:
+		{
+			2000:
+			{
+				crew:
+				{
+					8: { slots: 180 }
+				},
+				torpedoes: 30,
+				gunboat: true,
+				hit_boxes:
+				{
+					front: 130,
+					sides: 100,
+					rear: 70
+				},
+				drive:
+				{
+					6: { cost: 24, slots: 6 },
+					7: { cost: 28, slots: 8 },
+					8: { cost: 32, slots: 10 },
+					9: { cost: 36, slots: 13 },
+					10: { cost: 40, slots: 16 },
+					11: { cost: 44, slots: 19 },
+					12: { cost: 72, slots: 35 },
+					13: { cost: 78, slots: 39 },
+					14: { cost: 84, slots: 47 }
+				},
+				defense:
+				{
+					6: { cost: 24, slots: 6 },
+					7: { cost: 28, slots: 8 },
+					8: { cost: 32, slots: 10 },
+					9: { cost: 36, slots: 13 },
+					10: { cost: 40, slots: 16 },
+					11: { cost: 66, slots: 29 },
+					12: { cost: 72, slots: 35 },
+					13: { cost: 78, slots: 41 },
+					14: { cost: 84, slots: 47 },
+					15: { cost: 90, slots: 54 },
+					16: { cost: 96, slots: 62 },
+					17: { cost: 102, slots: 69 }
+				},
+				damage_reduction:
+				{
+					0: { cost: 0, slots: 0 },
+					1: { cost: 3, slots: 5 },
+					2: { cost: 5, slots: 10 },
+					3: { cost: 8, slots: 15 },
+					4: { cost: 10, slots: 20 },
+					5: { cost: 12, slots: 25 },
+					6: { cost: 15, slots: 30 }
+				}
+			}
+		}
+	},
+	lightfreighter:
+	{
+		name: 'Light Freighter',
+		tons:
+		{
+			1000:
+			{
+				crew:
+				{
+					2: { slots: 25 }
+				},
+				torpedoes: 20,
+				gunboat: true,
+				hit_boxes:
+				{
+					front: 65,
+					sides: 50,
+					rear: 35
+				},
+				drive:
+				{
+					6: { cost: 3, slots: 3 },
+					7: { cost: 3, slots: 4 },
+					8: { cost: 4, slots: 5 },
+					9: { cost: 4, slots: 6 },
+					10: { cost: 5, slots: 8 },
+					11: { cost: 5, slots: 10 },
+					12: { cost: 6, slots: 12 },
+					13: { cost: 6, slots: 14 },
+					14: { cost: 11, slots: 24 }
+				},
+				defense:
+				{
+					6: { cost: 3, slots: 3 },
+					7: { cost: 4, slots: 4 },
+					8: { cost: 4, slots: 5 },
+					9: { cost: 5, slots: 6 },
+					10: { cost: 5, slots: 8 },
+					11: { cost: 6, slots: 10 },
+					12: { cost: 6, slots: 12 },
+					13: { cost: 11, slots: 21 },
+					14: { cost: 11, slots: 24 }
+				},
+				damage_reduction:
+				{
+					0: { cost: 0, slots: 0 },
+					1: { cost: 1, slots: 3 },
+					2: { cost: 3, slots: 5 },
+					3: { cost: 4, slots: 8 },
+					4: { cost: 5, slots: 10 },
+					5: { cost: 6, slots: 12 },
+					6: { cost: 8, slots: 16 }
+				}
+			}
+		}
+	},
+	mediumfreighter:
+	{
+		name: 'Medium Freighter',
+		tons:
+		{
+			2000:
+			{
+				crew:
+				{
+					4: { slots: 50 },
+					5: { slots: 45 }
+				},
+				torpedoes: 30,
+				gunboat: true,
+				hit_boxes:
+				{
+					front: 130,
+					sides: 100,
+					rear: 70
+				},
+				drive:
+				{
+					6: { cost: 6, slots: 6 },
+					7: { cost: 7, slots: 8 },
+					8: { cost: 8, slots: 10 },
+					9: { cost: 9, slots: 13 },
+					10: { cost: 10, slots: 16 },
+					11: { cost: 11, slots: 19 },
+					12: { cost: 18, slots: 35 },
+					13: { cost: 20, slots: 41 },
+					14: { cost: 21, slots: 47 }
+				},
+				defense:
+				{
+					6: { cost: 6, slots: 6 },
+					7: { cost: 7, slots: 8 },
+					8: { cost: 8, slots: 10 },
+					9: { cost: 9, slots: 13 },
+					10: { cost: 10, slots: 16 },
+					11: { cost: 17, slots: 29 },
+					12: { cost: 18, slots: 35 },
+					13: { cost: 20, slots: 41 },
+					14: { cost: 21, slots: 47 }
+				},
+				damage_reduction:
+				{
+					0: { cost: 0, slots: 0 },
+					1: { cost: 3, slots: 5 },
+					2: { cost: 5, slots: 10 },
+					3: { cost: 8, slots: 15 },
+					4: { cost: 10, slots: 20 },
+					5: { cost: 12, slots: 25 },
+					6: { cost: 15, slots: 30 }
+				}
+			}
+		}
+	},
+	heavyfreighter:
+	{
+		name: 'Heavy Freighter',
+		tons:
+		{
+			3000:
+			{
+				crew:
+				{
+					7: { slots: 75 }
+				},
+				torpedoes: 30,
+				gunboat: true,
+				hit_boxes:
+				{
+					front: 150,
+					sides: 100,
+					rear: 70
+				},
+				drive:
+				{
+					6: { cost: 9, slots: 8 },
+					7: { cost: 11, slots: 10 },
+					8: { cost: 12, slots: 12 },
+					9: { cost: 14, slots: 15 },
+					10: { cost: 15, slots: 18 },
+					11: { cost: 18, slots: 21 },
+					12: { cost: 20, slots: 25 }
+				},
+				defense:
+				{
+					6: { cost: 9, slots: 9 },
+					7: { cost: 10, slots: 12 },
+					8: { cost: 12, slots: 15 },
+					9: { cost: 14, slots: 19 },
+					10: { cost: 15, slots: 24 },
+					11: { cost: 17, slots: 29 },
+					12: { cost: 18, slots: 35 },
+					13: { cost: 20, slots: 41 }
+				},
+				damage_reduction:
+				{
+					0: { cost: 0, slots: 0 },
+					1: { cost: 4, slots: 8 },
+					2: { cost: 8, slots: 16 },
+					3: { cost: 12, slots: 24 },
+					4: { cost: 15, slots: 30 },
+					5: { cost: 18, slots: 36 },
+					6: { cost: 23, slots: 46 }
+				}
+			}
+		}
 	}
 };
