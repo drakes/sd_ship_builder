@@ -14,7 +14,7 @@
 		{ name: 'FiringArc' },
 		{ name: 'ShipOptions', instantiate: true },
 		{ name: 'Option' },
-		{ name: 'DamageTrack', instantiate: true },
+		{ name: 'DamageTrack' },
 		{ name: 'SectionToggle' }
 	];
 
@@ -72,7 +72,48 @@
 			options:
 			{
 				id: 'damage_reduction',
-				attribute_property: 'damage_reduction'
+				attribute_property: 'damage_reduction',
+				gunboat: false
+			}
+		},
+		{
+			name: 'damage_reduction_control_left',
+			class_name: 'Attribute',
+			options:
+			{
+				id: 'damage_reduction_left',
+				attribute_property: 'damage_reduction',
+				gunboat: true
+			}
+		},
+		{
+			name: 'damage_reduction_control_right',
+			class_name: 'Attribute',
+			options:
+			{
+				id: 'damage_reduction_right',
+				attribute_property: 'damage_reduction',
+				gunboat: true
+			}
+		},
+		{
+			name: 'damage_reduction_control_front',
+			class_name: 'Attribute',
+			options:
+			{
+				id: 'damage_reduction_front',
+				attribute_property: 'damage_reduction',
+				gunboat: true
+			}
+		},
+		{
+			name: 'damage_reduction_control_rear',
+			class_name: 'Attribute',
+			options:
+			{
+				id: 'damage_reduction_rear',
+				attribute_property: 'damage_reduction',
+				gunboat: true
 			}
 		},
 		{
@@ -82,7 +123,56 @@
 			{
 				id: 'crew_section_toggle'
 			}
-		}
+		},
+		{
+			name: 'damage_track',
+			class_name: 'DamageTrack',
+			options:
+			{
+				id: 'damage_track',
+				gunboat: false
+			}
+		},
+		{
+			name: 'damage_track_left',
+			class_name: 'DamageTrack',
+			options:
+			{
+				id: 'damage_track_left',
+				gunboat: true,
+				facing: 'sides'
+			}
+		},
+		{
+			name: 'damage_track_right',
+			class_name: 'DamageTrack',
+			options:
+			{
+				id: 'damage_track_right',
+				gunboat: true,
+				facing: 'sides'
+			}
+		},
+		{
+			name: 'damage_track_front',
+			class_name: 'DamageTrack',
+			options:
+			{
+				id: 'damage_track_front',
+				gunboat: true,
+				facing: 'front'
+			}
+		},
+		{
+			name: 'damage_track_rear',
+			class_name: 'DamageTrack',
+			options:
+			{
+				id: 'damage_track_rear',
+				gunboat: true,
+				facing: 'rear'
+			}
+		},
 	];
 	
 	//event handlers

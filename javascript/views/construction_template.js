@@ -3,7 +3,7 @@ var ConstructionTemplateView =
 	//traversal helpers
 	find_selector_template: function(selector)
 	{
-		return selector.up().down(this.options.template_tag);
+		return selector.up('.' + this.options.template_control_class).down(this.options.template_tag);
 	},
 
 	fill_ship_classes: function(ship_class_options, hint)
@@ -29,7 +29,20 @@ var ConstructionTemplateView =
 			text_element.update(options[0]).show();
 			selector.hide();
 		}
-		selector.up().show();
+		selector.up('.' + this.options.template_control_class).show();
 		return options.first();
+	},
+
+	switch_gunboat_mode: function(gunboat)
+	{
+		var body = $$('body')[0];
+		if (gunboat)
+		{
+			body.addClassName(this.options.gunboat_class);
+		}
+		else
+		{
+			body.removeClassName(this.options.gunboat_class);
+		}
 	}
 };

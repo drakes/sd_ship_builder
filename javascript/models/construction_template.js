@@ -10,6 +10,8 @@ var ConstructionTemplateModel =
 			crew_id: 'crew',
 			hint_class: 'hint',
 			template_tag: 'span',
+			template_control_class: 'template_control',
+			gunboat_class: 'gunboat_class',
 
 			//events
 			template_changed_event: 'template:changed',

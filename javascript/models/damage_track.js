@@ -40,6 +40,8 @@ var DamageTrackModel =
 			drive_title: 'Drive',
 
 			//data
+			gunboat: false,
+			facing: null,
 			criticals: $H(
 			{
 				1: $R(1, 200),
@@ -57,9 +59,14 @@ var DamageTrackModel =
 		this.connect_event_handlers();
 	},
 
+	gunboat_compatibility_match: function()
+	{
+		return this.template && (this.template.gunboat && this.options.gunboat || !this.template.gunboat && !this.options.gunboat);
+	},
+
 	set_template: function(template)
 	{
-		this.template = template.hit_boxes;
+		this.template = template;
 	},
 
 	set_tons: function(tons)
@@ -84,7 +91,15 @@ var DamageTrackModel =
 
 	get_template: function()
 	{
-		return this.template;
+		if (!this.gunboat_compatibility_match())
+		{
+			return 0;
+		}
+		if (this.options.gunboat && this.template.gunboat)
+		{
+			return this.template.hit_boxes[this.options.facing];
+		}
+		return this.template.hit_boxes;
 	},
 
 	get_drive: function()

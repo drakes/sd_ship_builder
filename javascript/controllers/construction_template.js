@@ -15,6 +15,9 @@ var ConstructionTemplateController =
 			var tons = this.refresh_selector(this.get_tons_options(ship_class), this.options.tons_id, this.tons_select);
 			var crew = this.refresh_selector(this.get_crew_options(ship_class, tons), this.options.crew_id, this.crew_select);
 			this.send_update(ship_class, tons, crew);
+			var gunboat = this.get_ship_template(ship_class, tons).gunboat;
+			//this kind of responsibility could be split to a new class, particularly if it expands
+			this.switch_gunboat_mode(gunboat);
 		}
 	},
 

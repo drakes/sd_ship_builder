@@ -43,14 +43,14 @@ fieldset
 	font-weight: normal;
 }
 
-#damage_track, #damage_track div
+.damage_track, .damage_track div
 {
 	border-style: solid;
 	border-color: black;
 	text-align: center;
 }
 
-#damage_track .drive
+.damage_track .drive
 {
 	border-style: double;
 }

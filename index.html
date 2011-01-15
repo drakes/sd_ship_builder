@@ -56,7 +56,7 @@
 		<form action="" id="builder">
 			<fieldset>
 				<legend>Ship Template</legend>
-				<div class="template_stat_set">
+				<div class="template_stat_set right">
 					<span id="cost_control" class="template_stat" style="display: none;">
 						<span class="descriptor">Cost:</span>
 						<span class="current"></span>
@@ -74,19 +74,16 @@
 						<span class="template"></span>
 					</span>
 				</div>
-				<div class="template_control_set">
+				<div class="template_control_set left">
 					<span id="class_control" class="template_control">
-						<label for="ship_class" class="descriptor">Ship Class:</label>
-						<select id="ship_class"></select>
+						<label class="descriptor">Ship Class: <select id="ship_class"></select></label>
 					</span>
 					<span id="tons_control" class="template_control" style="display: none;">
-						<label for="tons" class="descriptor">Tons:</label>
-						<select id="tons"></select>
+						<label class="descriptor">Tons: <select id="tons"></select></label>
 						<span style="display: none;"></span>
 					</span>
 					<span id="crew_control" class="template_control" style="display: none;">
-						<label for="crew" class="descriptor">Crew:</label>
-						<select id="crew" style="display: none;"></select>
+						<label class="descriptor">Crew: <select id="crew" style="display: none;"></select></label>
 						<span style="display: none;"></span>
 					</span>
 				</div>
@@ -94,8 +91,7 @@
 			<fieldset>
 				<legend>Basic Stats</legend>
 				<span id="drive_control" class="attribute" style="display: none;">
-					<label for="drive" class="descriptor drive">Drive:</label>
-					<select id="drive"></select>
+					<label class="descriptor drive">Drive: <select id="drive"></select></label>
 					<span class="construction_stats">
 						(cost:
 						<span class="cost"></span>
@@ -104,8 +100,7 @@
 					</span>
 				</span>
 				<span id="defense_control" class="attribute" style="display: none;">
-					<label for="defense" class="descriptor">Defensive Value:</label>
-					<select id="defense"></select>
+					<label class="descriptor">Defensive Value: <select id="defense"></select></label>
 					<span class="construction_stats">
 						(cost:
 						<span class="cost"></span>
@@ -114,8 +109,7 @@
 					</span>
 				</span>
 				<span id="damage_reduction_control" class="attribute" style="display: none;">
-					<label for="damage_reduction" class="descriptor damage_reduction">Damage Reduction:</label>
-					<select id="damage_reduction"></select>
+					<label class="descriptor damage_reduction">Damage Reduction: <select id="damage_reduction"></select></label>
 					<span class="construction_stats">
 						(cost:
 						<span class="cost"></span>
@@ -126,7 +120,7 @@
 			</fieldset>
 			<fieldset>
 				<legend>Crew</legend>
-				<div id="crew_section_toggle" class="section_toggle">
+				<div id="crew_section_toggle" class="section_toggle right">
 					<span class="toggle_hide">off&raquo;</span>
 					<span class="toggle_show">&laquo;on</span>
 				</div>
@@ -144,7 +138,59 @@
 			</fieldset>
 			<fieldset>
 				<legend>Damage Track</legend>
-				<div id="damage_track" style="display: none;"></div>
+				<div id="damage_track" class="damage_track" style="display: none;"></div>
+				<div id="gunboat_left" class="gunboat left">
+					<span id="damage_reduction_control_left" class="attribute">
+						<span>Left</span>
+						<label class="descriptor damage_reduction">Damage Reduction: <select id="damage_reduction_left"></select></label>
+						<span class="construction_stats">
+							(cost:
+							<span class="cost"></span>
+							slots:
+							<span class="slots"></span>)
+						</span>
+					</span>
+					<div id="damage_track_left" class="damage_track"></div>
+				</div>
+				<div id="gunboat_right" class="gunboat right">
+					<span id="damage_reduction_control_right" class="attribute">
+						<span>Right</span>
+						<label class="descriptor damage_reduction">Damage Reduction: <select id="damage_reduction_right"></select></label>
+						<span class="construction_stats">
+							(cost:
+							<span class="cost"></span>
+							slots:
+							<span class="slots"></span>)
+						</span>
+					</span>
+					<div id="damage_track_right" class="damage_track"></div>
+				</div>
+				<div id="gunboat_front" class="gunboat center">
+					<span id="damage_reduction_control_front" class="attribute">
+						<span>Front</span>
+						<label class="descriptor damage_reduction">Damage Reduction: <select id="damage_reduction_front"></select></label>
+						<span class="construction_stats">
+							(cost:
+							<span class="cost"></span>
+							slots:
+							<span class="slots"></span>)
+						</span>
+					</span>
+					<div id="damage_track_front" class="damage_track"></div>
+				</div>
+				<div id="gunboat_rear" class="gunboat center">
+					<span id="damage_reduction_control_rear" class="attribute">
+						<span>Rear</span>
+						<label class="descriptor damage_reduction">Damage Reduction: <select id="damage_reduction_rear"></select></label>
+						<span class="construction_stats">
+							(cost:
+							<span class="cost"></span>
+							slots:
+							<span class="slots"></span>)
+						</span>
+					</span>
+					<div id="damage_track_rear" class="damage_track"></div>
+				</div>
 			</fieldset>
 		</form>
 		

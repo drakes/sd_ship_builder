@@ -60,15 +60,47 @@ input
 	display: none;
 }
 
-#damage_track
+#gunboat_rear
+{
+	margin-top: 1em;
+}
+
+.gunboat
+{
+	display: none;
+}
+
+.gunboat_class #damage_track, .gunboat_class #damage_reduction_control
+{
+	display: none;
+}
+
+.gunboat_class .gunboat
+{
+	display: block;
+}
+
+.gunboat.left, .gunboat.right
+{
+	width: 23%;
+}
+
+.gunboat.center
+{
+	width: 52%;
+	overflow: hidden;
+	margin-left: 24%;
+	margin-right: 24%;
+}
+
+.damage_track
 {
 	float: left;
 	border-width: 2px;
 }
 
-#damage_track div
+.damage_track div
 {
-	float: left;
 	width: 1.5em;
 	height: 1em;
 	border-width: 1px;
@@ -77,10 +109,20 @@ input
 	font-size: 0.8em;
 }
 
-#damage_track .drive
+.damage_track .drive
 {
 	border-width: 3px;
 	padding: 0;
+}
+
+.left, .damage_track div, .crew, .controls, .option_controls, .range, .controls > span, .stat
+{
+	float: left;
+}
+
+.right, .delete
+{
+	float: right;
 }
 
 .current, .separator, .template
@@ -88,19 +130,9 @@ input
 	font-size: 2em;
 }
 
-.template_control_set
-{
-	float: left;
-}
-
 .template_control, .template_stat
 {
 	margin-right: 0.5em;
-}
-
-.template_stat_set
-{
-	float: right;
 }
 
 .crew, .weapon, .ship_option
@@ -113,7 +145,6 @@ input
 
 .crew
 {
-	float: left;
 	margin-right: 0.5em;
 }
 
@@ -125,16 +156,6 @@ input
 .skill_die_container
 {
 	margin-left: 0.25em;
-}
-
-.delete
-{
-	float: right;
-}
-
-.controls, .option_controls, .range
-{
-	float: left;
 }
 
 .option_controls
@@ -159,7 +180,6 @@ input
 
 .controls > span, .stat
 {
-	float: left;
 	margin-right: 1em;
 }
 
@@ -180,7 +200,6 @@ input
 
 .section_toggle
 {
-	float: right;
 	margin-top: -1.2em;
 	margin-right: -0.2em;
 	padding-left: 0.1em;

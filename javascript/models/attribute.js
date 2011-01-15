@@ -6,6 +6,7 @@ var AttributeModel =
 		{
 			//selectors and CSS
 			id: 'attribute',
+			attribute_class: 'attribute',
 			cost_class: 'cost',
 			slots_class: 'slots',
 
@@ -15,7 +16,8 @@ var AttributeModel =
 			selection_changed_event: 'selection:changed',
 
 			//data
-			attribute_property: 'attribute'
+			attribute_property: 'attribute',
+			gunboat: null //null indicates it's neutral, applicable to gunboats and non-gunboats
 		};
 		Object.extend(this.options, options);
 

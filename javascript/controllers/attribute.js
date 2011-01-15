@@ -27,7 +27,8 @@ var AttributeController =
 		{
 			id: this.options.id,
 			attribute: this.options.attribute_property,
-			value: value
+			value: value,
+			gunboat: this.options.gunboat
 		};
 		var attribute_construction = this.get_template()[value];
 		$(this.options.id).fire(this.options.attribute_changed_event, Object.extend(memo, attribute_construction));

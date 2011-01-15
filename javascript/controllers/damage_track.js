@@ -14,7 +14,7 @@ var DamageTrackController =
 	{
 		var template = event.memo;
 		this.set_template(template);
-		this.refresh();
+		this.refresh(this.gunboat_compatibility_match());
 	},
 
 	tons_changed_handler: function(event)
@@ -51,9 +51,21 @@ var DamageTrackController =
 		this.update_damage(target_box);
 	},
 
-	refresh: function()
+	refresh: function(show)
 	{
-		$(this.options.id).show();
+		if (show !== undefined)
+		{
+			var control = $(this.options.id);
+			if (show)
+			{
+				control.show();
+			}
+			else
+			{
+				control.hide();
+			}
+		}
+
 		this.clear();
 		this.render_hit_boxes(this.generate_hit_boxes());
 	}

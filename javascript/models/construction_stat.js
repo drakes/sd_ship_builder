@@ -50,7 +50,12 @@ var ConstructionStatModel =
 
 	store_control_attribute: function(attribute_package)
 	{
-		this.control_attributes.set(attribute_package.id, attribute_package[this.options.stat_property]);
+		var value_and_traits =
+		{
+			value: attribute_package[this.options.stat_property],
+			gunboat: attribute_package.gunboat
+		};
+		this.control_attributes.set(attribute_package.id, value_and_traits);
 	},
 
 	store_weapon: function(weapon_package)
@@ -114,7 +119,14 @@ var ConstructionStatModel =
 
 	calculate_current: function()
 	{
-		var current_stat = this.control_attributes.values().inject(0, this.tally_current);
+		var current_stat = this.control_attributes.values().inject(0, function(current, value_and_traits)
+		{
+			if (value_and_traits.gunboat === null || this.template.gunboat && value_and_traits.gunboat || !this.template.gunboat && !value_and_traits.gunboat)
+			{
+				return current + (value_and_traits.value || 0);
+			}
+			return current;
+		}, this);
 		current_stat = this.weapons.values().inject(current_stat, this.tally_current);
 		current_stat = this.ship_options.values().inject(current_stat, this.tally_current);
 		if (!this.crew_disabled)
