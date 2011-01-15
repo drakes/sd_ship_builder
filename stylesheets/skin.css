@@ -107,6 +107,11 @@ fieldset
 	text-decoration: line-through;
 }
 
+.gunboat .damaged.drive
+{
+	text-decoration: none;
+}
+
 .damaged.drive
 {
 	color: rgb(0, 101, 0);

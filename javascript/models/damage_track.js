@@ -39,6 +39,7 @@ var DamageTrackModel =
 			critical_symbol: '*',
 			critical_title: 'Critical',
 			drive_title: 'Drive',
+			gunboat_drive_value: -1,
 
 			//data
 			gunboat: false,
@@ -253,7 +254,7 @@ var DamageTrackModel =
 	{
 		var box =
 		{
-			value: this.options.gunboat ? '-1' : current_drive,
+			value: this.options.gunboat ? this.options.gunboat_drive_value : current_drive,
 			css_class: this.options.drive_class,
 			title: this.options.drive_title
 		};
