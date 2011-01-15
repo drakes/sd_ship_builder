@@ -7,7 +7,7 @@ var DamageTrackView =
 
 	render_hit_boxes: function(hit_boxes)
 	{
-		var control = $(this.options.id);
+		var content = '';
 		for (var i = 0, l = hit_boxes.length; i < l; i++)
 		{
 			var box = hit_boxes[i] || {};
@@ -29,8 +29,9 @@ var DamageTrackView =
 					}
 				}
 			}
-			control.insert('<' + this.options.hit_box_tag + ' class="' + css_class + '" title="' + title + '">' + value + '</' + this.options.hit_box_tag + '>');
+			content += '<' + this.options.hit_box_tag + ' class="' + css_class + '" title="' + title + '">' + value + '</' + this.options.hit_box_tag + '>';
 		}
+		$(this.options.id).update(content);
 	},
 
 	update_damage: function(target_box)
