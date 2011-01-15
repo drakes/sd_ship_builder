@@ -83,7 +83,8 @@
 			{
 				id: 'damage_reduction_left',
 				attribute_property: 'damage_reduction',
-				gunboat: true
+				gunboat: true,
+				facing: 'left'
 			}
 		},
 		{
@@ -93,7 +94,8 @@
 			{
 				id: 'damage_reduction_right',
 				attribute_property: 'damage_reduction',
-				gunboat: true
+				gunboat: true,
+				facing: 'right'
 			}
 		},
 		{
@@ -103,7 +105,8 @@
 			{
 				id: 'damage_reduction_front',
 				attribute_property: 'damage_reduction',
-				gunboat: true
+				gunboat: true,
+				facing: 'front'
 			}
 		},
 		{
@@ -113,7 +116,8 @@
 			{
 				id: 'damage_reduction_rear',
 				attribute_property: 'damage_reduction',
-				gunboat: true
+				gunboat: true,
+				facing: 'rear'
 			}
 		},
 		{
@@ -140,7 +144,7 @@
 			{
 				id: 'damage_track_left',
 				gunboat: true,
-				facing: 'sides'
+				facing: 'left'
 			}
 		},
 		{
@@ -150,7 +154,7 @@
 			{
 				id: 'damage_track_right',
 				gunboat: true,
-				facing: 'sides'
+				facing: 'right'
 			}
 		},
 		{

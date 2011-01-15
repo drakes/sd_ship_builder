@@ -17,7 +17,8 @@ var AttributeModel =
 
 			//data
 			attribute_property: 'attribute',
-			gunboat: null //null indicates it's neutral, applicable to gunboats and non-gunboats
+			gunboat: null, //null indicates it's neutral, applicable to gunboats and non-gunboats
+			facing: null
 		};
 		Object.extend(this.options, options);
 

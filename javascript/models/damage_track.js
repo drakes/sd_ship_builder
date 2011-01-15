@@ -25,6 +25,7 @@ var DamageTrackModel =
 			//presentation text
 			destruction_symbol: 'X',
 			destruction_title: 'Destruction',
+			gunboat_destruction_title: 'Destruction (after two Xs anywhere)',
 			damage_reduction_symbol: '&loz;',
 			damage_reduction_title: 'Damage reduction',
 			weapon_symbol: 'w',
@@ -47,7 +48,8 @@ var DamageTrackModel =
 				1: $R(1, 200),
 				2: $R(201, 400),
 				3: $R(401, 1000)
-			})
+			}),
+			gunboat_criticals: 2
 		};
 		Object.extend(this.options, options);
 
@@ -76,6 +78,11 @@ var DamageTrackModel =
 
 	set_attribute: function(attribute_package)
 	{
+		if (attribute_package.attribute == 'damage_reduction' && attribute_package.facing != this.options.facing)
+		{
+			this.attributes.damage_reduction = this.attributes.damage_reduction || 0;
+			return;
+		}
 		this.attributes[attribute_package.attribute] = Number(attribute_package.value);
 	},
 
@@ -97,7 +104,8 @@ var DamageTrackModel =
 		}
 		if (this.options.gunboat && this.template.gunboat)
 		{
-			return this.template.hit_boxes[this.options.facing];
+			var facing = (this.options.facing == 'left' || this.options.facing == 'right') ? 'sides' : this.options.facing;
+			return this.template.hit_boxes[facing];
 		}
 		return this.template.hit_boxes;
 	},
@@ -115,22 +123,58 @@ var DamageTrackModel =
 	get_weapons: function()
 	{
 		//non-torpedoes
-		return this.weapons.values().inject(0, function(sum, weapon)
+		var total_weapons = this.weapons.values().inject(0, function(sum, weapon)
 		{
 			return sum + (weapon.torpedoes ? 0 : 1);
 		});
+		if (this.options.gunboat)
+		{
+			var weapon_factor = 2;
+			switch (this.options.facing)
+			{
+				case 'left':
+				case 'right':
+					weapon_factor = 3;
+				break;
+				case 'rear':
+					weapon_factor = 4;
+				break;
+			}
+			total_weapons = Math.round(total_weapons / weapon_factor);
+		}
+		return total_weapons;
 	},
 
 	get_torpedoes: function()
 	{
-		return this.weapons.values().inject(0, function(sum, weapon)
+		var total_torpedoes = this.weapons.values().inject(0, function(sum, weapon)
 		{
 			return sum + (weapon.torpedoes || 0);
 		});
+		if (this.options.gunboat)
+		{
+			var torpedo_factor = 4;
+			switch (this.options.facing)
+			{
+				case 'left':
+				case 'right':
+					torpedo_factor = 2;
+				break;
+				case 'rear':
+					torpedo_factor = 8;
+				break;
+			}
+			total_torpedoes = Math.round(total_torpedoes / torpedo_factor);
+		}
+		return total_torpedoes;
 	},
 
 	get_criticals: function()
 	{
+		if (this.options.gunboat)
+		{
+			return this.options.gunboat_criticals;
+		}
 		var criticals = 1;
 		this.options.criticals.each(function(pair)
 		{
@@ -159,16 +203,31 @@ var DamageTrackModel =
 
 	add_destruction: function(hit_boxes)
 	{
-		hit_boxes[hit_boxes.length - 1] =
+		var destruction_box =
 		{
 			value: this.options.destruction_symbol,
 			css_class: this.options.destruction_class,
-			title: this.options.destruction_title
+			title: this.options.gunboat ? this.options.gunboat_destruction_title : this.options.destruction_title
 		};
+		var hit_box_count = hit_boxes.length;
+		hit_boxes[hit_box_count - 1] = destruction_box;
+		if (this.options.gunboat)
+		{
+			var second_destruction_index = hit_box_count - Math.round(hit_box_count / 5);
+			if (this.options.facing == 'rear')
+			{
+				second_destruction_index = hit_box_count - Math.round(hit_box_count / 3);
+			}
+			hit_boxes[second_destruction_index] = Object.clone(destruction_box);
+		}
 	},
 
 	add_drive: function(hit_boxes, drive)
 	{
+		if (this.options.gunboat && this.options.facing == 'front')
+		{
+			return;
+		}
 		var factor = 2;
 		if (hit_boxes.length < 20)
 		{
@@ -178,14 +237,23 @@ var DamageTrackModel =
 		{
 			factor = 8;
 		}
-		this.place_symbols(hit_boxes, drive, this.make_drive_box.bind(this), factor);
+		var total_drive_boxes = drive;
+		if (this.options.gunboat)
+		{
+			factor = 1;
+			if (this.options.facing == 'left' || this.options.facing == 'right')
+			{
+				total_drive_boxes = Math.floor(drive / 4);
+			}
+		}
+		this.place_symbols(hit_boxes, total_drive_boxes, this.make_drive_box.bind(this), factor);
 	},
 
 	make_drive_box: function(current_drive)
 	{
 		var box =
 		{
-			value: current_drive,
+			value: this.options.gunboat ? '-1' : current_drive,
 			css_class: this.options.drive_class,
 			title: this.options.drive_title
 		};
