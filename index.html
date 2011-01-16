@@ -3,9 +3,10 @@
 	<head>
 		<title>Silent Death Ship Builder</title>
 		<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/reset.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/bones.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/skin.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="stylesheets/reset.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="stylesheets/bones.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="stylesheets/skin.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="stylesheets/print.css" />
 		<script type="text/javascript" language="javascript" src="javascript/prototype.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/application.js"></script>
 		<script type="text/javascript" language="javascript" src="javascript/construction_template_data.js"></script>
@@ -134,7 +135,7 @@
 			<fieldset>
 				<legend>Options</legend>
 				<div id="ship_options"></div>
-				<select id="add_option" style="display: none;"></select>
+				<select id="add_option" class="no_print" style="display: none;"></select>
 			</fieldset>
 			<fieldset>
 				<legend>Damage Track</legend>

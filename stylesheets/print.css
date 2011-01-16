@@ -1,0 +1,9 @@
+h1, .no_print, .info, .construction_stats, .section_toggle, input[type=button]
+{
+	display: none;
+}
+
+.current, .separator, .template
+{
+	font-size: 1em;
+}
