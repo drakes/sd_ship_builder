@@ -1,14 +1,20 @@
 var SectionToggleView =
 {
-	toggle_class: function()
+	toggle_section: function()
 	{
 		var toggle_control = $(this.options.id);
-		if (toggle_control.hasClassName(this.options.hide_class))
+		var show = toggle_control.hasClassName(this.options.hide_class);
+		var section_elements = toggle_control.nextSiblings();
+		if (show)
 		{
 			toggle_control.removeClassName(this.options.hide_class);
-			return true;
+			section_elements.invoke('removeClassName', this.options.hide_class);
 		}
-		toggle_control.addClassName(this.options.hide_class);
-		return false;
+		else
+		{
+			toggle_control.addClassName(this.options.hide_class);
+			section_elements.invoke('addClassName', this.options.hide_class);
+		}
+		return show;
 	}
 };

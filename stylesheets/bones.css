@@ -4,11 +4,6 @@ form
 	padding: 0.2em 0.5em 0.5em 0.5em;
 }
 
-body > p
-{
-	margin: 0.5em;
-}
-
 h1
 {
 	margin-bottom: 0.1em;
@@ -19,6 +14,13 @@ h1
 h1 span
 {
 	font-size: 0.5em;
+}
+
+h2
+{
+	font-size: 1.4em;
+	margin-top: 1em;
+	margin-bottom: 0.7em;
 }
 
 legend
@@ -32,6 +34,12 @@ fieldset
 	margin-top: 0.1em;
 	padding: 0.2em 0.5em 0.2em 0.5em;
 	border-width: 2px;
+}
+
+fieldset .section_toggle
+{
+	margin-top: -1.2em;
+	margin-right: -0.2em;
 }
 
 input
@@ -53,11 +61,6 @@ input
 {
 	overflow: hidden;
 	margin-right: -0.5em;
-}
-
-#crew_members.hide .crew
-{
-	display: none;
 }
 
 #gunboat_rear
@@ -198,14 +201,24 @@ input
 	margin-right: 1em;
 }
 
+.hide
+{
+	display: none;
+}
+
 .section_toggle
 {
 	margin-top: -1.2em;
-	margin-right: -0.2em;
+	margin-right: 1em;
 	padding-left: 0.1em;
 	padding-right: 0.1em;
 	border-width: 1px;
 	font-size: 0.8em;
+}
+
+.section_toggle.hide
+{
+	display: block;
 }
 
 .section_toggle.hide .toggle_hide
@@ -223,8 +236,22 @@ input
 	display: none;
 }
 
-.credit
+.info
 {
-	margin-top: 1em;
+	margin: 1em 0.5em 0.5em 0.5em;
+	padding: 0 0.5em 0.5em 0.5em;
+	border-width: 2px;
 	font-size: 0.8em;
+}
+
+.info p, .info ul, .info li
+{
+	margin: 0.25em 0.5em 0.5em 1.5em;
+}
+
+.info .section_toggle
+{
+	margin-top: -0.7em;
+	margin-right: 0;
+	font-size: 1em;
 }

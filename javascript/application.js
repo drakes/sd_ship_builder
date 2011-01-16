@@ -177,6 +177,15 @@
 				facing: 'rear'
 			}
 		},
+		{
+			name: 'info_toggle',
+			class_name: 'SectionToggle',
+			options:
+			{
+				id: 'info_toggle',
+				hide_on_first_change: true
+			}
+		}
 	];
 	
 	//event handlers

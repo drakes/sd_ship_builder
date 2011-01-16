@@ -10,14 +10,14 @@ form
 	background-color: white;
 }
 
-body, select
+body, select, h2
 {
 	font-family: Verdana, Arial, sans-serif;
 }
 
-legend, .descriptor, .construction_stats
+legend, .descriptor, .construction_stats, .info
 {
-	font-family: 'Times New Roman', serif;
+	font-family: Georgia, 'Times New Roman', serif;
 }
 
 h1 span, legend, .hint
@@ -25,13 +25,27 @@ h1 span, legend, .hint
 	color: gray;
 }
 
-h1 a
+h1 a, h1 a:link
 {
-	color: white;
 	text-decoration: none;
 }
 
-fieldset
+a, a:link, h1 a:visited
+{
+	color: rgb(64, 255, 64);
+}
+
+a:hover, a:active
+{
+	color: rgb(96, 255, 96);
+}
+
+a:visited
+{
+	color: rgb(0, 150, 0);
+}
+
+fieldset, .info
 {
 	border-style: groove;
 	border-color: rgb(222, 222, 222);
@@ -159,7 +173,13 @@ fieldset
 	border-style: outset;
 }
 
-.credit
+.info
 {
-	color: gray;
+	color: rgb(208, 208, 208);
+	background-color: rgb(56, 56, 56);
+}
+
+.info ul
+{
+	list-style: disc;
 }

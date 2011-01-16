@@ -52,7 +52,7 @@
 		<script type="text/javascript" language="javascript" src="javascript/views/section_toggle.js"></script>
 	</head>
 	<body>
-		<h1><a href="" target="_blank" title="Silent Death Ship Builder: opens a new tab, design another ship">Silent Death Ship Builder</a> <span>v0.8</span></h1>
+		<h1><a href="" target="_blank" title="Silent Death Ship Builder: design another ship (in a new tab)">Silent Death Ship Builder</a> <span>v0.8</span></h1>
 		<form action="" id="builder">
 			<fieldset>
 				<legend>Ship Template</legend>
@@ -121,8 +121,8 @@
 			<fieldset>
 				<legend>Crew</legend>
 				<div id="crew_section_toggle" class="section_toggle right">
-					<span class="toggle_hide">off&raquo;</span>
-					<span class="toggle_show">&laquo;on</span>
+					<span class="toggle_hide">&laquo;off</span>
+					<span class="toggle_show">on&raquo;</span>
 				</div>
 				<div id="crew_members"></div>
 			</fieldset>
@@ -194,9 +194,49 @@
 			</fieldset>
 		</form>
 		
-		<p class="credit"><a href="readme.html">Read me</a> for more information.<br />
-			Discuss at the <a href="http://www.metal-express.net/forum/index.php?board=6.0">Metal Express forums</a> and <a href="http://games-blog.pairodicegames.com/games/silent-death">Pair O' Dice Games</a>.<br />
-			&copy; 2009-2010 <a href="http://scottdrake.info/">Scott Drake</a>.</p>
-		<p class="credit">Silent Death: The Next Millennium is a trademark of Mythic Entertainment LLC.<br />
+		<div class="info">
+			<div id="info_toggle" class="section_toggle right">
+				<span class="toggle_hide">&laquo;hide</span>
+				<span class="toggle_show">info&raquo;</span>
+			</div>
+			<div id="info">
+				<h2>What?</h2>
+				<p>Quickly and easily design ships for the space combat miniatures game <a href="http://www.ironcrown.com/?page_id=232">Silent Death</a>.</p>
+				<p>This ship builder implements the Starcraft Design System found in Silent Death: The Next Millennium. You will need the rules to play.</p>
+				<p>Features:</p>
+				<ul>
+					<li>Browser-based, no install required.</li>
+					<li>Design ships in all the standard classes: fighters, scouts, shuttles, freighters, and gunboats.</li>
+					<li>Arm them with all the standard cannons and warheads.</li>
+					<li>Add basic ship options.</li>
+					<li>Select crew skill levels (or optionally turn them off to see the cost of the ship without crew).</li>
+					<li>Damage tracks are generated on the fly with every change you make.</li>
+				</ul>
+				<h2>How?</h2>
+				<p>Select a ship class. The rest of the design options should appear, and they speak for themselves (as long as you're familiar with the game).</p>
+				<p>If that doesn't work you probably don't have JavaScript enabled... or you're using a rather old browser, time to <a href="http://www.opera.com/">upgrade</a>.</p>
+				<h2>Tips</h2>
+				<ul>
+					<li><strong>Arrow keys are your friends:</strong> click twice on a drop-down to give it focus, then cycle through options rapidly using your arrow keys.</li>
+					<li><strong>Design another ship:</strong> click the header to start a fresh ship design in a new tab.</li>
+					<li><strong>Track damage:</strong> click on any damage track box to mark damage in red. Click again on a damaged box to make repairs.</li>
+					<li><strong>Offline use:</strong> save this page (and its associated .js and .css files), as a single file archive if your browser provides this option. Or go to <a href="http://github.com/drakes/sd_ship_builder">GitHub</a>, click <strong>Downloads</strong> to get the whole thing as a zip, extract all of the contents, and double-click index.html.</li>
+					<li><strong>Go fullscreen:</strong> if you need more space pressing <kbd>F11</kbd> in most browsers enters fullscreen mode. <kbd>F11</kbd> again or <kbd>ESC</kbd> should exit fullscreen mode.</li>
+				</ul>
+				<h2>Discuss</h2>
+				<ul>
+					<li>This and other ship builders, plus anything else Silent Death, at the official forums on <a href="http://www.metal-express.net/forum/index.php?board=6.0">Metal Express</a>.</li>
+					<li>Get updates and more, or contact the author directly, at Scott's gaming blog on <a href="http://games-blog.pairodicegames.com/games/silent-death">Pair O' Dice Games</a>.</li>
+				</ul>
+				<h2>Open Source</h2>
+				<p>This application is open source software, go to <a href="http://github.com/drakes/sd_ship_builder">GitHub</a> for source and more details.</p>
+				<h2>License (MIT)</h2>
+				<p>Copyright &copy; 2009-2010 <a href="http://scottdrake.info/">Scott Drake</a>.</p>
+				<p>Silent Death: The Next Millennium is a trademark of Mythic Entertainment LLC.</p>
+				<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+				<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+				<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+			</div>
+		</div>
 	</body>
 </html>

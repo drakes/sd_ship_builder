@@ -24,7 +24,6 @@ var CrewMembersController =
 	{
 		event.stop();
 		var show = event.memo.show;
-		this.toggle_crew(show);
 		$(this.options.id).fire(this.options.crew_toggled_event, event.memo);
 	},
 

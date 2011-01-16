@@ -10,7 +10,10 @@ var SectionToggleModel =
 
 			//events
 			toggled_event: 'section:toggled',
-			template_changed_event: 'template:changed'
+			template_changed_event: 'template:changed',
+
+			//behavior
+			hide_on_first_change: false
 		};
 		Object.extend(this.options, options);
 
