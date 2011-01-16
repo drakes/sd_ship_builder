@@ -30,13 +30,17 @@ The focus is on automating record-keeping to ease the process of designing ships
 
   * Browser-based, no install required.
 
-  * Ship types include light, medium, and heavy fighters, scouts, and shuttles.
+  * Design ships in all the standard classes: fighters, scouts, shuttles, freighters, and gunboats.
 
-  * Weapon systems include all standard cannons, launchers, and torpedoes.
+  * Arm them with all the standard cannons and warheads.
 
   * Basic ship options.
 
-  * Damage track generation, click to mark damage and hover to decipher symbols.
+  * Add basic ship options.
+
+  * Select crew skill levels (or optionally turn them off to see the cost of the ship without crew).
+
+  * Damage tracks are generated on the fly with every change you make.
 
 ## Known Bugs
 
@@ -48,7 +52,7 @@ The focus is on automating record-keeping to ease the process of designing ships
 
 There are plenty of features yet to be implemented:
 
-  * Gunboats, freighters, and larger ship classes.
+  * Warhounds.
 
   * Ship quirks.
 
