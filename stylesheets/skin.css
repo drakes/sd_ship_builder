@@ -64,6 +64,11 @@ fieldset, .info
 	text-align: center;
 }
 
+.damage_track .damage_reduction span
+{
+	text-align: center;
+}
+
 .damage_track .drive
 {
 	border-style: double;

@@ -26,8 +26,10 @@ var DamageTrackModel =
 			destruction_symbol: 'X',
 			destruction_title: 'Destruction',
 			gunboat_destruction_title: 'Destruction (after two Xs anywhere)',
-			damage_reduction_symbol: '&loz;',
+			damage_reduction_symbol: '',
 			damage_reduction_title: 'Damage reduction',
+			damage_reduction_tag: 'div',
+			damage_reduction_inner_tag: 'span',
 			weapon_symbol: 'w',
 			weapon_title: 'Weapon destroyed (defender\'s choice)',
 			weapon_alt_symbol: 'W',
@@ -267,7 +269,9 @@ var DamageTrackModel =
 		{
 			value: this.options.damage_reduction_symbol + current_damage_reduction,
 			css_class: this.options.damage_reduction_class,
-			title: this.options.damage_reduction_title
+			title: this.options.damage_reduction_title,
+			wrapper: this.options.damage_reduction_tag,
+			inner_wrapper: this.options.damage_reduction_inner_tag
 		};
 		return box;
 	},

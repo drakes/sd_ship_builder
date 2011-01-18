@@ -102,14 +102,21 @@ input
 	border-width: 2px;
 }
 
-.damage_track div
+.damage_track > div
 {
+	overflow: hidden;
 	width: 1.5em;
-	height: 1em;
+	height: 1.2em;
+	line-height: 1.2em;
 	border-width: 1px;
 	margin: 2px;
 	padding: 2px;
 	font-size: 0.8em;
+}
+
+.damage_track > .damage_reduction
+{
+	height: 1.2em;
 }
 
 .damage_track .drive
@@ -118,7 +125,35 @@ input
 	padding: 0;
 }
 
-.left, .damage_track div, .crew, .controls, .option_controls, .range, .controls > span, .stat
+.damage_track .damage_reduction div
+{
+	width: 1em;
+	height: 1em;
+	margin: 1px auto 1px auto;
+	border-width: 1px;
+	transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476);
+	zoom: 1;
+}
+
+.damage_track .damage_reduction span
+{
+	display: block;
+	line-height: 1em;
+	transform: rotate(315deg);
+	-o-transform: rotate(315deg);
+	-webkit-transform: rotate(315deg);
+	-moz-transform: rotate(315deg);
+	-ms-transform: rotate(315deg);
+	filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=0.7071067811865474, M12=0.7071067811865477, M21=-0.7071067811865477, M22=0.7071067811865474);
+	zoom: 1;
+}
+
+.left, .damage_track > div, .crew, .controls, .option_controls, .range, .controls > span, .stat
 {
 	float: left;
 }

@@ -29,7 +29,14 @@ var DamageTrackView =
 					}
 				}
 			}
-			content += '<' + this.options.hit_box_tag + ' class="' + css_class + '" title="' + title + '">' + value + '</' + this.options.hit_box_tag + '>';
+			if (box.wrapper && box.inner_wrapper)
+			{
+				content += '<' + this.options.hit_box_tag + ' class="' + css_class + '" title="' + title + '"><' + box.wrapper + '><' + box.inner_wrapper + '>' + value + '</' + box.inner_wrapper + '></' + box.wrapper + '>' + '</' + this.options.hit_box_tag + '>';
+			}
+			else
+			{
+				content += '<' + this.options.hit_box_tag + ' class="' + css_class + '" title="' + title + '">' + value + '</' + this.options.hit_box_tag + '>';
+			}
 		}
 		$(this.options.id).update(content);
 	},
