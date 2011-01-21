@@ -15,7 +15,8 @@
 		{ name: 'ShipOptions', instantiate: true },
 		{ name: 'Option' },
 		{ name: 'DamageTrack' },
-		{ name: 'SectionToggle' }
+		{ name: 'SectionToggle' },
+		{ name: 'Persistence', instantiate: true }
 	];
 
 	var instances =

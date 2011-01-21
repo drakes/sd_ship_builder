@@ -68,6 +68,13 @@ input
 	margin-top: 1em;
 }
 
+.persistence
+{
+	float: right;
+	margin: 0.2em;
+	font-size: 0.8em;
+}
+
 .gunboat
 {
 	display: none;
