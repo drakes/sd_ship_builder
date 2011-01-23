@@ -28,6 +28,7 @@ var AttributeController =
 			id: this.options.id,
 			attribute: this.options.attribute_property,
 			value: value,
+			index: this.select.index_of(value),
 			gunboat: this.options.gunboat,
 			facing: this.options.facing
 		};

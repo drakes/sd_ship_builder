@@ -28,7 +28,7 @@ var PersistenceModel =
 				crew_size: 'c',
 				crew_skill: 'k',
 				drive: 'r',
-				defensive_value: 'v',
+				defense: 'v', //defensive value
 				damage_reduction: 'd',
 				weapon_type: 'w',
 				weapon_multiple: 'm',
@@ -38,14 +38,15 @@ var PersistenceModel =
 				option_dimension_one: 'x',
 				option_dimension_two: 'y',
 				quirk_type: 'q'
-			}
+			},
+			gunboat_facing_order: ['front', 'right', 'rear', 'left']
 		};
 		Object.extend(this.options, options);
 
 		this.template = null;
 		this.ship_class = null;
 		this.tons = null;
-		this.control_attributes = $H();
+		this.attributes = $H();
 		this.weapons = $H();
 		this.ship_options = $H();
 		this.crew_skills = $H();
@@ -58,14 +59,9 @@ var PersistenceModel =
 		this.template = template;
 	},
 
-	store_control_attribute: function(attribute_package)
+	store_attribute: function(attribute_package)
 	{
-		var value_and_traits =
-		{
-			value: attribute_package[this.options.stat_property],
-			gunboat: attribute_package.gunboat
-		};
-		this.control_attributes.set(attribute_package.id, value_and_traits);
+		this.attributes.set(attribute_package.id, attribute_package);
 	},
 
 	store_crew: function(crew_package)
@@ -112,13 +108,17 @@ var PersistenceModel =
 	{
 		if (index || required)
 		{
-			var instance_number = parameter_pairs.findAll(function(pair)
+			//symbols ending in a number are assumed to already have an instance number
+			if (!symbol.match(/\d$/))
 			{
-				return pair[0].indexOf(symbol) > -1;
-			}).length;
-			if (instance_number)
-			{
-				symbol += instance_number;
+				var instance_number = parameter_pairs.findAll(function(pair)
+				{
+					return pair[0].indexOf(symbol) > -1;
+				}).length;
+				if (instance_number)
+				{
+					symbol += instance_number;
+				}
 			}
 			parameter_pairs.push([symbol, index]);
 		}
@@ -146,12 +146,36 @@ var PersistenceModel =
 		}, this);
 	},
 
+	add_attribute_parameters: function(parameter_pairs)
+	{
+		var attributes = this.attributes.values();
+		if (!attributes.length)
+		{
+			return;
+		}
+		attributes.each(function(attribute)
+		{
+			if (attribute.attribute != 'damage_reduction' || (!this.template.gunboat && !attribute.gunboat))
+			{
+				this.add_parameter(parameter_pairs, this.options.symbols[attribute.attribute], attribute.index);
+			}
+			else if (this.template.gunboat && attribute.gunboat)
+			{
+				var order = this.options.gunboat_facing_order.indexOf(attribute.facing);
+				//suffixing order even when 0 prevents automatic indexing, as the front is not necessarily first
+				var symbol = this.options.symbols[attribute.attribute] + order;
+				this.add_parameter(parameter_pairs, symbol, attribute.index);
+			}
+		}, this);
+	},
+
 	encode_to_url: function()
 	{
 		var parameter_pairs= [];
 		this.add_parameter(parameter_pairs, this.options.symbols.ship_class, this.template.ship_class_index, true);
 		this.add_parameter(parameter_pairs, this.options.symbols.tons, this.template.tons_index);
 		this.add_parameter(parameter_pairs, this.options.symbols.crew_size, this.template.crew_index);
+		this.add_attribute_parameters(parameter_pairs);
 		this.add_crew_skill_parameters(parameter_pairs);
 
 		return this.get_base_url() + this.encode_query_string(parameter_pairs);

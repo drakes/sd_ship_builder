@@ -21,7 +21,7 @@ var PersistenceController =
 
 	attribute_changed_handler: function(event)
 	{
-		this.store_control_attribute(event.memo);
+		this.store_attribute(event.memo);
 		this.refresh();
 	},
 
