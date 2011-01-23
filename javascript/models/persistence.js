@@ -81,7 +81,7 @@ var PersistenceModel =
 
 	store_weapon: function(weapon_package)
 	{
-		this.weapons.set(weapon_package.id, weapon_package[this.options.stat_property]);
+		this.weapons.set(weapon_package.id, weapon_package);
 	},
 
 	delete_weapon: function(weapon_id)
@@ -91,7 +91,7 @@ var PersistenceModel =
 
 	store_option: function(option_package)
 	{
-		this.ship_options.set(option_package.id, option_package[this.options.stat_property]);
+		this.ship_options.set(option_package.id, option_package);
 	},
 
 	delete_option: function(option_id)
@@ -169,6 +169,19 @@ var PersistenceModel =
 		}, this);
 	},
 
+	add_weapon_parameters: function(parameter_pairs)
+	{
+		var weapons = this.weapons.values();
+		for (var i = 0, l = weapons.length; i < l; i++)
+		{
+			var weapon = weapons[i];
+			this.add_parameter(parameter_pairs, this.options.symbols.weapon_type + (i ? i : ''), weapon.type_index, true);
+			this.add_parameter(parameter_pairs, this.options.symbols.weapon_multiple + (i ? i : ''), weapon.multiples_index);
+			this.add_parameter(parameter_pairs, this.options.symbols.ammo + (i ? i : ''), weapon.ammo_index);
+			this.add_parameter(parameter_pairs, this.options.symbols.firing_arcs + (i ? i : ''), weapon.firing_arcs);
+		}
+	},
+
 	encode_to_url: function()
 	{
 		var parameter_pairs= [];
@@ -177,6 +190,7 @@ var PersistenceModel =
 		this.add_parameter(parameter_pairs, this.options.symbols.crew_size, this.template.crew_index);
 		this.add_attribute_parameters(parameter_pairs);
 		this.add_crew_skill_parameters(parameter_pairs);
+		this.add_weapon_parameters(parameter_pairs);
 
 		return this.get_base_url() + this.encode_query_string(parameter_pairs);
 	},

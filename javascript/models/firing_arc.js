@@ -55,21 +55,34 @@ var FiringArcModel =
 
 	get_firing_arc_stats: function()
 	{
-		var selected_arcs = this.get_firing_arc_selection();
-		return Object.clone(this.options.template[selected_arcs - 1]);
+		var arc_selection = this.get_firing_arc_selection();
+		var firing_arc_stats = Object.clone(this.options.template[arc_selection.selected - 1]);
+		firing_arc_stats.encoded = arc_selection.encoded;
+		return firing_arc_stats;
 	},
 
 	get_firing_arc_selection: function()
 	{
 		var selected_arcs = 0;
-		this.find_arc_controls().each(function(arc_control)
+		var encoded = 0;
+		var arc_controls = this.find_arc_controls();
+		for (var i = 0, l = arc_controls.length; i < l; i++)
 		{
-			if (this.get_arc_control_state(arc_control))
+			if (this.get_arc_control_state(arc_controls[i]))
 			{
 				selected_arcs++;
+				encoded += Math.pow(2, i);
 			}
-		}, this);
-		return selected_arcs;
+		}
+		//front-only (assuming front is first) is redundant
+		if (encoded == 1)
+		{
+			encoded = 0;
+		}
+		return {
+			selected: selected_arcs,
+			encoded: encoded
+		};
 	},
 
 	select_front_arc: function()

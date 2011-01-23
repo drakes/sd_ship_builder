@@ -75,7 +75,11 @@ var WeaponController =
 		{
 			id: this.options.id,
 			cost: weapon_stats.cost,
-			slots: weapon_stats.slots
+			slots: weapon_stats.slots,
+			type_index: this.get_type_index(),
+			multiples_index: this.get_multiples_index(),
+			ammo_index: this.get_ammo_index(),
+			firing_arcs: this.get_encoded_firing_arcs()
 		};
 		if (weapon_stats.torpedoes)
 		{

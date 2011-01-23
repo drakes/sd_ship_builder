@@ -60,9 +60,14 @@ var WeaponModel =
 		this.ammo_select = new EasySelect({ id: ids.ammo });
 	},
 
-	get_weapon_type: function()
+	get_type: function()
 	{
 		return this.type_select.get();
+	},
+
+	get_type_index: function()
+	{
+		return this.type_select.index_of();
 	},
 
 	get_multiple_key: function()
@@ -70,9 +75,19 @@ var WeaponModel =
 		return this.multiple_select.get();
 	},
 
+	get_multiples_index: function()
+	{
+		return this.multiple_select.index_of();
+	},
+
 	get_ammo_expansions: function()
 	{
 		return Number(this.ammo_select.get());
+	},
+
+	get_ammo_index: function()
+	{
+		return this.ammo_select.index_of();
 	},
 
 	get_ammo_count: function()
@@ -85,7 +100,7 @@ var WeaponModel =
 
 	get_weapon_template: function()
 	{
-		return this.options.data[this.get_weapon_type()];
+		return this.options.data[this.get_type()];
 	},
 
 	get_ammo_template: function()
@@ -165,6 +180,15 @@ var WeaponModel =
 	store_firing_arc_stats: function(firing_arc_stats)
 	{
 		this.firing_arc_stats = firing_arc_stats;
+	},
+
+	get_encoded_firing_arcs: function()
+	{
+		if (this.get_weapon_template().torpedoes)
+		{
+			return 0;
+		}
+		return this.firing_arc_stats.encoded;
 	},
 
 	add_multiples_bonuses: function(weapon_stats)

@@ -44,6 +44,10 @@ var EasySelectController =
 
 	index_of: function(key)
 	{
+		if (key === undefined)
+		{
+			key = this.get();
+		}
 		var options = $(this.options.id).select('option');
 		var index = 0;
 		options.each(function(option, i)
