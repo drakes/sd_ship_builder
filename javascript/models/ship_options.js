@@ -25,6 +25,7 @@ var ShipOptionsModel =
 		Object.extend(this.options, options);
 
 		this.keys_by_id = $H();
+		this.option_templates = $H(this.options.data);
 
 		this.initialize_option_select();
 		this.connect_event_handlers();
@@ -50,7 +51,13 @@ var ShipOptionsModel =
 
 	get_option_template: function(option_key)
 	{
-		return this.options.data[option_key];
+		return this.option_templates.get(option_key);
+	},
+
+	get_option_index: function(option_key)
+	{
+		//select's index is unstable as options are removed, and Hash key order is technically also unstable (hence the sorting)
+		return this.option_templates.keys().sort().indexOf(option_key);
 	},
 
 	add_option: function(option_key)
@@ -63,7 +70,8 @@ var ShipOptionsModel =
 		new Option(
 		{
 			id: id,
-			data: option_template
+			data: option_template,
+			type_index: this.get_option_index(option_key)
 		});
 	},
 

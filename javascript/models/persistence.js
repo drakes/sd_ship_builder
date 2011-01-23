@@ -35,8 +35,7 @@ var PersistenceModel =
 				ammo: 'a',
 				firing_arcs: 'f',
 				ship_option_type: 'o',
-				option_dimension_one: 'x',
-				option_dimension_two: 'y',
+				option_dimensions: ['x', 'y'], //only two are currently needed/used
 				quirk_type: 'q'
 			},
 			gunboat_facing_order: ['front', 'right', 'rear', 'left']
@@ -182,6 +181,20 @@ var PersistenceModel =
 		}
 	},
 
+	add_ship_option_parameters: function(parameter_pairs)
+	{
+		var ship_options = this.ship_options.values();
+		for (var i = 0, l = ship_options.length; i < l; i++)
+		{
+			var ship_option = ship_options[i];
+			this.add_parameter(parameter_pairs, this.options.symbols.ship_option_type + (i ? i : ''), ship_option.type_index, true);
+			for (var j = 0, dl = ship_option.dimension_indices.length; j < dl; j++)
+			{
+				this.add_parameter(parameter_pairs, this.options.symbols.option_dimensions[j] + (i ? i : ''), ship_option.dimension_indices[j]);
+			}
+		}
+	},
+
 	encode_to_url: function()
 	{
 		var parameter_pairs= [];
@@ -191,6 +204,7 @@ var PersistenceModel =
 		this.add_attribute_parameters(parameter_pairs);
 		this.add_crew_skill_parameters(parameter_pairs);
 		this.add_weapon_parameters(parameter_pairs);
+		this.add_ship_option_parameters(parameter_pairs);
 
 		return this.get_base_url() + this.encode_query_string(parameter_pairs);
 	},

@@ -20,11 +20,13 @@ var OptionModel =
 			selection_changed_event: 'selection:changed',
 
 			//option template
-			data: null
+			data: null,
+			type_index: null
 		};
 		Object.extend(this.options, options);
 
 		this.current_keys = [];
+		this.selects = [];
 
 		this.connect_event_handlers();
 		this.initialize_controls();
@@ -36,6 +38,7 @@ var OptionModel =
 		select_ids.each(function(id, index)
 		{
 			var select = new EasySelect({ id: id });
+			this.selects[index] = select;
 			var dimension_options = this.create_dimension_options(index);
 			select.update_options(dimension_options);
 			var first_key = this.options.data.dimensions[index].spread ? dimension_options[0].key : dimension_options[0];
@@ -70,6 +73,16 @@ var OptionModel =
 	store_key: function(key, index)
 	{
 		this.current_keys[index] = key;
+	},
+
+	get_dimension_indices: function()
+	{
+		var indices = [];
+		this.selects.each(function(select, index)
+		{
+			indices[index] = select.index_of();
+		});
+		return indices;
 	},
 
 	get_stats: function()

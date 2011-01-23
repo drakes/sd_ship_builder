@@ -37,7 +37,9 @@ var OptionController =
 		{
 			id: this.options.id,
 			cost: stats.cost,
-			slots: stats.slots
+			slots: stats.slots,
+			type_index: this.options.type_index,
+			dimension_indices: this.get_dimension_indices()
 		};
 		$(this.options.id).fire(this.options.changed_event, memo);
 	}

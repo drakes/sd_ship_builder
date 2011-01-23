@@ -50,14 +50,20 @@ var EasySelectController =
 		}
 		var options = $(this.options.id).select('option');
 		var index = 0;
+		var hints = 0;
 		options.each(function(option, i)
 		{
 			if (option.value == key)
 			{
 				index = i;
 			}
-		});
-		return index;
+			else if (option.hasClassName(this.options.hint_class))
+			{
+				hints++;
+			}
+		}, this);
+		//don't count hints as valid previous options
+		return index - hints;
 	},
 
 	update_options: function(keys)
