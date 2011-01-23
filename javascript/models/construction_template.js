@@ -62,6 +62,12 @@ var ConstructionTemplateModel =
 		}
 
 		var ship_template = Object.clone(this.options.data[ship_class].tons[tons]);
+		Object.extend(ship_template,
+		{
+			ship_class_index: this.get_ship_class_index(ship_class),
+			tons_index: this.get_tons_index(tons),
+			crew_index: this.get_crew_index(this.get_crew())
+		});
 		return ship_template;
 	},
 
@@ -80,14 +86,32 @@ var ConstructionTemplateModel =
 		return this.ship_class_select.get();
 	},
 
+	get_ship_class_index: function(ship_class)
+	{
+		return this.ship_class_select.index_of(ship_class);
+	},
+
 	get_tons: function()
 	{
 		return this.get_template_value(this.options.tons_id, this.tons_select);
 	},
 	
+	get_tons_index: function(tons)
+	{
+		return this.tons_select.index_of(tons);
+	},
+
 	get_crew: function()
 	{
 		return this.get_template_value(this.options.crew_id, this.crew_select);
+	},
+
+	get_crew_index: function(crew)
+	{
+		if ($(this.options.crew_id).visible())
+		{
+			return this.crew_select.index_of(crew);
+		}
 	},
 	
 	get_template_value: function(selector_id, easy_select)

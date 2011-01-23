@@ -42,6 +42,20 @@ var EasySelectController =
 		}
 	},
 
+	index_of: function(key)
+	{
+		var options = $(this.options.id).select('option');
+		var index = 0;
+		options.each(function(option, i)
+		{
+			if (option.value == key)
+			{
+				index = i;
+			}
+		});
+		return index;
+	},
+
 	update_options: function(keys)
 	{
 		var value = this.get();

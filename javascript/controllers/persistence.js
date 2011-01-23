@@ -3,7 +3,6 @@ var PersistenceController =
 	connect_event_handlers: function()
 	{
 		document.observe(this.options.template_changed_event, this.template_changed_handler.bindAsEventListener(this));
-		document.observe(this.options.crew_template_changed_event, this.crew_template_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.attribute_changed_event, this.attribute_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.weapon_changed_event, this.weapon_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.weapon_deleted_event, this.weapon_deleted_handler.bindAsEventListener(this));
@@ -17,12 +16,6 @@ var PersistenceController =
 	template_changed_handler: function(event)
 	{
 		this.store_template(event.memo);
-		this.refresh();
-	},
-
-	crew_template_changed_handler: function(event)
-	{
-		this.store_crew_template(event.memo);
 		this.refresh();
 	},
 

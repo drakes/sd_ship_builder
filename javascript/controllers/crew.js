@@ -38,16 +38,22 @@ var CrewController =
 
 	send_update: function()
 	{
-		var cost = 1 + Number(this.gunnery_select.get());
-		if (this.options.pilot)
-		{
-			cost += 1 + Number(this.piloting_select.get());
-		}
+		var gunnery_index = Number(this.gunnery_select.get());
 		var memo =
 		{
 			id: this.options.id,
-			cost: cost
+			cost: 1 + gunnery_index,
+			gunnery_index: gunnery_index
 		};
+		if (this.options.pilot)
+		{
+			var piloting_index = Number(this.piloting_select.get());
+			Object.extend(memo,
+			{
+				cost: memo.cost + 1 + piloting_index,
+				piloting_index: piloting_index
+			});
+		}
 		$(this.options.id).fire(this.options.changed_event, memo);
 	}
 };

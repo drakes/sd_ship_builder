@@ -9,7 +9,6 @@ var PersistenceModel =
 
 			//events
 			template_changed_event: 'template:changed',
-			crew_template_changed_event: 'crew_template:changed',
 			attribute_changed_event: 'attribute:changed',
 			weapon_changed_event: 'weapon:changed',
 			weapon_deleted_event: 'weapon:deleted',
@@ -46,7 +45,6 @@ var PersistenceModel =
 		this.template = null;
 		this.ship_class = null;
 		this.tons = null;
-		this.crew_size = null;
 		this.control_attributes = $H();
 		this.weapons = $H();
 		this.ship_options = $H();
@@ -60,11 +58,6 @@ var PersistenceModel =
 		this.template = template;
 	},
 
-	store_crew_template: function(crew)
-	{
-		this.crew_size = crew;
-	},
-
 	store_control_attribute: function(attribute_package)
 	{
 		var value_and_traits =
@@ -73,6 +66,21 @@ var PersistenceModel =
 			gunboat: attribute_package.gunboat
 		};
 		this.control_attributes.set(attribute_package.id, value_and_traits);
+	},
+
+	store_crew: function(crew_package)
+	{
+		this.crew_skills.set(crew_package.id, crew_package);
+	},
+
+	store_crew_disabled: function(disabled)
+	{
+		this.crew_disabled = disabled;
+	},
+
+	delete_crew: function(crew_id)
+	{
+		this.crew_skills.unset(crew_id);
 	},
 
 	store_weapon: function(weapon_package)
@@ -95,77 +103,66 @@ var PersistenceModel =
 		this.ship_options.unset(option_id);
 	},
 
-	store_crew: function(crew_package)
-	{
-		if (crew_package[this.options.stat_property] !== undefined)
-		{
-			this.crew_costs.set(crew_package.id, crew_package[this.options.stat_property]);
-		}
-	},
-
-	store_crew_disabled: function(disabled)
-	{
-		this.crew_disabled = disabled;
-	},
-
-	delete_crew: function(crew_id)
-	{
-		this.crew_costs.unset(crew_id);
-	},
-
-	get_template_value: function()
-	{
-		if (this.options.crew_based)
-		{
-			//sometimes the template changes before the crew's been updated
-			//the crew_template change event immediately following has the necessary info, in the meantime this covers the gap
-			return (((this.template || {}).crew || {})[this.get_crew_template()] || {})[this.options.stat_property];
-		}
-		else
-		{
-			//sometimes the attribute change event fires before the template's been updated
-			//the template change event immediately following has the necessary info, in the meantime this covers the gap
-			return (this.template || {})[this.options.stat_property];
-		}
-	},
-
-	get_crew_template: function()
-	{
-		return this.crew_size;
-	},
-
 	get_base_url: function()
 	{
 		return location.protocol + '//' + location.host + location.pathname;
 	},
 
-	calculate_current: function()
+	add_parameter: function(parameter_pairs, symbol, index, required)
 	{
-		var current_stat = this.control_attributes.values().inject(0, function(current, value_and_traits)
+		if (index || required)
 		{
-			if (value_and_traits.gunboat === null || this.template.gunboat && value_and_traits.gunboat || !this.template.gunboat && !value_and_traits.gunboat)
+			var instance_number = parameter_pairs.findAll(function(pair)
 			{
-				return current + (value_and_traits.value || 0);
+				return pair[0].indexOf(symbol) > -1;
+			}).length;
+			if (instance_number)
+			{
+				symbol += instance_number;
 			}
-			return current;
-		}, this);
-		current_stat = this.weapons.values().inject(current_stat, this.tally_current);
-		current_stat = this.ship_options.values().inject(current_stat, this.tally_current);
-		if (!this.crew_disabled)
-		{
-			current_stat = this.crew_costs.values().inject(current_stat, this.tally_current);
+			parameter_pairs.push([symbol, index]);
 		}
-		return current_stat;
 	},
 
-	tally_current: function(current, value)
+	add_crew_skill_parameters: function(parameter_pairs)
 	{
-		return current + (value || 0);
+		var skill_sets = this.crew_skills.values();
+		if (!skill_sets.length)
+		{
+			return;
+		}
+		skill_sets = skill_sets.partition(function(skill_set)
+		{
+			return skill_set.piloting_index !== undefined;
+		});
+		var pilot = skill_sets[0][0];
+		var gunners = skill_sets[1];
+		//ensures the pilot's piloting, then gunnery, are first
+		this.add_parameter(parameter_pairs, this.options.symbols.crew_skill, pilot.piloting_index, true);
+		this.add_parameter(parameter_pairs, this.options.symbols.crew_skill, pilot.gunnery_index, true);
+		gunners.pluck('gunnery_index').each(function(gunnery_index)
+		{
+			this.add_parameter(parameter_pairs, this.options.symbols.crew_skill, gunnery_index);
+		}, this);
 	},
 
 	encode_to_url: function()
 	{
-		var url = this.get_base_url();
-		return url;
+		var parameter_pairs= [];
+		this.add_parameter(parameter_pairs, this.options.symbols.ship_class, this.template.ship_class_index, true);
+		this.add_parameter(parameter_pairs, this.options.symbols.tons, this.template.tons_index);
+		this.add_parameter(parameter_pairs, this.options.symbols.crew_size, this.template.crew_index);
+		this.add_crew_skill_parameters(parameter_pairs);
+
+		return this.get_base_url() + this.encode_query_string(parameter_pairs);
+	},
+
+	encode_query_string: function(parameter_pairs)
+	{
+		if (!parameter_pairs.length)
+		{
+			return '';
+		}
+		return '?' + parameter_pairs.invoke('join', '=').join('&');
 	}
 };
