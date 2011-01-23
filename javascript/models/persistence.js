@@ -127,7 +127,7 @@ var PersistenceModel =
 	add_crew_skill_parameters: function(parameter_pairs)
 	{
 		var skill_sets = this.crew_skills.values();
-		if (!skill_sets.length)
+		if (this.crew_disabled || !skill_sets.length)
 		{
 			return;
 		}
