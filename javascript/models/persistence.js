@@ -6,6 +6,7 @@ var PersistenceModel =
 		{
 			//selectors and CSS
 			id: 'duplicate',
+			name_id: 'name',
 
 			//events
 			template_changed_event: 'template:changed',
@@ -49,6 +50,8 @@ var PersistenceModel =
 		this.weapons = $H();
 		this.ship_options = $H();
 		this.crew_skills = $H();
+
+		this.original_title = document.title;
 
 		this.connect_event_handlers();
 	},
@@ -121,6 +124,17 @@ var PersistenceModel =
 			}
 			parameter_pairs.push([symbol, index]);
 		}
+	},
+
+	add_name_parameter: function(parameter_pairs)
+	{
+		var name_field = $(this.options.name_id);
+		var name = name_field.value;
+		if (name == name_field.defaultValue || !name.match(/\S/))
+		{
+			return;
+		}
+		this.add_parameter(parameter_pairs, this.options.symbols.ship_name, encodeURIComponent(name));
 	},
 
 	add_crew_skill_parameters: function(parameter_pairs)
@@ -198,6 +212,7 @@ var PersistenceModel =
 	encode_to_url: function()
 	{
 		var parameter_pairs= [];
+		this.add_name_parameter(parameter_pairs);
 		this.add_parameter(parameter_pairs, this.options.symbols.ship_class, this.template.ship_class_index, true);
 		this.add_parameter(parameter_pairs, this.options.symbols.tons, this.template.tons_index);
 		this.add_parameter(parameter_pairs, this.options.symbols.crew_size, this.template.crew_index);
