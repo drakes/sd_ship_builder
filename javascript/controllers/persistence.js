@@ -120,16 +120,16 @@ var PersistenceController =
 		{
 			return;
 		}
-		this.restore_template(ship_parameters);
-		this.restore_attributes(ship_parameters);
-		this.restore_crew_skills(ship_parameters);
-		this.restore_weapons(ship_parameters);
-		this.restore_options(ship_parameters);
+		this.restore_template.bind(this).defer(ship_parameters);
+		this.restore_attributes.bind(this).defer(ship_parameters);
+		this.restore_crew_skills.bind(this).defer(ship_parameters);
+		this.restore_weapons.bind(this).defer(ship_parameters);
+		this.restore_options.bind(this).defer(ship_parameters);
 		var name = ship_parameters.get(this.options.symbols.ship_name);
 		if (name)
 		{
 			$(this.options.name_id).value = name;
-			this.name_changed_handler();
+			this.name_changed_handler.defer();
 		}
 	},
 
@@ -148,16 +148,20 @@ var PersistenceController =
 	{
 		var memo =
 		{
-			drive: ship_parameters.get(this.options.symbols.ship_class),
-			defense: ship_parameters.get(this.options.symbols.tons),
+			drive: ship_parameters.get(this.options.symbols.drive),
+			defense: ship_parameters.get(this.options.symbols.defense),
 			damage_reduction: this.decode_damage_reduction_parameters(ship_parameters)
 		};
-		$(document).fire(this.options.attributes_restored_event, memo);
+		if (memo.drive || memo.defense || memo.damage_reduction)
+		{
+			$(document).fire(this.options.attributes_restored_event, memo);
+		}
 	},
 
 	restore_crew_skills: function(ship_parameters)
 	{
 		var memo = this.decode_crew_skill_parameters(ship_parameters);
+		//need to account for crew disabled
 		$(document).fire(this.options.crew_skills_restored_event, memo);
 	},
 

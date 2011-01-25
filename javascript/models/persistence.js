@@ -259,9 +259,13 @@ var PersistenceModel =
 		{
 			var order = key.slice(this.options.symbols.damage_reduction.length);
 			var facing = this.options.gunboat_facing_order[order];
-			damage_reduction[facing] = ship_parameters.get(key);
+			var index = ship_parameters.get(key);
+			if (index)
+			{
+				damage_reduction[facing] = index;
+			}
 		}, this);
-		return damage_reduction;
+		return $H(damage_reduction).keys().length ? damage_reduction : null;
 	},
 
 	decode_crew_skill_parameters: function(ship_parameters)

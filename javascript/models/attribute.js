@@ -14,6 +14,7 @@ var AttributeModel =
 			template_changed_event: 'template:changed',
 			attribute_changed_event: 'attribute:changed',
 			selection_changed_event: 'selection:changed',
+			attributes_restored_event: 'attributes:restored',
 
 			//data
 			attribute_property: 'attribute',

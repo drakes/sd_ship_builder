@@ -14,16 +14,16 @@ var EasySelectController =
 		var value = this.get();
 		if (this.has_changed(value))
 		{
-			if (this.options.disappearing_hint)
-			{
-				this.remove_hint();
-			}
 			this.send_update(value);
 		}
 	},
 
 	send_update: function(value)
 	{
+		if (this.options.disappearing_hint)
+		{
+			this.remove_hint();
+		}
 		$(this.options.id).fire(this.options.changed_event, { value: value });
 	},
 
