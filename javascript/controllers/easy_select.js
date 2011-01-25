@@ -42,6 +42,17 @@ var EasySelectController =
 		}
 	},
 
+	set_by_index: function(index)
+	{
+		var options = $(this.options.id).childElements();
+		options = options.reject(function(option)
+		{
+			return option.hasClassName(this.options.hint_class);
+		}, this);
+		var value = options[index].readAttribute('value');
+		this.set(value, true);
+	},
+
 	index_of: function(key)
 	{
 		if (key === undefined)

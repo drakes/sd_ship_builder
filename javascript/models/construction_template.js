@@ -18,6 +18,7 @@ var ConstructionTemplateModel =
 			tons_changed_event: 'tons:changed',
 			crew_template_changed_event: 'crew_template:changed',
 			selection_changed_event: 'selection:changed',
+			template_restored_event: 'template:restored',
 
 			//presentation text
 			ship_class_hint: 'Select a ship class',

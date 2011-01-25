@@ -18,18 +18,23 @@ var PersistenceModel =
 			crew_changed_event: 'crew:changed',
 			crew_deleted_event: 'crew:deleted',
 			crew_toggled_event: 'crew:toggled',
+			template_restored_event: 'template:restored',
+			attributes_restored_event: 'attributes:restored',
+			crew_skills_restored_event: 'crew_skills:restored',
+			weapons_restored_event: 'weapons:restored',
+			options_restored_event: 'options:restored',
 
+			//data serialization
 			symbols:
 			{
-				protocol_version: 'p',
+				protocol_version: 'p', //reserved in case changes are needed and backward compatibility is desired
 				ship_name: 'n',
-				ship_designer: 'e',
 				ship_class: 's',
 				tons: 't',
 				crew_size: 'c',
 				crew_skill: 'k',
 				drive: 'r',
-				defense: 'v', //defensive value
+				defense: 'e',
 				damage_reduction: 'd',
 				weapon_type: 'w',
 				weapon_multiple: 'm',
@@ -54,6 +59,7 @@ var PersistenceModel =
 		this.original_title = document.title;
 
 		this.connect_event_handlers();
+		this.restore_ship(this.decode_query_string());
 	},
 
 	store_template: function(template)
@@ -231,5 +237,89 @@ var PersistenceModel =
 			return '';
 		}
 		return '?' + parameter_pairs.invoke('join', '=').join('&');
-	}
+	},
+
+	decode_query_string: function()
+	{
+		return location.search ? $H(location.search.toQueryParams()) : null;
+	},
+
+	decode_damage_reduction_parameters: function(ship_parameters)
+	{
+		var damage_reduction_keys = ship_parameters.keys().findAll(function(key)
+		{
+			return key.indexOf(this.options.symbols.damage_reduction) == 0;
+		}, this);
+		if (damage_reduction_keys.length == 1)
+		{
+			return ship_parameters.get(damage_reduction_keys[0]);
+		}
+		var damage_reduction = {};
+		damage_reduction_keys.each(function(key)
+		{
+			var order = key.slice(this.options.symbols.damage_reduction.length);
+			var facing = this.options.gunboat_facing_order[order];
+			damage_reduction[facing] = ship_parameters.get(key);
+		}, this);
+		return damage_reduction;
+	},
+
+	decode_crew_skill_parameters: function(ship_parameters)
+	{
+		//piloting first
+		var crew_skills = [ship_parameters.get(this.options.symbols.crew_skill];
+		var gunnery_skill_pattern = new RegExp(this.options.symbols.crew_skill + '(\d+)');
+		var gunnery_skill_keys = ship_parameters.keys().findAll(function(key)
+		{
+			return key.match(gunnery_skill_pattern);
+		});
+		gunnery_skill_keys.each(function(key)
+		{
+			var index = key.match(gunnery_skill_pattern)[1];
+			crew_skills[index] = ship_parameters.get(key);
+		}, this);
+		return crew_skills;
+	},
+
+	decode_weapon_parameters: function(ship_parameters)
+	{
+		var weapons = [];
+		while (true)
+		{
+			var index = weapons.length ? weapons.length : '';
+			var weapon_type = ship_parameters.get(this.options.symbols.weapon_type + index);
+			if (weapon_type === undefined)
+			{
+				return weapons.length ? weapons : null;
+			}
+			var weapon = { type: weapon_type };
+			weapon.multiples = ship_parameters.get(this.options.symbols.weapon_multiple + index);
+			weapon.ammo = ship_parameters.get(this.options.symbols.ammo + index);
+			weapon.firing_arcs = ship_parameters.get(this.options.symbols.firing_arcs + index);
+			weapons.push(weapon);
+		}
+	},
+	decode_option_parameters: function(ship_parameters)
+	{
+		var options = [];
+		while (true)
+		{
+			var index = options.length ? options.length : '';
+			var ship_option_type = ship_parameters.get(this.options.symbols.ship_option_type + index);
+			if (ship_option_type === undefined)
+			{
+				return options.length ? options : null;
+			}
+			var option =
+			{
+				type: ship_option_type,
+				dimensions: []
+			};
+			for (var i = 0, l = this.option.symbols.option_dimensions.length; i < l; i++)
+			{
+				option.dimensions[i] = ship_parameters.get(this.options.symbols.option_dimensions[i] + index);
+			}
+			options.push(option);
+		}
+	},
 };

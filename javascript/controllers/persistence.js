@@ -40,7 +40,7 @@ var PersistenceController =
 
 	name_changed_handler: function(event)
 	{
-		var name_field = event.findElement();
+		var name_field = $(this.options.name_id);
 		var name = name_field.value;
 		if (name == name_field.defaultValue || !name.match(/\S/))
 		{
@@ -112,5 +112,70 @@ var PersistenceController =
 	{
 		$(this.options.name_id).show();
 		this.refresh_link(this.encode_to_url());
+	},
+
+	restore_ship: function(ship_parameters)
+	{
+		if (!ship_parameters)
+		{
+			return;
+		}
+		this.restore_template(ship_parameters);
+		this.restore_attributes(ship_parameters);
+		this.restore_crew_skills(ship_parameters);
+		this.restore_weapons(ship_parameters);
+		this.restore_options(ship_parameters);
+		var name = ship_parameters.get(this.options.symbols.ship_name);
+		if (name)
+		{
+			$(this.options.name_id).value = name;
+			this.name_changed_handler();
+		}
+	},
+
+	restore_template: function(ship_parameters)
+	{
+		var memo =
+		{
+			ship_class: ship_parameters.get(this.options.symbols.ship_class),
+			tons: ship_parameters.get(this.options.symbols.tons),
+			crew_size: ship_parameters.get(this.options.symbols.crew_size)
+		};
+		$(document).fire(this.options.template_restored_event, memo);
+	},
+
+	restore_attributes: function(ship_parameters)
+	{
+		var memo =
+		{
+			drive: ship_parameters.get(this.options.symbols.ship_class),
+			defense: ship_parameters.get(this.options.symbols.tons),
+			damage_reduction: this.decode_damage_reduction_parameters(ship_parameters)
+		};
+		$(document).fire(this.options.attributes_restored_event, memo);
+	},
+
+	restore_crew_skills: function(ship_parameters)
+	{
+		var memo = this.decode_crew_skill_parameters(ship_parameters);
+		$(document).fire(this.options.crew_skills_restored_event, memo);
+	},
+
+	restore_weapons: function(ship_parameters)
+	{
+		var memo = this.decode_weapon_parameters(ship_parameters);
+		if (memo)
+		{
+			$(document).fire(this.options.weapons_restored_event, memo);
+		}
+	},
+
+	restore_options: function(ship_parameters)
+	{
+		var memo = this.decode_option_parameters(ship_parameters);
+		if (memo)
+		{
+			$(document).fire(this.options.options_restored_event, memo);
+		}
 	}
 };
