@@ -303,10 +303,13 @@ var PersistenceModel =
 			{
 				return weapons.length ? weapons : null;
 			}
-			var weapon = { type: weapon_type };
-			weapon.multiples = ship_parameters.get(this.options.symbols.weapon_multiple + index);
-			weapon.ammo = ship_parameters.get(this.options.symbols.ammo + index);
-			weapon.firing_arcs = ship_parameters.get(this.options.symbols.firing_arcs + index);
+			var weapon =
+			{
+				type: weapon_type,
+				multiple: ship_parameters.get(this.options.symbols.weapon_multiple + index),
+				ammo: ship_parameters.get(this.options.symbols.ammo + index),
+				firing_arcs: ship_parameters.get(this.options.symbols.firing_arcs + index)
+			};
 			weapons.push(weapon);
 		}
 	},

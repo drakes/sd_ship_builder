@@ -12,6 +12,7 @@ var ArmamentsModel =
 			//events
 			template_changed_event: 'template:changed',
 			crew_template_changed_event: 'crew_template:changed',
+			weapons_restored_event: 'weapons:restored',
 
 			//weapon templates
 			data: null
@@ -21,11 +22,11 @@ var ArmamentsModel =
 		this.connect_event_handlers();
 	},
 
-	add_weapon: function()
+	add_weapon: function(initial_values)
 	{
 		var weapon_control = this.add_weapon_control();
 		//place the control in the DOM before initializing so events bubble
-		new Weapon(this.current_crew_size,
+		new Weapon(this.current_crew_size, initial_values,
 		{
 			id: weapon_control.identify(),
 			data: this.options.data

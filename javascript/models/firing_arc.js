@@ -1,6 +1,6 @@
 var FiringArcModel =
 {
-	initialize: function(weapon_control, current_crew_size, options)
+	initialize: function(weapon_control, current_crew_size, initial_arcs, options)
 	{
 		this.options =
 		{
@@ -26,14 +26,13 @@ var FiringArcModel =
 				{ cost: 6, slots: 1 },
 				{ cost: 7, slots: 2 }
 			],
-			arc_names: ['F', 'FQL', 'FQR', 'RQL', 'RQR', 'R'],
-			front_index: 0
+			arc_names: ['F', 'FQL', 'FQR', 'RQL', 'RQR', 'R']
 		};
 		Object.extend(this.options, options);
 
 		this.create_controls();
 		this.connect_event_handlers(weapon_control);
-		this.select_front_arc();
+		this.select_initial_arcs(initial_arcs);
 		this.crew_size_changed(current_crew_size);
 	},
 
@@ -85,9 +84,22 @@ var FiringArcModel =
 		};
 	},
 
-	select_front_arc: function()
+	select_initial_arcs: function(initial_arcs)
 	{
-		this.set_arc_control(this.options.front_index, true);
+		if (!initial_arcs)
+		{
+			this.set_arc_control(0, true);
+			return;
+		}
+		for (var i = this.find_arc_controls().length; i >= 0; i--)
+		{
+			var power = Math.pow(2, i);
+			if (initial_arcs >= power)
+			{
+				initial_arcs -= power;
+				this.set_arc_control(i, true);
+			}
+		}
 	},
 
 	set_arc_control: function(arc, selected)

@@ -1,6 +1,6 @@
 var WeaponModel =
 {
-	initialize: function(current_crew_size, options)
+	initialize: function(current_crew_size, initial_values, options)
 	{
 		this.options =
 		{
@@ -43,10 +43,14 @@ var WeaponModel =
 		this.firing_arc_stats = { cost: 0, slots: 0 };
 
 		this.decorate_control();
-		this.initialize_controls();
+		this.initialize_controls(initial_values);
 		this.type_change_handler();
 		this.connect_event_handlers();
-		this.create_firing_arc(current_crew_size);
+		if (initial_values)
+		{
+			this.restore_values(initial_values);
+		}
+		this.create_firing_arc(current_crew_size, (initial_values || {}).firing_arcs);
 	},
 
 	initialize_controls: function()
@@ -58,6 +62,19 @@ var WeaponModel =
 		this.type_select.set(type_options[0].key);
 		this.multiple_select = new EasySelect({ id: ids.multiple });
 		this.ammo_select = new EasySelect({ id: ids.ammo });
+	},
+
+	restore_values: function(values)
+	{
+		this.type_select.set_by_index(values.type);
+		if (values.multiple)
+		{
+			this.multiple_select.set_by_index(values.multiple);
+		}
+		if (values.ammo)
+		{
+			this.ammo_select.set_by_index(values.ammo);
+		}
 	},
 
 	get_type: function()
@@ -206,12 +223,12 @@ var WeaponModel =
 		return weapon_stats;
 	},
 
-	create_firing_arc: function(current_crew_size)
+	create_firing_arc: function(current_crew_size, initial_firing_arcs)
 	{
 		var weapon_control = $(this.options.id);
 		var firing_arc_control = this.find_firing_arc();
 		//place the control in the DOM before initializing so events bubble
-		new FiringArc(weapon_control, current_crew_size,
+		new FiringArc(weapon_control, current_crew_size, initial_firing_arcs,
 		{
 			id: firing_arc_control.identify(),
 			cost_class: this.options.cost_class,
