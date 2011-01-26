@@ -15,6 +15,7 @@ var ShipOptionsModel =
 			template_changed_event: 'template:changed',
 			option_deleted_event: 'option:deleted',
 			selection_changed_event: 'selection:changed',
+			options_restored_event: 'options:restored',
 
 			//presentation text
 			add_option_hint: 'Add an option',
@@ -60,19 +61,34 @@ var ShipOptionsModel =
 		return this.option_templates.keys().sort().indexOf(option_key);
 	},
 
-	add_option: function(option_key)
+	get_option_key: function(option_index)
+	{
+		return this.option_templates.keys().sort()[option_index];
+	},
+
+	add_option: function(option_key, initial_dimensions)
 	{
 		var option_template = this.get_option_template(option_key);
 		var option_control = this.add_option_control(option_template);
 		var id = option_control.identify();
 		this.keys_by_id.set(id, option_key);
 		//place the control in the DOM before initializing so events bubble
-		new Option(
+		new Option(initial_dimensions,
 		{
 			id: id,
 			data: option_template,
 			type_index: this.get_option_index(option_key)
 		});
+	},
+
+	restore_options: function(options)
+	{
+		options.each(function(option)
+		{
+			var option_key = this.get_option_key(option.type);
+			this.add_option(option_key, option.dimensions);
+			this.remove_select_option(option_key);
+		}, this);
 	},
 
 	remove_select_option: function(key)

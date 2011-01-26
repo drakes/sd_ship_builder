@@ -1,6 +1,6 @@
 var OptionModel =
 {
-	initialize: function(options)
+	initialize: function(initial_dimensions, options)
 	{
 		this.options =
 		{
@@ -29,11 +29,12 @@ var OptionModel =
 		this.selects = [];
 
 		this.connect_event_handlers();
-		this.initialize_controls();
+		this.initialize_controls(initial_dimensions);
 	},
 
-	initialize_controls: function()
+	initialize_controls: function(initial_dimensions)
 	{
+		initial_dimensions = initial_dimensions || [];
 		var select_ids = this.create_controls(this.options.data);
 		select_ids.each(function(id, index)
 		{
@@ -41,8 +42,7 @@ var OptionModel =
 			this.selects[index] = select;
 			var dimension_options = this.create_dimension_options(index);
 			select.update_options(dimension_options);
-			var first_key = this.options.data.dimensions[index].spread ? dimension_options[0].key : dimension_options[0];
-			select.set(first_key, true);
+			select.set_by_index(initial_dimensions[index] || 0);
 		}, this);
 	},
 

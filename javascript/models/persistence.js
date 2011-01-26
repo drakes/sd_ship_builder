@@ -329,7 +329,7 @@ var PersistenceModel =
 				type: ship_option_type,
 				dimensions: []
 			};
-			for (var i = 0, l = this.option.symbols.option_dimensions.length; i < l; i++)
+			for (var i = 0, l = this.options.symbols.option_dimensions.length; i < l; i++)
 			{
 				option.dimensions[i] = ship_parameters.get(this.options.symbols.option_dimensions[i] + index);
 			}
