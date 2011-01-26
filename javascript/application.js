@@ -126,7 +126,8 @@
 			class_name: 'SectionToggle',
 			options:
 			{
-				id: 'crew_section_toggle'
+				id: 'crew_section_toggle',
+				hide_on_restoring_zero_crew_skills: true
 			}
 		},
 		{

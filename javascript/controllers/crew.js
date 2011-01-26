@@ -4,6 +4,7 @@ var CrewController =
 	{
 		var control = $(this.options.id);
 		control.observe(this.options.deleted_event, this.delete_handler.bindAsEventListener(this));
+		document.observe(this.options.crew_skills_restored_event, this.crew_skills_restored_handler.bindAsEventListener(this));
 		if (this.options.pilot)
 		{
 			var piloting_selector = this.find_skill_selector(true);
@@ -34,6 +35,30 @@ var CrewController =
 	delete_handler: function(event)
 	{
 		$(this.options.id).remove();
+	},
+
+	crew_skills_restored_handler: function(event)
+	{
+		var skill_indices = event.memo;
+		if (!skill_indices.length)
+		{
+			return;
+		}
+		if (this.options.pilot)
+		{
+			var piloting_index = skill_indices[0];
+			if (piloting_index !== undefined)
+			{
+				this.piloting_select.set_by_index(piloting_index);
+			}
+		}
+
+		var crew_skill_index = this.get_crew_skill_index();
+		var gunnery_index = skill_indices[crew_skill_index];
+		if (gunnery_index !== undefined)
+		{
+			this.gunnery_select.set_by_index(gunnery_index);
+		}
 	},
 
 	send_update: function()

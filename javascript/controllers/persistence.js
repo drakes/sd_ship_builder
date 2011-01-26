@@ -161,7 +161,6 @@ var PersistenceController =
 	restore_crew_skills: function(ship_parameters)
 	{
 		var memo = this.decode_crew_skill_parameters(ship_parameters);
-		//need to account for crew disabled
 		$(document).fire(this.options.crew_skills_restored_event, memo);
 	},
 

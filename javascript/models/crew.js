@@ -17,6 +17,7 @@ var CrewModel =
 			changed_event: 'crew:changed',
 			deleted_event: 'crew:deleted',
 			selection_changed_event: 'selection:changed',
+			crew_skills_restored_event: 'crew_skills:restored',
 
 			//data
 			template: null,
@@ -55,5 +56,11 @@ var CrewModel =
 				value: index + 1
 			};
 		});
+	},
+
+	get_crew_skill_index: function()
+	{
+		//piloting skill offsets count by one
+		return $(this.options.id).previousSiblings().length + 1;
 	}
 };

@@ -7,6 +7,7 @@ var PersistenceModel =
 			//selectors and CSS
 			id: 'duplicate',
 			name_id: 'name',
+			crew_section_toggle_id: 'crew_section_toggle',
 
 			//events
 			template_changed_event: 'template:changed',
@@ -270,9 +271,15 @@ var PersistenceModel =
 
 	decode_crew_skill_parameters: function(ship_parameters)
 	{
+		var piloting_index = ship_parameters.get(this.options.symbols.crew_skill);
+		//piloting is required, unless crew section is disabled
+		if (!piloting_index)
+		{
+			return [];
+		}
 		//piloting first
-		var crew_skills = [ship_parameters.get(this.options.symbols.crew_skill];
-		var gunnery_skill_pattern = new RegExp(this.options.symbols.crew_skill + '(\d+)');
+		var crew_skills = [piloting_index];
+		var gunnery_skill_pattern = new RegExp(this.options.symbols.crew_skill + '(\\d+)');
 		var gunnery_skill_keys = ship_parameters.keys().findAll(function(key)
 		{
 			return key.match(gunnery_skill_pattern);
