@@ -141,7 +141,7 @@ var PersistenceController =
 			tons: ship_parameters.get(this.options.symbols.tons),
 			crew_size: ship_parameters.get(this.options.symbols.crew_size)
 		};
-		$(document).fire(this.options.template_restored_event, memo);
+		document.fire(this.options.template_restored_event, memo);
 	},
 
 	restore_attributes: function(ship_parameters)
@@ -154,14 +154,14 @@ var PersistenceController =
 		};
 		if (memo.drive || memo.defense || memo.damage_reduction)
 		{
-			$(document).fire(this.options.attributes_restored_event, memo);
+			document.fire(this.options.attributes_restored_event, memo);
 		}
 	},
 
 	restore_crew_skills: function(ship_parameters)
 	{
 		var memo = this.decode_crew_skill_parameters(ship_parameters);
-		$(document).fire(this.options.crew_skills_restored_event, memo);
+		document.fire(this.options.crew_skills_restored_event, memo);
 	},
 
 	restore_weapons: function(ship_parameters)
@@ -169,7 +169,7 @@ var PersistenceController =
 		var memo = this.decode_weapon_parameters(ship_parameters);
 		if (memo)
 		{
-			$(document).fire(this.options.weapons_restored_event, memo);
+			document.fire(this.options.weapons_restored_event, memo);
 		}
 	},
 
@@ -178,7 +178,7 @@ var PersistenceController =
 		var memo = this.decode_option_parameters(ship_parameters);
 		if (memo)
 		{
-			$(document).fire(this.options.options_restored_event, memo);
+			document.fire(this.options.options_restored_event, memo);
 		}
 	}
 };

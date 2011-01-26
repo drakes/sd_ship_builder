@@ -5,7 +5,7 @@ var ConstructionTemplateController =
 		$(this.options.ship_class_id).observe(this.options.selection_changed_event, this.ship_class_change_handler.bindAsEventListener(this));
 		$(this.options.tons_id).observe(this.options.selection_changed_event, this.tons_change_handler.bindAsEventListener(this));
 		$(this.options.crew_id).observe(this.options.selection_changed_event, this.crew_change_handler.bindAsEventListener(this));
-		$(document).observe(this.options.template_restored_event, this.template_restored_handler.bindAsEventListener(this));
+		document.observe(this.options.template_restored_event, this.template_restored_handler.bindAsEventListener(this));
 	},
 
 	ship_class_change_handler: function(event)
