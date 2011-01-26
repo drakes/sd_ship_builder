@@ -88,10 +88,11 @@ var FiringArcModel =
 	{
 		if (!initial_arcs)
 		{
+			//default to front-only
 			this.set_arc_control(0, true);
 			return;
 		}
-		for (var i = this.find_arc_controls().length; i >= 0; i--)
+		for (var i = this.find_arc_controls().length - 1; i >= 0; i--)
 		{
 			var power = Math.pow(2, i);
 			if (initial_arcs >= power)
