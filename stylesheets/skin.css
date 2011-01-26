@@ -30,19 +30,19 @@ h1 a, h1 a:link
 	text-decoration: none;
 }
 
-a, a:link, h1 a:visited
+a, a:link, .persistence a:visited
 {
 	color: rgb(64, 255, 64);
-}
-
-a:hover, a:active
-{
-	color: rgb(96, 255, 96);
 }
 
 a:visited
 {
 	color: rgb(0, 150, 0);
+}
+
+a:hover, a:active, .persistence a:hover, .persistence a:active
+{
+	color: rgb(64, 255, 192);
 }
 
 fieldset, .info

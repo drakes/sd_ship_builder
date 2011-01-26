@@ -242,7 +242,7 @@ var PersistenceModel =
 
 	decode_query_string: function()
 	{
-		return location.search ? $H(location.search.toQueryParams()) : null;
+		return location.search.length > 1 ? $H(location.search.toQueryParams()) : null;
 	},
 
 	decode_damage_reduction_parameters: function(ship_parameters)
