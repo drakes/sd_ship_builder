@@ -1,5 +1,6 @@
 form
 {
+	clear: both;
 	margin: 0.2em 0 0.2em 0;
 	padding: 0.2em 0.5em 0.5em 0.5em;
 }
@@ -77,9 +78,29 @@ input
 
 .persistence a
 {
+	margin-left: 1em;
+}
+
+.persistence a, .persistence div
+{
 	float: right;
-	clear: right;
+	margin-top: 0.2em;
 	margin-bottom: 0.2em;
+}
+
+.persistence div
+{
+	clear: right;
+}
+
+.bookmark
+{
+	font-size: 0.7em;
+}
+
+.bookmark input
+{
+	width: 25em;
 }
 
 .gunboat

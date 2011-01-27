@@ -8,6 +8,7 @@ var PersistenceModel =
 			id: 'duplicate',
 			name_id: 'name',
 			name_display_id: 'display_name',
+			bookmark_field_id: 'bookmark',
 			crew_section_toggle_id: 'crew_section_toggle',
 
 			//events

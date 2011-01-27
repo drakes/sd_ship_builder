@@ -16,6 +16,9 @@ var PersistenceController =
 		name_field.observe('blur', this.name_blurred_handler.bindAsEventListener(this));
 		name_field.observe('change', this.name_changed_handler.bindAsEventListener(this));
 		name_field.observe('keyup', this.name_changed_handler.bindAsEventListener(this));
+		var bookmark_field = $(this.options.bookmark_field_id);
+		bookmark_field.observe('focus', this.bookmark_field_focused_handler.bind(this));
+		bookmark_field.observe('click', this.bookmark_field_focused_handler.bind(this));
 	},
 
 	name_focused_handler: function(event)
@@ -54,6 +57,11 @@ var PersistenceController =
 		}
 		document.title = name + this.original_title;
 		this.refresh();
+	},
+
+	bookmark_field_focused_handler: function(event)
+	{
+		event.findElement().select();
 	},
 
 	template_changed_handler: function(event)
@@ -113,7 +121,9 @@ var PersistenceController =
 	refresh: function()
 	{
 		$(this.options.name_id).show();
-		this.refresh_link(this.encode_to_url());
+		var url = this.encode_to_url();
+		this.refresh_link(url);
+		$(this.options.bookmark_field_id).setValue(url).show();
 	},
 
 	restore_ship: function(ship_parameters)
