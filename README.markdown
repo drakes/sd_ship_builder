@@ -42,6 +42,8 @@ The focus is on automating record-keeping to ease the process of designing ships
 
   * Damage tracks are generated on the fly with every change you make.
 
+  * Ship designs as URLs can be saved and shared.
+
 ## Known Bugs
 
   * Front-only firing arc when crew is one is not enforced in IE(8).
@@ -56,11 +58,7 @@ There are plenty of features yet to be implemented:
 
   * Ship quirks.
 
-  * Encoding serialized designs to shareable URLs.
-
   * Allowing multiple ship designs on a single page, to total points for building a squadron.
-
-  * Or rely on tabs for multiple ship designs, and prepend a ship name to title (if entered).
 
   * Changing from design to play mode to lock down designs and allow damage to be tracked.
 
