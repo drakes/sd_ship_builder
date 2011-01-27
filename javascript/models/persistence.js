@@ -218,6 +218,11 @@ var PersistenceModel =
 		}
 	},
 
+	sanitize_text: function(text)
+	{
+		return text.escapeHTML();
+	},
+
 	encode_to_url: function()
 	{
 		var parameter_pairs= [];

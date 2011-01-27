@@ -52,6 +52,7 @@ var PersistenceController =
 		}
 		else
 		{
+			name = this.sanitize_text(name);
 			$(this.options.name_display_id).update(name).up().show();
 			name += ' - ';
 		}
