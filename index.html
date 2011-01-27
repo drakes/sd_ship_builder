@@ -56,14 +56,14 @@
 		<script type="text/javascript" language="javascript" src="javascript/views/persistence.js"></script>
 	</head>
 	<body>
-		<div class="persistence" style="display: none;">
+		<div class="persistence no_print" style="display: none;">
 			<a id="duplicate" href="" target="_blank" title="Duplicate this ship design (in a new tab)">Make duplicate</a>
 			<a href="?" title="Reset all fields">Start over</a>
 		</div>
-		<h1>Silent Death Ship Builder <span>v0.9.2</span></h1>
+		<h1><span style="display: none;"><span id="display_name" class="name"></span> - </span>Silent Death Ship Builder <span class="version">v0.9.2</span></h1>
 		<form action="" id="builder">
 			<fieldset>
-				<legend>Ship Template <input id="name" style="display: none;" maxlength="64" value="Ship name" title="Ship name" /></legend>
+				<legend>Ship Template <input id="name" class="no_print" style="display: none;" maxlength="64" value="Ship name" title="Ship name" /></legend>
 				<div class="template_stat_set right">
 					<span id="cost_control" class="template_stat" style="display: none;">
 						<span class="descriptor">Cost:</span>

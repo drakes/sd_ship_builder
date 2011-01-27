@@ -11,7 +11,7 @@ h1
 	font-size: 2em;
 }
 
-h1 span
+h1 .version
 {
 	font-size: 0.5em;
 }
@@ -73,6 +73,13 @@ input
 	float: right;
 	margin: 0.2em;
 	font-size: 0.8em;
+}
+
+.persistence a
+{
+	float: right;
+	clear: right;
+	margin-bottom: 0.2em;
 }
 
 .gunboat

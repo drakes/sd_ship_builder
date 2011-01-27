@@ -1,6 +1,11 @@
-h1, .no_print, .info, .construction_stats, .section_toggle, input[type=button]
+.no_print, .info, .construction_stats, .section_toggle, input[type=button]
 {
 	display: none;
+}
+
+h1
+{
+	font-size: 1.4em;
 }
 
 .current, .separator, .template

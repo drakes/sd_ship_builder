@@ -15,19 +15,14 @@ body, select, h2
 	font-family: Verdana, Arial, sans-serif;
 }
 
-legend, .descriptor, .construction_stats, .info
+legend, .descriptor, .construction_stats, .info, .name
 {
 	font-family: Georgia, 'Times New Roman', serif;
 }
 
-h1 span, legend, .hint
+legend, .hint, .version
 {
 	color: gray;
-}
-
-h1 a, h1 a:link
-{
-	text-decoration: none;
 }
 
 a, a:link, .persistence a:visited
@@ -161,6 +156,11 @@ fieldset, .info
 .note_container
 {
 	font-style: italic;
+}
+
+.name
+{
+	color: orange;
 }
 
 .section_toggle

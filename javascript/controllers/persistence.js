@@ -45,9 +45,11 @@ var PersistenceController =
 		if (name == name_field.defaultValue || !name.match(/\S/))
 		{
 			name = '';
+			$(this.options.name_display_id).update(name).up().hide();
 		}
 		else
 		{
+			$(this.options.name_display_id).update(name).up().show();
 			name += ' - ';
 		}
 		document.title = name + this.original_title;
@@ -129,7 +131,7 @@ var PersistenceController =
 		if (name)
 		{
 			$(this.options.name_id).value = name;
-			this.name_changed_handler.defer();
+			this.name_changed_handler.bind(this).defer();
 		}
 	},
 
