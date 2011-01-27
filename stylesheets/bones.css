@@ -9,7 +9,7 @@ h1
 {
 	margin-bottom: 0.1em;
 	padding: 0.2em;
-	font-size: 2em;
+	font-size: 1.8em;
 }
 
 h1 .version
@@ -100,7 +100,7 @@ input
 
 .bookmark input
 {
-	width: 25em;
+	width: 10em;
 }
 
 .gunboat
