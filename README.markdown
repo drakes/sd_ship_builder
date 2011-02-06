@@ -54,6 +54,8 @@ The focus is on automating record-keeping to ease the process of designing ships
 
 There are plenty of features yet to be implemented:
 
+  * Variable speed torpedoes.
+
   * Warhounds.
 
   * Ship quirks.
@@ -61,6 +63,8 @@ There are plenty of features yet to be implemented:
   * Allowing multiple ship designs on a single page, to total points for building a squadron.
 
   * Changing from design to play mode to lock down designs and allow damage to be tracked.
+
+  * Track ammo expenditures and stat adjustments (from critical effects, etc.) in play mode without changing construction stats.
 
   * Saving designs in cookies or local storage.
 
@@ -78,7 +82,7 @@ In order to work with the code and contribute to the project, you should be fami
 
 Silent Death: The Next Millennium is a trademark of Mythic Entertainment LLC.
 
-Copyright (C) 2009-2010 [Scott Drake][8].
+Copyright (C) 2009-2011 [Scott Drake][8].
 
    [8]: http://scottdrake.info/
 
