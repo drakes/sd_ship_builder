@@ -8,7 +8,6 @@ var PersistenceModel =
 			id: 'duplicate',
 			name_id: 'name',
 			name_display_id: 'display_name',
-			bookmark_field_id: 'bookmark',
 			crew_section_toggle_id: 'crew_section_toggle',
 
 			//events
@@ -244,12 +243,25 @@ var PersistenceModel =
 		{
 			return '';
 		}
-		return '?' + parameter_pairs.invoke('join', '=').join('&');
+		return '#' + parameter_pairs.invoke('join', '=').join('&');
 	},
 
 	decode_query_string: function()
 	{
-		return location.search.length > 1 ? $H(location.search.toQueryParams()) : null;
+		//the old method used the query string
+		//new method uses the hash, which is like a client-side-only query string
+		if (location.search.length == 1)
+		{
+			//Start over link "clears" query string with '?'
+			location.replace(this.get_base_url());
+		}
+		if (location.search.length > 1)
+		{
+			//"redirect" from old to new method
+			location.replace(this.get_base_url() + '#' + location.search.slice(1));
+		}
+
+		return location.hash.length > 1 ? $H(location.hash.slice(1).toQueryParams()) : null;
 	},
 
 	decode_damage_reduction_parameters: function(ship_parameters)

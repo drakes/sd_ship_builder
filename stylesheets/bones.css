@@ -93,16 +93,6 @@ input
 	clear: right;
 }
 
-.bookmark
-{
-	font-size: 0.7em;
-}
-
-.bookmark input
-{
-	width: 10em;
-}
-
 .gunboat
 {
 	display: none;
