@@ -78,19 +78,11 @@ input
 
 .persistence a
 {
-	margin-left: 1em;
-}
-
-.persistence a, .persistence div
-{
 	float: right;
+	clear: right;
 	margin-top: 0.2em;
 	margin-bottom: 0.2em;
-}
-
-.persistence div
-{
-	clear: right;
+	margin-left: 1em;
 }
 
 .gunboat
