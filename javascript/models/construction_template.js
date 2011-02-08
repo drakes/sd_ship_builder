@@ -99,7 +99,10 @@ var ConstructionTemplateModel =
 	
 	get_tons_index: function(tons)
 	{
-		return this.tons_select.index_of(tons);
+		if ($(this.options.tons_id).visible())
+		{
+			return this.tons_select.index_of(tons);
+		}
 	},
 
 	get_crew: function()
