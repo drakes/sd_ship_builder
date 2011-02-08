@@ -6,6 +6,7 @@ var PersistenceModel =
 		{
 			//selectors and CSS
 			id: 'duplicate',
+			reset_id: 'reset',
 			name_id: 'name',
 			name_display_id: 'display_name',
 			crew_section_toggle_id: 'crew_section_toggle',

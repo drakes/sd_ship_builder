@@ -11,11 +11,19 @@ var PersistenceController =
 		document.observe(this.options.crew_changed_event, this.crew_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.crew_deleted_event, this.crew_deleted_handler.bindAsEventListener(this));
 		document.observe(this.options.crew_toggled_event, this.crew_toggled_handler.bindAsEventListener(this));
+		$(this.options.reset_id).observe('click', this.reset_clicked_handler.bindAsEventListener(this));
 		var name_field = $(this.options.name_id);
 		name_field.observe('focus', this.name_focused_handler.bindAsEventListener(this));
 		name_field.observe('blur', this.name_blurred_handler.bindAsEventListener(this));
 		name_field.observe('change', this.name_changed_handler.bindAsEventListener(this));
 		name_field.observe('keyup', this.name_changed_handler.bindAsEventListener(this));
+	},
+
+	reset_clicked_handler: function(event)
+	{
+		event.stop();
+		location.replace(this.get_base_url() + '#');
+		location.reload();
 	},
 
 	name_focused_handler: function(event)
