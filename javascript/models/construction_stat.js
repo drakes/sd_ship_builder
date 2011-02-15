@@ -21,6 +21,7 @@ var ConstructionStatModel =
 			crew_changed_event: 'crew:changed',
 			crew_deleted_event: 'crew:deleted',
 			crew_toggled_event: 'crew:toggled',
+			ship_reset_event: 'ship:reset',
 
 			//data
 			stat_property: 'stat',
@@ -28,14 +29,18 @@ var ConstructionStatModel =
 		};
 		Object.extend(this.options, options);
 
+		this.reset_data();
+		this.connect_event_handlers();
+	},
+
+	reset_data: function()
+	{
 		this.template = null;
 		this.crew_size = 1;
 		this.control_attributes = $H();
 		this.weapons = $H();
 		this.ship_options = $H();
 		this.crew_costs = $H();
-
-		this.connect_event_handlers();
 	},
 
 	store_template: function(template)

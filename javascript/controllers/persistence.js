@@ -27,7 +27,8 @@ var PersistenceController =
 		location.hash = '';
 
 		//reset name
-		$(this.options.name_id).hide().value = '';
+		var name_field = $(this.options.name_id);
+		name_field.hide().value = name_field.defaultValue;
 		$(this.options.name_display_id).update('').up().hide();
 		document.title = this.original_title;
 
