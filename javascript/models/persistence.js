@@ -26,6 +26,7 @@ var PersistenceModel =
 			crew_skills_restored_event: 'crew_skills:restored',
 			weapons_restored_event: 'weapons:restored',
 			options_restored_event: 'options:restored',
+			ship_reset_event: 'ship:reset',
 
 			//data serialization
 			symbols:

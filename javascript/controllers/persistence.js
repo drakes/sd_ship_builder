@@ -22,8 +22,16 @@ var PersistenceController =
 	reset_clicked_handler: function(event)
 	{
 		event.stop();
-		location.replace(this.get_base_url() + '#');
-		location.reload();
+
+		//reloading is not offline-friendly
+		location.hash = '';
+
+		//reset name
+		$(this.options.name_id).hide().value = '';
+		$(this.options.name_display_id).update('').up().hide();
+		document.title = this.original_title;
+
+		$(this.options.reset_id).fire(this.options.ship_reset_event);
 	},
 
 	name_focused_handler: function(event)
