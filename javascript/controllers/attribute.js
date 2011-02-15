@@ -4,6 +4,7 @@ var AttributeController =
 	{
 		document.observe(this.options.template_changed_event, this.template_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.attributes_restored_event, this.attributes_restored_handler.bindAsEventListener(this));
+		document.observe(this.options.ship_reset_event, this.ship_reset_handler.bindAsEventListener(this));
 		$(this.options.id).observe(this.options.selection_changed_event, this.selection_changed_handler.bindAsEventListener(this));
 	},
 
@@ -37,6 +38,12 @@ var AttributeController =
 		{
 			this.select.set_by_index(index);
 		}
+	},
+
+	ship_reset_handler: function(event)
+	{
+		$(this.options.id).up('.' + this.options.attribute_class).hide();
+		this.set_template(null);
 	},
 
 	send_update: function(value)
