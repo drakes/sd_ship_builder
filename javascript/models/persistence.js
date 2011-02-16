@@ -272,8 +272,9 @@ var PersistenceModel =
 		{
 			return key.indexOf(this.options.symbols.damage_reduction) == 0;
 		}, this);
-		if (damage_reduction_keys.length == 1)
+		if (damage_reduction_keys.length == 1 && !damage_reduction_keys[0].match(/\d/))
 		{
+			//non-gunboat attribute
 			return ship_parameters.get(damage_reduction_keys[0]);
 		}
 		var damage_reduction = {};
