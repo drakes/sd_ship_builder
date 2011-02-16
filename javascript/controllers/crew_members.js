@@ -3,6 +3,7 @@ var CrewMembersController =
 	connect_event_handlers: function()
 	{
 		document.observe(this.options.crew_template_changed_event, this.crew_template_changed_handler.bindAsEventListener(this));
+		document.observe(this.options.ship_reset_event, this.ship_reset_handler.bindAsEventListener(this));
 		$(this.options.section_toggle_id).observe(this.options.section_toggled_event, this.section_toggled_handler.bindAsEventListener(this));
 	},
 
@@ -25,6 +26,12 @@ var CrewMembersController =
 		event.stop();
 		var show = event.memo.show;
 		$(this.options.id).fire(this.options.crew_toggled_event, event.memo);
+	},
+
+	ship_reset_handler: function(event)
+	{
+		var current_crew_size = this.find_crew().length;
+		this.delete_crew_members(current_crew_size);
 	},
 
 	add_crew_members: function(crew_template_size, current_crew_size)
