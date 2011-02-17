@@ -13,6 +13,7 @@ var ArmamentsModel =
 			template_changed_event: 'template:changed',
 			crew_template_changed_event: 'crew_template:changed',
 			weapons_restored_event: 'weapons:restored',
+			ship_reset_event: 'ship:reset',
 
 			//weapon templates
 			data: null

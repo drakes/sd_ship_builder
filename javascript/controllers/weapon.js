@@ -8,6 +8,7 @@ var WeaponController =
 		weapon_control.down('.' + this.options.type_class).observe(this.options.selection_changed_event, this.type_change_handler.bindAsEventListener(this));
 		weapon_control.down('.' + this.options.multiple_class).observe(this.options.selection_changed_event, this.multiples_change_handler.bindAsEventListener(this));
 		this.find_ammo_selector().observe(this.options.selection_changed_event, this.ammo_change_handler.bindAsEventListener(this));
+		document.observe(this.options.ship_reset_event, this.ship_reset_handler.bindAsEventListener(this));
 	},
 
 	click_handler: function(event)
@@ -56,6 +57,12 @@ var WeaponController =
 	{
 		this.store_firing_arc_stats(event.memo);
 		this.send_update();
+	},
+
+	ship_reset_handler: function(event)
+	{
+		var weapon_control = $(this.options.id);
+		weapon_control.remove();
 	},
 
 	refresh: function()
