@@ -1,5 +1,10 @@
 var DamageTrackView =
 {
+	find_gunboat_block: function()
+	{
+		return $(this.options.id).up('.' + this.options.gunboat_class);
+	},
+
 	clear: function()
 	{
 		$(this.options.id).update();

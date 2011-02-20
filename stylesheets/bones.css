@@ -85,11 +85,6 @@ input
 	margin-left: 1em;
 }
 
-.gunboat
-{
-	display: none;
-}
-
 .gunboat_class #damage_track, .gunboat_class #damage_reduction_control
 {
 	display: none;

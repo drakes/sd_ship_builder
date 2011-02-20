@@ -24,7 +24,7 @@ var PersistenceController =
 		event.stop();
 
 		//reloading is not offline-friendly
-		location.hash = '';
+		(function(){ location.hash = ''; }).defer();
 
 		//reset name
 		var name_field = $(this.options.name_id);

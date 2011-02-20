@@ -14,6 +14,7 @@ var DamageTrackModel =
 			weapon_class: 'weapon_hit_box',
 			critical_class: 'critical',
 			damaged_class: 'damaged',
+			gunboat_class: 'gunboat',
 
 			//events
 			template_changed_event: 'template:changed',
@@ -21,6 +22,7 @@ var DamageTrackModel =
 			attribute_changed_event: 'attribute:changed',
 			weapon_changed_event: 'weapon:changed',
 			weapon_deleted_event: 'weapon:deleted',
+			ship_reset_event: 'ship:reset',
 
 			//presentation text
 			destruction_symbol: 'X',
