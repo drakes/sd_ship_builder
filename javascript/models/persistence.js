@@ -9,7 +9,6 @@ var PersistenceModel =
 			reset_id: 'reset',
 			name_id: 'name',
 			name_display_id: 'display_name',
-			crew_section_toggle_id: 'crew_section_toggle',
 
 			//events
 			template_changed_event: 'template:changed',

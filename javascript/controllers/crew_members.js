@@ -32,6 +32,7 @@ var CrewMembersController =
 	{
 		var current_crew_size = this.find_crew().length;
 		this.delete_crew_members(current_crew_size);
+		$(this.options.section_toggle_id).hide();
 	},
 
 	add_crew_members: function(crew_template_size, current_crew_size)

@@ -24,9 +24,9 @@ var SectionToggleController =
 	template_changed_handler: function(event)
 	{
 		$(this.options.id).show();
-		document.stopObserving(this.options.template_changed_event, this.bound_template_changed_handler);
 		if (this.options.hide_on_first_change)
 		{
+			document.stopObserving(this.options.template_changed_event, this.bound_template_changed_handler);
 			this.click_handler();
 		}
 	},
