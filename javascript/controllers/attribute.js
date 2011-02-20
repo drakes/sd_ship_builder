@@ -43,6 +43,7 @@ var AttributeController =
 	ship_reset_handler: function(event)
 	{
 		$(this.options.id).up('.' + this.options.attribute_class).hide();
+		this.clear();
 		this.set_template(null);
 	},
 

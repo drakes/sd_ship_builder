@@ -58,6 +58,7 @@ var ConstructionTemplateController =
 	ship_reset_handler: function(event)
 	{
 		this.ship_class_select.add_hint(this.options.ship_class_hint);
+		this.ship_class_select.reset();
 		//hide tons and crew
 		[this.options.tons_id, this.options.crew_id].each(function(selector_id)
 		{

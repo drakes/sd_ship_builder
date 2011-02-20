@@ -77,6 +77,11 @@ var EasySelectController =
 		return index - hints;
 	},
 
+	reset: function()
+	{
+		this.store_value();
+	},
+
 	update_options: function(keys)
 	{
 		var value = this.get();
