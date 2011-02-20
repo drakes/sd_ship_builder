@@ -44,6 +44,8 @@ The focus is on automating record-keeping to ease the process of designing ships
 
   * Ship designs as URLs can be saved and shared.
 
+  * Seamless offline mode (in modern browsers).
+
 ## Known Bugs
 
   * Front-only firing arc when crew is one is not enforced in IE(8).
@@ -59,8 +61,6 @@ There are plenty of features yet to be implemented:
   * Warhounds.
 
   * Ship quirks.
-
-  * Allowing multiple ship designs on a single page, to total points for building a squadron.
 
   * Changing from design to play mode to lock down designs and allow damage to be tracked.
 
