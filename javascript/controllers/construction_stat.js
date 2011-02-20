@@ -77,7 +77,8 @@ var ConstructionStatController =
 
 	ship_reset_handler: function(event)
 	{
-		$(this.options.id).hide();
+		var stat_control = $(this.options.id);
+		stat_control.hide.bind(stat_control).defer();
 		this.reset_data();
 	},
 

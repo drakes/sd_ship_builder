@@ -6,6 +6,7 @@ var ShipOptionsController =
 		$(this.options.id).on(this.options.option_deleted_event, this.option_delete_handler.bind(this));
 		this.template_observer = document.on(this.options.template_changed_event, this.template_changed_handler.bind(this));
 		document.observe(this.options.options_restored_event, this.options_restored_handler.bindAsEventListener(this));
+		document.observe(this.options.ship_reset_event, this.ship_reset_handler.bindAsEventListener(this));
 	},
 
 	template_changed_handler: function(event)
@@ -31,5 +32,12 @@ var ShipOptionsController =
 	{
 		var options = event.memo;
 		this.restore_options(options);
+	},
+
+	ship_reset_handler: function(event)
+	{
+		var selector = $(this.options.selector_id);
+		selector.hide.bind(selector).defer();
+		this.template_observer.start();
 	}
 };

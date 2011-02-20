@@ -8,7 +8,13 @@ var WeaponController =
 		weapon_control.down('.' + this.options.type_class).observe(this.options.selection_changed_event, this.type_change_handler.bindAsEventListener(this));
 		weapon_control.down('.' + this.options.multiple_class).observe(this.options.selection_changed_event, this.multiples_change_handler.bindAsEventListener(this));
 		this.find_ammo_selector().observe(this.options.selection_changed_event, this.ammo_change_handler.bindAsEventListener(this));
-		document.observe(this.options.ship_reset_event, this.ship_reset_handler.bindAsEventListener(this));
+		this.bound_ship_reset_handler = this.ship_reset_handler.bindAsEventListener(this);
+		document.observe(this.options.ship_reset_event, this.bound_ship_reset_handler);
+	},
+
+	disconnect_event_handlers: function()
+	{
+		document.stopObserving(this.options.ship_reset_event, this.bound_ship_reset_handler);
 	},
 
 	click_handler: function(event)
@@ -22,8 +28,12 @@ var WeaponController =
 
 	delete_handler: function(event)
 	{
-		event.stop();
+		if (event)
+		{
+			event.stop();
+		}
 
+		this.disconnect_event_handlers();
 		var weapon_control = $(this.options.id);
 		weapon_control.fire(this.options.deleted_event, this.options.id);
 		weapon_control.remove();
@@ -61,8 +71,7 @@ var WeaponController =
 
 	ship_reset_handler: function(event)
 	{
-		var weapon_control = $(this.options.id);
-		weapon_control.remove();
+		this.delete_handler();
 	},
 
 	refresh: function()
