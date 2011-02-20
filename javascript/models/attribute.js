@@ -15,6 +15,7 @@ var AttributeModel =
 			attribute_changed_event: 'attribute:changed',
 			selection_changed_event: 'selection:changed',
 			attributes_restored_event: 'attributes:restored',
+			ship_reset_event: 'ship:reset',
 
 			//data
 			attribute_property: 'attribute',

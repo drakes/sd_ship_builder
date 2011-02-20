@@ -31,6 +31,7 @@ var WeaponModel =
 			changed_event: 'weapon:changed',
 			firing_arc_changed_event: 'firing_arc:changed',
 			selection_changed_event: 'selection:changed',
+			ship_reset_event: 'ship:reset',
 
 			//weapon templates
 			data: null,

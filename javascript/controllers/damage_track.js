@@ -7,6 +7,7 @@ var DamageTrackController =
 		document.observe(this.options.attribute_changed_event, this.attribute_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.weapon_changed_event, this.weapon_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.weapon_deleted_event, this.weapon_deleted_handler.bindAsEventListener(this));
+		document.observe(this.options.ship_reset_event, this.ship_reset_handler.bindAsEventListener(this));
 		$(this.options.id).on('click', '.' + this.options.hit_box_class, this.hit_box_click_handler.bind(this));
 	},
 
@@ -51,11 +52,32 @@ var DamageTrackController =
 		this.update_damage(target_box);
 	},
 
+	ship_reset_handler: function(event)
+	{
+		if (this.options.gunboat)
+		{
+			this.find_gunboat_block().hide();
+		}
+		else
+		{
+			$(this.options.id).hide();
+		}
+		this.clear();
+	},
+
 	refresh: function(show)
 	{
 		if (show !== undefined)
 		{
-			var control = $(this.options.id);
+			var control;
+			if (this.options.gunboat)
+			{
+				control = this.find_gunboat_block();
+			}
+			else
+			{
+				control = $(this.options.id);
+			}
 			if (show)
 			{
 				control.show();

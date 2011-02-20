@@ -8,7 +8,6 @@ var ConstructionTemplateModel =
 			ship_class_id: 'ship_class',
 			tons_id: 'tons',
 			crew_id: 'crew',
-			hint_class: 'hint',
 			template_tag: 'span',
 			template_control_class: 'template_control',
 			gunboat_class: 'gunboat_class',
@@ -19,6 +18,7 @@ var ConstructionTemplateModel =
 			crew_template_changed_event: 'crew_template:changed',
 			selection_changed_event: 'selection:changed',
 			template_restored_event: 'template:restored',
+			ship_reset_event: 'ship:reset',
 
 			//presentation text
 			ship_class_hint: 'Select a ship class',

@@ -16,6 +16,7 @@ var CrewMembersModel =
 			crew_deleted_event: 'crew:deleted',
 			section_toggled_event: 'section:toggled',
 			crew_toggled_event: 'crew:toggled',
+			ship_reset_event: 'ship:reset',
 
 			//crew data
 			template:

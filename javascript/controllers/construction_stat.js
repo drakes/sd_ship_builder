@@ -12,6 +12,7 @@ var ConstructionStatController =
 		document.observe(this.options.crew_changed_event, this.crew_changed_handler.bindAsEventListener(this));
 		document.observe(this.options.crew_deleted_event, this.crew_deleted_handler.bindAsEventListener(this));
 		document.observe(this.options.crew_toggled_event, this.crew_toggled_handler.bindAsEventListener(this));
+		document.observe(this.options.ship_reset_event, this.ship_reset_handler.bindAsEventListener(this));
 	},
 
 	template_changed_handler: function(event)
@@ -72,6 +73,13 @@ var ConstructionStatController =
 	{
 		this.store_crew_disabled(!event.memo.show);
 		this.refresh();
+	},
+
+	ship_reset_handler: function(event)
+	{
+		var stat_control = $(this.options.id);
+		stat_control.hide.bind(stat_control).defer();
+		this.reset_data();
 	},
 
 	refresh: function()

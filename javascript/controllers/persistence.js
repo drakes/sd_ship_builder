@@ -22,8 +22,19 @@ var PersistenceController =
 	reset_clicked_handler: function(event)
 	{
 		event.stop();
-		location.replace(this.get_base_url() + '#');
-		location.reload();
+
+		//reloading is not offline-friendly
+		(function(){ location.hash = ''; }).defer();
+
+		//reset name
+		var name_field = $(this.options.name_id);
+		name_field.value = name_field.defaultValue;
+		//if not deferred the field is shown again due to events such as crew deletes causing refresh to be called
+		name_field.hide.bind(name_field).defer();
+		$(this.options.name_display_id).update('').up().hide();
+		document.title = this.original_title;
+
+		$(this.options.reset_id).fire(this.options.ship_reset_event);
 	},
 
 	name_focused_handler: function(event)

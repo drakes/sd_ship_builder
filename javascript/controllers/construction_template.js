@@ -6,6 +6,7 @@ var ConstructionTemplateController =
 		$(this.options.tons_id).observe(this.options.selection_changed_event, this.tons_change_handler.bindAsEventListener(this));
 		$(this.options.crew_id).observe(this.options.selection_changed_event, this.crew_change_handler.bindAsEventListener(this));
 		document.observe(this.options.template_restored_event, this.template_restored_handler.bindAsEventListener(this));
+		document.observe(this.options.ship_reset_event, this.ship_reset_handler.bindAsEventListener(this));
 	},
 
 	ship_class_change_handler: function(event)
@@ -52,6 +53,18 @@ var ConstructionTemplateController =
 		{
 			this.crew_select.set_by_index(crew_size_index);
 		}
+	},
+
+	ship_reset_handler: function(event)
+	{
+		this.ship_class_select.add_hint(this.options.ship_class_hint);
+		this.ship_class_select.reset();
+		//hide tons and crew
+		[this.options.tons_id, this.options.crew_id].each(function(selector_id)
+		{
+			var selector = $(selector_id);
+			selector.up(this.options.template_tag + '.' + this.options.template_control_class).hide();
+		}, this);
 	},
 
 	send_update: function(ship_class, tons, crew)

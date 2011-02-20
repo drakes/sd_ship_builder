@@ -1,5 +1,10 @@
 var AttributeView =
 {
+	clear: function()
+	{
+		this.select.update_options();
+	},
+
 	refresh_display: function(template)
 	{
 		var attribute_values = $H(template).keys();

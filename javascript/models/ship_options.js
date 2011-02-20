@@ -16,6 +16,7 @@ var ShipOptionsModel =
 			option_deleted_event: 'option:deleted',
 			selection_changed_event: 'selection:changed',
 			options_restored_event: 'options:restored',
+			ship_reset_event: 'ship:reset',
 
 			//presentation text
 			add_option_hint: 'Add an option',

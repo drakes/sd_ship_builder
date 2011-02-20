@@ -77,6 +77,11 @@ var EasySelectController =
 		return index - hints;
 	},
 
+	reset: function()
+	{
+		this.store_value();
+	},
+
 	update_options: function(keys)
 	{
 		var value = this.get();
@@ -101,6 +106,12 @@ var EasySelectController =
 
 	add_hint: function(hint)
 	{
+		var existing_option_contents = $(this.options.id).childElements().pluck('innerHTML');
+		if (existing_option_contents.any(function(content) { return content == hint; }))
+		{
+			//prevent duplicate hints
+			return;
+		}
 		this.prepend_hint(hint);
 	}
 };

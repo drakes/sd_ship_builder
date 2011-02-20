@@ -18,6 +18,7 @@ var OptionModel =
 			deleted_event: 'option:deleted',
 			changed_event: 'option:changed',
 			selection_changed_event: 'selection:changed',
+			ship_reset_event: 'ship:reset',
 
 			//option template
 			data: null,

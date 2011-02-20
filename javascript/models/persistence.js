@@ -9,7 +9,6 @@ var PersistenceModel =
 			reset_id: 'reset',
 			name_id: 'name',
 			name_display_id: 'display_name',
-			crew_section_toggle_id: 'crew_section_toggle',
 
 			//events
 			template_changed_event: 'template:changed',
@@ -26,6 +25,7 @@ var PersistenceModel =
 			crew_skills_restored_event: 'crew_skills:restored',
 			weapons_restored_event: 'weapons:restored',
 			options_restored_event: 'options:restored',
+			ship_reset_event: 'ship:reset',
 
 			//data serialization
 			symbols:
@@ -271,8 +271,9 @@ var PersistenceModel =
 		{
 			return key.indexOf(this.options.symbols.damage_reduction) == 0;
 		}, this);
-		if (damage_reduction_keys.length == 1)
+		if (damage_reduction_keys.length == 1 && !damage_reduction_keys[0].match(/\d/))
 		{
+			//non-gunboat attribute
 			return ship_parameters.get(damage_reduction_keys[0]);
 		}
 		var damage_reduction = {};
