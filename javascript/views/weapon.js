@@ -117,7 +117,7 @@ var WeaponView =
 		}
 	},
 
-	refresh_ammo: function(ammo_template)
+	refresh_ammo: function(ammo_template, last_ammo)
 	{
 		var ammo_control = this.find_ammo_control();
 		var ammo_selector = this.find_ammo_selector();
@@ -125,7 +125,11 @@ var WeaponView =
 		{
 			var ammo_options = this.create_ammo_options();
 			this.ammo_select.update_options(ammo_options);
-			this.ammo_select.set(ammo_options[0].key);
+			if (!last_ammo)
+			{
+				last_ammo = ammo_options[0].key;
+			}
+			this.ammo_select.set(last_ammo);
 			ammo_control.show();
 		}
 		else

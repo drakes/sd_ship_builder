@@ -46,14 +46,14 @@ var WeaponController =
 		var weapon_template = this.get_weapon_template();
 		this.toggle_firing_arc_display(!weapon_template.torpedoes);
 		this.refresh_multiples(weapon_template);
-		this.refresh_ammo(this.get_ammo_template());
+		this.refresh_ammo(this.get_ammo_template(), this.get_ammo_expansions());
 		this.refresh();
 		this.send_update();
 	},
 
 	multiples_change_handler: function(event)
 	{
-		this.refresh_ammo(this.get_ammo_template());
+		this.refresh_ammo(this.get_ammo_template(), this.get_ammo_expansions());
 		this.refresh();
 		this.send_update();
 	},
