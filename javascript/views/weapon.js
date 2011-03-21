@@ -15,6 +15,16 @@ var WeaponView =
 		return this.find_ammo_control().down('select');
 	},
 
+	find_speed_control: function()
+	{
+		return $(this.options.id).down('.' + this.options.speed_class);
+	},
+
+	find_speed_container: function()
+	{
+		return $(this.options.id).down('.' + this.options.speed_container_class);
+	},
+
 	create_controls: function()
 	{
 		var weapon_control = $(this.options.id);
@@ -32,11 +42,24 @@ var WeaponView =
 		var ammo_control = new Element('span', { 'class': this.options.ammo_class });
 		var ammo_selector = new Element('select');
 		var ammo_id = ammo_selector.identify();
-		ammo_control.insert('<label for=' + ammo_selector.identify() + '" class="descriptor">Ammo: </label>');
+		ammo_control.insert('<label for="' + ammo_selector.identify() + '" class="descriptor">Ammo: </label>');
 		ammo_control.insert(ammo_selector);
 		ammo_control.insert('<span class="construction_stats"> (cost: <span class="' + this.options.cost_class + '">0</span> slots: <span class="' + this.options.slots_class + '">0</span>)</span>');
+
+		//used only by torpedoes
+		var speed_control = new Element('span', { 'class': this.options.speed_class });
+		var speed_checkbox = new Element('input',
+		{
+			type: 'checkbox',
+			checked: 'checked'
+		});
+		var speed_id = speed_checkbox.identify();
+		speed_control.insert('<label for="' + speed_id + '" class="descriptor">Variable speed: </label>');
+		speed_control.insert(speed_checkbox);
+
 		controls.insert(type_control);
 		controls.insert(ammo_control);
+		controls.insert(speed_control);
 		controls.insert('<' + this.options.firing_arc_tag + ' class="' + this.options.firing_arc_class + '"></' + this.options.firing_arc_tag + '>');
 		weapon_control.insert(controls);
 
@@ -44,12 +67,14 @@ var WeaponView =
 		return {
 			type: type_id,
 			multiple: multiple_id,
-			ammo: ammo_id
+			ammo: ammo_id,
+			speed: speed_id
 		};
 	},
 	
 	create_stats: function(weapon_control)
 	{
+		weapon_control.insert('<span class="' + this.options.speed_container_class + ' ' + this.options.stat_class + '" style="display: none;"><span class="descriptor">Speed: </span><span class="' + this.options.torpedo_speed_class + '"></span></span>');
 		weapon_control.insert('<span class="' + this.options.stat_class + '"><span class="descriptor">Base Attack Dice: </span><span class="' + this.options.attack_dice_class + '"></span></span>');
 		weapon_control.insert('<span class="' + this.options.stat_class + '"><span class="descriptor">Damage: </span><span class="' + this.options.damage_class + '"></span>');
 		weapon_control.insert('<span class="' + this.options.stat_class + '"><span class="descriptor">Target Speed Restriction: </span><span class="' + this.options.speed_restriction_class + '"></span>');
@@ -124,6 +149,20 @@ var WeaponView =
 		this.refresh_stat(this.options.speed_restriction_class, (weapon_stats.speed_restriction ? ('Drive &le; ' + weapon_stats.speed_restriction) : null), weapon_control);
 		this.refresh_stat(this.options.cost_class, weapon_stats.cost, weapon_control);
 		this.refresh_stat(this.options.slots_class, weapon_stats.slots, weapon_control);
+
+		var speed_control = this.find_speed_control();
+		var speed_container = this.find_speed_container();
+		if (weapon_stats.torpedoes)
+		{
+			speed_control.show();
+			this.refresh_stat(this.options.torpedo_speed_class, weapon_stats.speed, weapon_control);
+			speed_container.show();
+		}
+		else
+		{
+			speed_control.hide();
+			speed_container.hide();
+		}
 
 		var range_container = weapon_control.down('.' + this.options.range_class);
 		if ([weapon_stats.short_range, weapon_stats.medium_range, weapon_stats.long_range].any())

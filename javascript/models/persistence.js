@@ -28,9 +28,10 @@ var PersistenceModel =
 			ship_reset_event: 'ship:reset',
 
 			//data serialization
+			protocol_version: 1,
 			symbols:
 			{
-				protocol_version: 'p', //reserved in case changes are needed and backward compatibility is desired
+				protocol_version: 'p',
 				ship_name: 'n',
 				ship_class: 's',
 				tons: 't',
@@ -43,6 +44,7 @@ var PersistenceModel =
 				weapon_multiple: 'm',
 				ammo: 'a',
 				firing_arcs: 'f',
+				weapon_options: 'i', //like torpedo speed
 				ship_option_type: 'o',
 				option_dimensions: ['x', 'y'], //only two are currently needed/used
 				quirk_type: 'q'
@@ -201,6 +203,7 @@ var PersistenceModel =
 			this.add_parameter(parameter_pairs, this.options.symbols.weapon_multiple + (i ? i : ''), weapon.multiples_index);
 			this.add_parameter(parameter_pairs, this.options.symbols.ammo + (i ? i : ''), weapon.ammo_index);
 			this.add_parameter(parameter_pairs, this.options.symbols.firing_arcs + (i ? i : ''), weapon.firing_arcs);
+			this.add_parameter(parameter_pairs, this.options.symbols.weapon_options + (i ? i : ''), weapon.options);
 		}
 	},
 
@@ -226,6 +229,7 @@ var PersistenceModel =
 	encode_to_url: function()
 	{
 		var parameter_pairs= [];
+		this.add_parameter(parameter_pairs, this.options.symbols.protocol_version, this.options.protocol_version);
 		this.add_name_parameter(parameter_pairs);
 		this.add_parameter(parameter_pairs, this.options.symbols.ship_class, this.template.ship_class_index, true);
 		this.add_parameter(parameter_pairs, this.options.symbols.tons, this.template.tons_index);
@@ -247,6 +251,35 @@ var PersistenceModel =
 		return '#' + parameter_pairs.invoke('join', '=').join('&');
 	},
 
+	upgrade_to_current_protocol: function(ship_parameters, protocol_version)
+	{
+		//version 0: initial release
+		if (protocol_version < 1)
+		{
+			//version 1: added weapon_options (torpedoes only), defaulting to variable speed (0 defaulted to uniform)
+			var weapon_type_pattern = new RegExp("^" + this.options.symbols.weapon_type);
+
+			//some questionable things happening right here...
+			var torpedoes_index = $H(ArmamentsData).keys().indexOf('torpedoes');
+
+			ship_parameters.keys().each(function(key)
+			{
+				if (!weapon_type_pattern.test(key) || ship_parameters.get(key) != torpedoes_index)
+				{
+					return;
+				}
+				var instance_number = key.slice(this.options.symbols.weapon_type.length);
+
+				//uniform: 1
+				ship_parameters.set(this.options.symbols.weapon_options + instance_number, 1);
+			}, this);
+
+			ship_parameters.set(this.options.symbols.protocol_version, 1);
+		}
+
+		location.replace(this.get_base_url() + '#' + ship_parameters.toQueryString());
+	},
+
 	decode_query_string: function()
 	{
 		//the old method used the query string
@@ -262,7 +295,13 @@ var PersistenceModel =
 			location.replace(this.get_base_url() + '#' + location.search.slice(1));
 		}
 
-		return location.hash.length > 1 ? $H(location.hash.slice(1).toQueryParams()) : null;
+		var ship_parameters = location.hash.length > 1 ? $H(location.hash.slice(1).toQueryParams()) : null;
+		var protocol_version = ship_parameters ? ship_parameters.get(this.options.symbols.protocol_version) || 0 : this.options.protocol_version;
+		if (protocol_version < this.options.protocol_version)
+		{
+			this.upgrade_to_current_protocol(ship_parameters, protocol_version);
+		}
+		return ship_parameters;
 	},
 
 	decode_damage_reduction_parameters: function(ship_parameters)
@@ -329,7 +368,8 @@ var PersistenceModel =
 				type: weapon_type,
 				multiple: ship_parameters.get(this.options.symbols.weapon_multiple + index),
 				ammo: ship_parameters.get(this.options.symbols.ammo + index),
-				firing_arcs: ship_parameters.get(this.options.symbols.firing_arcs + index)
+				firing_arcs: ship_parameters.get(this.options.symbols.firing_arcs + index),
+				options: ship_parameters.get(this.options.symbols.weapon_options + index)
 			};
 			weapons.push(weapon);
 		}

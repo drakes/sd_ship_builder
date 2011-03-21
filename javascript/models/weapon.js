@@ -14,6 +14,7 @@ var WeaponModel =
 			damage_class: 'damage',
 			ammo_class: 'ammo',
 			multiple_class: 'multiples',
+			speed_class: 'speed',
 			speed_restriction_class: 'speed_restriction',
 			range_class: 'range',
 			short_class: 'short',
@@ -21,6 +22,8 @@ var WeaponModel =
 			long_class: 'long',
 			note_class: 'note',
 			note_container_class: 'note_container',
+			speed_container_class: 'speed_container',
+			torpedo_speed_class: 'torpedo_speed',
 			cost_class: 'cost',
 			slots_class: 'slots',
 			firing_arc_tag: 'span',
@@ -37,14 +40,15 @@ var WeaponModel =
 			data: null,
 			default_number_of_attack_dice: 2,
 			damage_types: ['Low', 'Medium', 'High', 'All', 'Allx2', '10/8/6', 'High +1/'],
-			multiples_names: { 2: 'Twin', 3: 'Triple', 4: 'Quad', 5: 'Quint', 6: 'Sext' }
+			multiples_names: { 2: 'Twin', 3: 'Triple', 4: 'Quad', 5: 'Quint', 6: 'Sext' },
+			uniform_speed: 12
 		};
 		Object.extend(this.options, options);
 
 		this.firing_arc_stats = { cost: 0, slots: 0 };
 
 		this.decorate_control();
-		this.initialize_controls(initial_values);
+		this.initialize_controls();
 		this.type_change_handler();
 		this.connect_event_handlers();
 		if (initial_values)
@@ -63,6 +67,7 @@ var WeaponModel =
 		this.type_select.set(type_options[0].key);
 		this.multiple_select = new EasySelect({ id: ids.multiple });
 		this.ammo_select = new EasySelect({ id: ids.ammo });
+		this.speed_id = ids.speed;
 	},
 
 	restore_values: function(values)
@@ -75,6 +80,11 @@ var WeaponModel =
 		if (values.ammo)
 		{
 			this.ammo_select.set_by_index(values.ammo);
+		}
+		if (values.options)
+		{
+			//uniform, the non-default option, equates to unchecked
+			$(this.speed_id).checked = false;
 		}
 	},
 
@@ -114,6 +124,13 @@ var WeaponModel =
 		var ammo_expansions = this.get_ammo_expansions();
 		var ammo_template = this.get_ammo_template();
 		return ammo_template[ammo_expansions].count;
+	},
+
+	get_speed: function()
+	{
+		//torpedoes only
+		var variable_speed = $(this.speed_id).checked;
+		return variable_speed;
 	},
 
 	get_weapon_template: function()
@@ -169,7 +186,8 @@ var WeaponModel =
 				weapon_stats.slots += ammo_stats.slots;
 			}
 		}
-		return this.add_multiples_bonuses(weapon_stats);
+		weapon_stats = this.add_multiples_bonuses(weapon_stats);
+		return weapon_stats;
 	},
 
 	get_weapon_stats_total: function()
@@ -184,8 +202,18 @@ var WeaponModel =
 		//some weapons, such as missile launchers, don't have a nice progression and instead list the cost and slots bonuses at each quantity
 		if (Object.isArray(ammo_template))
 		{
+			var upgrade_cost = 0;
+			var weapon_template = this.get_weapon_template();
+			if (weapon_template.torpedoes)
+			{
+				var variable_speed = this.get_speed();
+				if (variable_speed)
+				{
+					upgrade_cost = ammo_template[ammo_expansions].variable_speed_cost_bonus || 0;
+				}
+			}
 			return {
-				cost: ammo_template[ammo_expansions].cost_bonus,
+				cost: ammo_template[ammo_expansions].cost_bonus + upgrade_cost,
 				slots: ammo_template[ammo_expansions].slots_bonus
 			};
 		}
@@ -209,10 +237,36 @@ var WeaponModel =
 		return this.firing_arc_stats.encoded;
 	},
 
+	get_encoded_options: function()
+	{
+		var variable_speed = this.get_speed();
+		//variable speed is the default option (seems more sane than without)
+		return variable_speed ? 0 : 1;
+	},
+
 	add_multiples_bonuses: function(weapon_stats)
 	{
 		var multiple_key = this.get_multiple_key();
-		if (multiple_key && !weapon_stats.torpedoes)
+		if (weapon_stats.torpedoes)
+		{
+			var variable_speed = this.get_speed();
+			if (variable_speed)
+			{
+				if (multiple_key)
+				{
+					weapon_stats.speed = weapon_stats.multiples[multiple_key].variable_speed;
+				}
+				else
+				{
+					weapon_stats.speed = weapon_stats.variable_speed;
+				}
+			}
+			else
+			{
+				weapon_stats.speed = this.options.uniform_speed;
+			}
+		}
+		else if (multiple_key)
 		{
 			var multiple = weapon_stats.multiples[multiple_key];
 			var combat_bonus = multiple_key - 1;

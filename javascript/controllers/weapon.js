@@ -8,6 +8,7 @@ var WeaponController =
 		weapon_control.down('.' + this.options.type_class).observe(this.options.selection_changed_event, this.type_change_handler.bindAsEventListener(this));
 		weapon_control.down('.' + this.options.multiple_class).observe(this.options.selection_changed_event, this.multiples_change_handler.bindAsEventListener(this));
 		this.find_ammo_selector().observe(this.options.selection_changed_event, this.ammo_change_handler.bindAsEventListener(this));
+		$(this.speed_id).observe('change', this.speed_change_handler.bindAsEventListener(this));
 		this.bound_ship_reset_handler = this.ship_reset_handler.bindAsEventListener(this);
 		document.observe(this.options.ship_reset_event, this.bound_ship_reset_handler);
 	},
@@ -63,6 +64,12 @@ var WeaponController =
 		this.send_update();
 	},
 
+	speed_change_handler: function(event)
+	{
+		this.refresh();
+		this.send_update();
+	},
+
 	firing_arc_changed_handler: function(event)
 	{
 		this.store_firing_arc_stats(event.memo);
@@ -100,6 +107,7 @@ var WeaponController =
 		if (weapon_stats.torpedoes)
 		{
 			memo.torpedoes = this.get_ammo_count();
+			memo.options = this.get_encoded_options();
 		}
 		$(this.options.id).fire(this.options.changed_event, memo);
 	}

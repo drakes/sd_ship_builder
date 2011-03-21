@@ -415,34 +415,41 @@ var ArmamentsData =
 			{
 				count: 1,
 				cost_bonus: 1,
+				variable_speed_cost_bonus: 2,
 				slots_bonus: 1
 			},
 			{
 				count: 2,
 				cost_bonus: 2,
+				variable_speed_cost_bonus: 4,
 				slots_bonus: 1
 			},
 			{
 				count: 3,
 				cost_bonus: 3,
+				variable_speed_cost_bonus: 6,
 				slots_bonus: 1
 			},
 			{
 				count: 4,
 				cost_bonus: 4,
+				variable_speed_cost_bonus: 8,
 				slots_bonus: 1
 			},
 			{
 				count: 6,
 				cost_bonus: 6,
+				variable_speed_cost_bonus: 12,
 				slots_bonus: 2
 			},
 			{
 				count: 10,
 				cost_bonus: 10,
+				variable_speed_cost_bonus: 20,
 				slots_bonus: 3
 			}
 		],
+		variable_speed: 18,
 		multiples:
 		{
 			2:
@@ -454,34 +461,41 @@ var ArmamentsData =
 					{
 						count: 1,
 						cost_bonus: 2,
+						variable_speed_cost_bonus: 2,
 						slots_bonus: 1
 					},
 					{
 						count: 2,
 						cost_bonus: 4,
+						variable_speed_cost_bonus: 5,
 						slots_bonus: 1
 					},
 					{
 						count: 3,
 						cost_bonus: 6,
+						variable_speed_cost_bonus: 7,
 						slots_bonus: 2
 					},
 					{
 						count: 4,
 						cost_bonus: 8,
+						variable_speed_cost_bonus: 10,
 						slots_bonus: 2
 					},
 					{
 						count: 6,
 						cost_bonus: 12,
+						variable_speed_cost_bonus: 14,
 						slots_bonus: 3
 					},
 					{
 						count: 10,
 						cost_bonus: 20,
+						variable_speed_cost_bonus: 24,
 						slots_bonus: 5
 					}
 				],
+				variable_speed: 16
 			},
 			3:
 			{
@@ -492,34 +506,41 @@ var ArmamentsData =
 					{
 						count: 1,
 						cost_bonus: 3,
+						variable_speed_cost_bonus: 1,
 						slots_bonus: 1
 					},
 					{
 						count: 2,
 						cost_bonus: 6,
+						variable_speed_cost_bonus: 3,
 						slots_bonus: 2
 					},
 					{
 						count: 3,
 						cost_bonus: 9,
+						variable_speed_cost_bonus: 5,
 						slots_bonus: 3
 					},
 					{
 						count: 4,
 						cost_bonus: 12,
+						variable_speed_cost_bonus: 6,
 						slots_bonus: 3
 					},
 					{
 						count: 6,
 						cost_bonus: 18,
+						variable_speed_cost_bonus: 9,
 						slots_bonus: 5
 					},
 					{
 						count: 10,
 						cost_bonus: 30,
+						variable_speed_cost_bonus: 15,
 						slots_bonus: 8
 					}
 				],
+				variable_speed: 14
 			},
 			4:
 			{
@@ -558,6 +579,7 @@ var ArmamentsData =
 						slots_bonus: 10
 					}
 				],
+				variable_speed: 12
 			},
 			5:
 			{
@@ -568,35 +590,42 @@ var ArmamentsData =
 					{
 						count: 1,
 						cost_bonus: 5,
+						variable_speed_cost_bonus: -2,
 						slots_bonus: 2
 					},
 					{
 						count: 2,
 						cost_bonus: 10,
+						variable_speed_cost_bonus: -4,
 						slots_bonus: 3
 					},
 					{
 						count: 3,
 						cost_bonus: 15,
+						variable_speed_cost_bonus: -6,
 						slots_bonus: 4
 					},
 					{
 						count: 4,
 						cost_bonus: 20,
+						variable_speed_cost_bonus: -8,
 						slots_bonus: 5
 					},
 					{
 						count: 6,
 						cost_bonus: 30,
+						variable_speed_cost_bonus: -12,
 						slots_bonus: 8
 					},
 					{
 						count: 10,
 						cost_bonus: 50,
+						variable_speed_cost_bonus: -20,
 						slots_bonus: 13
 					}
 				],
-			},
-		},
+				variable_speed: 10
+			}
+		}
 	}
 };
