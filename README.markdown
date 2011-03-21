@@ -34,8 +34,6 @@ The focus is on automating record-keeping to ease the process of designing ships
 
   * Arm them with all the standard cannons and warheads.
 
-  * Basic ship options.
-
   * Add basic ship options.
 
   * Select crew skill levels (or optionally turn them off to see the cost of the ship without crew).
@@ -55,8 +53,6 @@ The focus is on automating record-keeping to ease the process of designing ships
 ## Future
 
 There are plenty of features yet to be implemented:
-
-  * Variable speed torpedoes.
 
   * Warhounds.
 
