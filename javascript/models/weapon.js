@@ -85,6 +85,7 @@ var WeaponModel =
 		{
 			//uniform, the non-default option, equates to unchecked
 			$(this.speed_id).checked = false;
+			this.speed_change_handler();
 		}
 	},
 
